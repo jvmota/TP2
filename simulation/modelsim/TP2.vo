@@ -1,0 +1,3917 @@
+// Copyright (C) 1991-2011 Altera Corporation
+// Your use of Altera Corporation's design tools, logic functions 
+// and other software and tools, and its AMPP partner logic 
+// functions, and any output files from any of the foregoing 
+// (including device programming or simulation files), and any 
+// associated documentation or information are expressly subject 
+// to the terms and conditions of the Altera Program License 
+// Subscription Agreement, Altera MegaCore Function License 
+// Agreement, or other applicable license agreement, including, 
+// without limitation, that your use is for the sole purpose of 
+// programming logic devices manufactured by Altera and sold by 
+// Altera or its authorized distributors.  Please refer to the 
+// applicable agreement for further details.
+
+// VENDOR "Altera"
+// PROGRAM "Quartus II 32-bit"
+// VERSION "Version 11.1 Build 259 01/25/2012 Service Pack 2 SJ Web Edition"
+
+// DATE "06/13/2019 14:30:10"
+
+// 
+// Device: Altera EP2C35F672C6 Package FBGA672
+// 
+
+// 
+// This Verilog file should be used for ModelSim-Altera (Verilog) only
+// 
+
+`timescale 1 ns/ 1 ps
+
+module RegisterFile (
+	Dado1,
+	Dado2,
+	RegEsc,
+	Fonte1,
+	Fonte2,
+	Esc,
+	Clk,
+	Dado);
+output 	[31:0] Dado1;
+output 	[31:0] Dado2;
+input 	[1:0] RegEsc;
+input 	[1:0] Fonte1;
+input 	[1:0] Fonte2;
+input 	Esc;
+input 	Clk;
+input 	[31:0] Dado;
+
+// Design Ports Information
+// RegEsc[0]	=>  Location: PIN_C13,	 I/O Standard: 3.3-V LVTTL,	 Current Strength: Default
+// RegEsc[1]	=>  Location: PIN_D13,	 I/O Standard: 3.3-V LVTTL,	 Current Strength: Default
+// Fonte1[0]	=>  Location: PIN_A20,	 I/O Standard: 3.3-V LVTTL,	 Current Strength: Default
+// Fonte1[1]	=>  Location: PIN_AD6,	 I/O Standard: 3.3-V LVTTL,	 Current Strength: Default
+// Fonte2[0]	=>  Location: PIN_J6,	 I/O Standard: 3.3-V LVTTL,	 Current Strength: Default
+// Fonte2[1]	=>  Location: PIN_AC12,	 I/O Standard: 3.3-V LVTTL,	 Current Strength: Default
+// Esc	=>  Location: PIN_J14,	 I/O Standard: 3.3-V LVTTL,	 Current Strength: Default
+// Clk	=>  Location: PIN_B14,	 I/O Standard: 3.3-V LVTTL,	 Current Strength: Default
+// Dado[0]	=>  Location: PIN_Y13,	 I/O Standard: 3.3-V LVTTL,	 Current Strength: Default
+// Dado[1]	=>  Location: PIN_E12,	 I/O Standard: 3.3-V LVTTL,	 Current Strength: Default
+// Dado[2]	=>  Location: PIN_G11,	 I/O Standard: 3.3-V LVTTL,	 Current Strength: Default
+// Dado[3]	=>  Location: PIN_H10,	 I/O Standard: 3.3-V LVTTL,	 Current Strength: Default
+// Dado[4]	=>  Location: PIN_W21,	 I/O Standard: 3.3-V LVTTL,	 Current Strength: Default
+// Dado[5]	=>  Location: PIN_D10,	 I/O Standard: 3.3-V LVTTL,	 Current Strength: Default
+// Dado[6]	=>  Location: PIN_C10,	 I/O Standard: 3.3-V LVTTL,	 Current Strength: Default
+// Dado[7]	=>  Location: PIN_A9,	 I/O Standard: 3.3-V LVTTL,	 Current Strength: Default
+// Dado[8]	=>  Location: PIN_C22,	 I/O Standard: 3.3-V LVTTL,	 Current Strength: Default
+// Dado[9]	=>  Location: PIN_H3,	 I/O Standard: 3.3-V LVTTL,	 Current Strength: Default
+// Dado[10]	=>  Location: PIN_F11,	 I/O Standard: 3.3-V LVTTL,	 Current Strength: Default
+// Dado[11]	=>  Location: PIN_D6,	 I/O Standard: 3.3-V LVTTL,	 Current Strength: Default
+// Dado[12]	=>  Location: PIN_C19,	 I/O Standard: 3.3-V LVTTL,	 Current Strength: Default
+// Dado[13]	=>  Location: PIN_P4,	 I/O Standard: 3.3-V LVTTL,	 Current Strength: Default
+// Dado[14]	=>  Location: PIN_C5,	 I/O Standard: 3.3-V LVTTL,	 Current Strength: Default
+// Dado[15]	=>  Location: PIN_C4,	 I/O Standard: 3.3-V LVTTL,	 Current Strength: Default
+// Dado[16]	=>  Location: PIN_AB23,	 I/O Standard: 3.3-V LVTTL,	 Current Strength: Default
+// Dado[17]	=>  Location: PIN_N18,	 I/O Standard: 3.3-V LVTTL,	 Current Strength: Default
+// Dado[18]	=>  Location: PIN_H12,	 I/O Standard: 3.3-V LVTTL,	 Current Strength: Default
+// Dado[19]	=>  Location: PIN_C7,	 I/O Standard: 3.3-V LVTTL,	 Current Strength: Default
+// Dado[20]	=>  Location: PIN_D7,	 I/O Standard: 3.3-V LVTTL,	 Current Strength: Default
+// Dado[21]	=>  Location: PIN_N20,	 I/O Standard: 3.3-V LVTTL,	 Current Strength: Default
+// Dado[22]	=>  Location: PIN_AA17,	 I/O Standard: 3.3-V LVTTL,	 Current Strength: Default
+// Dado[23]	=>  Location: PIN_V10,	 I/O Standard: 3.3-V LVTTL,	 Current Strength: Default
+// Dado[24]	=>  Location: PIN_B11,	 I/O Standard: 3.3-V LVTTL,	 Current Strength: Default
+// Dado[25]	=>  Location: PIN_J9,	 I/O Standard: 3.3-V LVTTL,	 Current Strength: Default
+// Dado[26]	=>  Location: PIN_AC22,	 I/O Standard: 3.3-V LVTTL,	 Current Strength: Default
+// Dado[27]	=>  Location: PIN_W10,	 I/O Standard: 3.3-V LVTTL,	 Current Strength: Default
+// Dado[28]	=>  Location: PIN_D8,	 I/O Standard: 3.3-V LVTTL,	 Current Strength: Default
+// Dado[29]	=>  Location: PIN_A6,	 I/O Standard: 3.3-V LVTTL,	 Current Strength: Default
+// Dado[30]	=>  Location: PIN_AE15,	 I/O Standard: 3.3-V LVTTL,	 Current Strength: Default
+// Dado[31]	=>  Location: PIN_L2,	 I/O Standard: 3.3-V LVTTL,	 Current Strength: Default
+// Dado1[0]	=>  Location: PIN_K5,	 I/O Standard: 3.3-V LVTTL,	 Current Strength: 24mA
+// Dado1[1]	=>  Location: PIN_AC17,	 I/O Standard: 3.3-V LVTTL,	 Current Strength: 24mA
+// Dado1[2]	=>  Location: PIN_B3,	 I/O Standard: 3.3-V LVTTL,	 Current Strength: 24mA
+// Dado1[3]	=>  Location: PIN_H4,	 I/O Standard: 3.3-V LVTTL,	 Current Strength: 24mA
+// Dado1[4]	=>  Location: PIN_V17,	 I/O Standard: 3.3-V LVTTL,	 Current Strength: 24mA
+// Dado1[5]	=>  Location: PIN_AF5,	 I/O Standard: 3.3-V LVTTL,	 Current Strength: 24mA
+// Dado1[6]	=>  Location: PIN_D17,	 I/O Standard: 3.3-V LVTTL,	 Current Strength: 24mA
+// Dado1[7]	=>  Location: PIN_AC11,	 I/O Standard: 3.3-V LVTTL,	 Current Strength: 24mA
+// Dado1[8]	=>  Location: PIN_L3,	 I/O Standard: 3.3-V LVTTL,	 Current Strength: 24mA
+// Dado1[9]	=>  Location: PIN_M3,	 I/O Standard: 3.3-V LVTTL,	 Current Strength: 24mA
+// Dado1[10]	=>  Location: PIN_C3,	 I/O Standard: 3.3-V LVTTL,	 Current Strength: 24mA
+// Dado1[11]	=>  Location: PIN_H1,	 I/O Standard: 3.3-V LVTTL,	 Current Strength: 24mA
+// Dado1[12]	=>  Location: PIN_G12,	 I/O Standard: 3.3-V LVTTL,	 Current Strength: 24mA
+// Dado1[13]	=>  Location: PIN_R4,	 I/O Standard: 3.3-V LVTTL,	 Current Strength: 24mA
+// Dado1[14]	=>  Location: PIN_G6,	 I/O Standard: 3.3-V LVTTL,	 Current Strength: 24mA
+// Dado1[15]	=>  Location: PIN_AE9,	 I/O Standard: 3.3-V LVTTL,	 Current Strength: 24mA
+// Dado1[16]	=>  Location: PIN_AC3,	 I/O Standard: 3.3-V LVTTL,	 Current Strength: 24mA
+// Dado1[17]	=>  Location: PIN_M24,	 I/O Standard: 3.3-V LVTTL,	 Current Strength: 24mA
+// Dado1[18]	=>  Location: PIN_D14,	 I/O Standard: 3.3-V LVTTL,	 Current Strength: 24mA
+// Dado1[19]	=>  Location: PIN_K3,	 I/O Standard: 3.3-V LVTTL,	 Current Strength: 24mA
+// Dado1[20]	=>  Location: PIN_R2,	 I/O Standard: 3.3-V LVTTL,	 Current Strength: 24mA
+// Dado1[21]	=>  Location: PIN_L9,	 I/O Standard: 3.3-V LVTTL,	 Current Strength: 24mA
+// Dado1[22]	=>  Location: PIN_V11,	 I/O Standard: 3.3-V LVTTL,	 Current Strength: 24mA
+// Dado1[23]	=>  Location: PIN_K2,	 I/O Standard: 3.3-V LVTTL,	 Current Strength: 24mA
+// Dado1[24]	=>  Location: PIN_A17,	 I/O Standard: 3.3-V LVTTL,	 Current Strength: 24mA
+// Dado1[25]	=>  Location: PIN_N9,	 I/O Standard: 3.3-V LVTTL,	 Current Strength: 24mA
+// Dado1[26]	=>  Location: PIN_AC6,	 I/O Standard: 3.3-V LVTTL,	 Current Strength: 24mA
+// Dado1[27]	=>  Location: PIN_AD10,	 I/O Standard: 3.3-V LVTTL,	 Current Strength: 24mA
+// Dado1[28]	=>  Location: PIN_K4,	 I/O Standard: 3.3-V LVTTL,	 Current Strength: 24mA
+// Dado1[29]	=>  Location: PIN_L7,	 I/O Standard: 3.3-V LVTTL,	 Current Strength: 24mA
+// Dado1[30]	=>  Location: PIN_H6,	 I/O Standard: 3.3-V LVTTL,	 Current Strength: 24mA
+// Dado1[31]	=>  Location: PIN_AD4,	 I/O Standard: 3.3-V LVTTL,	 Current Strength: 24mA
+// Dado2[0]	=>  Location: PIN_G21,	 I/O Standard: 3.3-V LVTTL,	 Current Strength: 24mA
+// Dado2[1]	=>  Location: PIN_K1,	 I/O Standard: 3.3-V LVTTL,	 Current Strength: 24mA
+// Dado2[2]	=>  Location: PIN_E1,	 I/O Standard: 3.3-V LVTTL,	 Current Strength: 24mA
+// Dado2[3]	=>  Location: PIN_K23,	 I/O Standard: 3.3-V LVTTL,	 Current Strength: 24mA
+// Dado2[4]	=>  Location: PIN_A10,	 I/O Standard: 3.3-V LVTTL,	 Current Strength: 24mA
+// Dado2[5]	=>  Location: PIN_AC10,	 I/O Standard: 3.3-V LVTTL,	 Current Strength: 24mA
+// Dado2[6]	=>  Location: PIN_M19,	 I/O Standard: 3.3-V LVTTL,	 Current Strength: 24mA
+// Dado2[7]	=>  Location: PIN_W8,	 I/O Standard: 3.3-V LVTTL,	 Current Strength: 24mA
+// Dado2[8]	=>  Location: PIN_G4,	 I/O Standard: 3.3-V LVTTL,	 Current Strength: 24mA
+// Dado2[9]	=>  Location: PIN_M4,	 I/O Standard: 3.3-V LVTTL,	 Current Strength: 24mA
+// Dado2[10]	=>  Location: PIN_G3,	 I/O Standard: 3.3-V LVTTL,	 Current Strength: 24mA
+// Dado2[11]	=>  Location: PIN_D2,	 I/O Standard: 3.3-V LVTTL,	 Current Strength: 24mA
+// Dado2[12]	=>  Location: PIN_M22,	 I/O Standard: 3.3-V LVTTL,	 Current Strength: 24mA
+// Dado2[13]	=>  Location: PIN_AD21,	 I/O Standard: 3.3-V LVTTL,	 Current Strength: 24mA
+// Dado2[14]	=>  Location: PIN_C17,	 I/O Standard: 3.3-V LVTTL,	 Current Strength: 24mA
+// Dado2[15]	=>  Location: PIN_M2,	 I/O Standard: 3.3-V LVTTL,	 Current Strength: 24mA
+// Dado2[16]	=>  Location: PIN_K7,	 I/O Standard: 3.3-V LVTTL,	 Current Strength: 24mA
+// Dado2[17]	=>  Location: PIN_AD8,	 I/O Standard: 3.3-V LVTTL,	 Current Strength: 24mA
+// Dado2[18]	=>  Location: PIN_J13,	 I/O Standard: 3.3-V LVTTL,	 Current Strength: 24mA
+// Dado2[19]	=>  Location: PIN_M5,	 I/O Standard: 3.3-V LVTTL,	 Current Strength: 24mA
+// Dado2[20]	=>  Location: PIN_G2,	 I/O Standard: 3.3-V LVTTL,	 Current Strength: 24mA
+// Dado2[21]	=>  Location: PIN_J5,	 I/O Standard: 3.3-V LVTTL,	 Current Strength: 24mA
+// Dado2[22]	=>  Location: PIN_AD7,	 I/O Standard: 3.3-V LVTTL,	 Current Strength: 24mA
+// Dado2[23]	=>  Location: PIN_J16,	 I/O Standard: 3.3-V LVTTL,	 Current Strength: 24mA
+// Dado2[24]	=>  Location: PIN_U18,	 I/O Standard: 3.3-V LVTTL,	 Current Strength: 24mA
+// Dado2[25]	=>  Location: PIN_W15,	 I/O Standard: 3.3-V LVTTL,	 Current Strength: 24mA
+// Dado2[26]	=>  Location: PIN_G10,	 I/O Standard: 3.3-V LVTTL,	 Current Strength: 24mA
+// Dado2[27]	=>  Location: PIN_A19,	 I/O Standard: 3.3-V LVTTL,	 Current Strength: 24mA
+// Dado2[28]	=>  Location: PIN_F10,	 I/O Standard: 3.3-V LVTTL,	 Current Strength: 24mA
+// Dado2[29]	=>  Location: PIN_E5,	 I/O Standard: 3.3-V LVTTL,	 Current Strength: 24mA
+// Dado2[30]	=>  Location: PIN_AE13,	 I/O Standard: 3.3-V LVTTL,	 Current Strength: 24mA
+// Dado2[31]	=>  Location: PIN_E18,	 I/O Standard: 3.3-V LVTTL,	 Current Strength: 24mA
+
+
+wire gnd;
+wire vcc;
+wire unknown;
+
+assign gnd = 1'b0;
+assign vcc = 1'b1;
+assign unknown = 1'bx;
+
+tri1 devclrn;
+tri1 devpor;
+tri1 devoe;
+// synopsys translate_off
+initial $sdf_annotate("TP2_v.sdo");
+// synopsys translate_on
+
+
+
+// Location: PIN_C13,	 I/O Standard: 3.3-V LVTTL,	 Current Strength: Default
+cycloneii_io \RegEsc[0]~I (
+	.datain(gnd),
+	.oe(gnd),
+	.outclk(gnd),
+	.outclkena(vcc),
+	.inclk(gnd),
+	.inclkena(vcc),
+	.areset(gnd),
+	.sreset(gnd),
+	.differentialin(gnd),
+	.linkin(gnd),
+	.devclrn(devclrn),
+	.devpor(devpor),
+	.devoe(devoe),
+	.combout(),
+	.regout(),
+	.differentialout(),
+	.linkout(),
+	.padio(RegEsc[0]));
+// synopsys translate_off
+defparam \RegEsc[0]~I .input_async_reset = "none";
+defparam \RegEsc[0]~I .input_power_up = "low";
+defparam \RegEsc[0]~I .input_register_mode = "none";
+defparam \RegEsc[0]~I .input_sync_reset = "none";
+defparam \RegEsc[0]~I .oe_async_reset = "none";
+defparam \RegEsc[0]~I .oe_power_up = "low";
+defparam \RegEsc[0]~I .oe_register_mode = "none";
+defparam \RegEsc[0]~I .oe_sync_reset = "none";
+defparam \RegEsc[0]~I .operation_mode = "input";
+defparam \RegEsc[0]~I .output_async_reset = "none";
+defparam \RegEsc[0]~I .output_power_up = "low";
+defparam \RegEsc[0]~I .output_register_mode = "none";
+defparam \RegEsc[0]~I .output_sync_reset = "none";
+// synopsys translate_on
+
+// Location: PIN_D13,	 I/O Standard: 3.3-V LVTTL,	 Current Strength: Default
+cycloneii_io \RegEsc[1]~I (
+	.datain(gnd),
+	.oe(gnd),
+	.outclk(gnd),
+	.outclkena(vcc),
+	.inclk(gnd),
+	.inclkena(vcc),
+	.areset(gnd),
+	.sreset(gnd),
+	.differentialin(gnd),
+	.linkin(gnd),
+	.devclrn(devclrn),
+	.devpor(devpor),
+	.devoe(devoe),
+	.combout(),
+	.regout(),
+	.differentialout(),
+	.linkout(),
+	.padio(RegEsc[1]));
+// synopsys translate_off
+defparam \RegEsc[1]~I .input_async_reset = "none";
+defparam \RegEsc[1]~I .input_power_up = "low";
+defparam \RegEsc[1]~I .input_register_mode = "none";
+defparam \RegEsc[1]~I .input_sync_reset = "none";
+defparam \RegEsc[1]~I .oe_async_reset = "none";
+defparam \RegEsc[1]~I .oe_power_up = "low";
+defparam \RegEsc[1]~I .oe_register_mode = "none";
+defparam \RegEsc[1]~I .oe_sync_reset = "none";
+defparam \RegEsc[1]~I .operation_mode = "input";
+defparam \RegEsc[1]~I .output_async_reset = "none";
+defparam \RegEsc[1]~I .output_power_up = "low";
+defparam \RegEsc[1]~I .output_register_mode = "none";
+defparam \RegEsc[1]~I .output_sync_reset = "none";
+// synopsys translate_on
+
+// Location: PIN_A20,	 I/O Standard: 3.3-V LVTTL,	 Current Strength: Default
+cycloneii_io \Fonte1[0]~I (
+	.datain(gnd),
+	.oe(gnd),
+	.outclk(gnd),
+	.outclkena(vcc),
+	.inclk(gnd),
+	.inclkena(vcc),
+	.areset(gnd),
+	.sreset(gnd),
+	.differentialin(gnd),
+	.linkin(gnd),
+	.devclrn(devclrn),
+	.devpor(devpor),
+	.devoe(devoe),
+	.combout(),
+	.regout(),
+	.differentialout(),
+	.linkout(),
+	.padio(Fonte1[0]));
+// synopsys translate_off
+defparam \Fonte1[0]~I .input_async_reset = "none";
+defparam \Fonte1[0]~I .input_power_up = "low";
+defparam \Fonte1[0]~I .input_register_mode = "none";
+defparam \Fonte1[0]~I .input_sync_reset = "none";
+defparam \Fonte1[0]~I .oe_async_reset = "none";
+defparam \Fonte1[0]~I .oe_power_up = "low";
+defparam \Fonte1[0]~I .oe_register_mode = "none";
+defparam \Fonte1[0]~I .oe_sync_reset = "none";
+defparam \Fonte1[0]~I .operation_mode = "input";
+defparam \Fonte1[0]~I .output_async_reset = "none";
+defparam \Fonte1[0]~I .output_power_up = "low";
+defparam \Fonte1[0]~I .output_register_mode = "none";
+defparam \Fonte1[0]~I .output_sync_reset = "none";
+// synopsys translate_on
+
+// Location: PIN_AD6,	 I/O Standard: 3.3-V LVTTL,	 Current Strength: Default
+cycloneii_io \Fonte1[1]~I (
+	.datain(gnd),
+	.oe(gnd),
+	.outclk(gnd),
+	.outclkena(vcc),
+	.inclk(gnd),
+	.inclkena(vcc),
+	.areset(gnd),
+	.sreset(gnd),
+	.differentialin(gnd),
+	.linkin(gnd),
+	.devclrn(devclrn),
+	.devpor(devpor),
+	.devoe(devoe),
+	.combout(),
+	.regout(),
+	.differentialout(),
+	.linkout(),
+	.padio(Fonte1[1]));
+// synopsys translate_off
+defparam \Fonte1[1]~I .input_async_reset = "none";
+defparam \Fonte1[1]~I .input_power_up = "low";
+defparam \Fonte1[1]~I .input_register_mode = "none";
+defparam \Fonte1[1]~I .input_sync_reset = "none";
+defparam \Fonte1[1]~I .oe_async_reset = "none";
+defparam \Fonte1[1]~I .oe_power_up = "low";
+defparam \Fonte1[1]~I .oe_register_mode = "none";
+defparam \Fonte1[1]~I .oe_sync_reset = "none";
+defparam \Fonte1[1]~I .operation_mode = "input";
+defparam \Fonte1[1]~I .output_async_reset = "none";
+defparam \Fonte1[1]~I .output_power_up = "low";
+defparam \Fonte1[1]~I .output_register_mode = "none";
+defparam \Fonte1[1]~I .output_sync_reset = "none";
+// synopsys translate_on
+
+// Location: PIN_J6,	 I/O Standard: 3.3-V LVTTL,	 Current Strength: Default
+cycloneii_io \Fonte2[0]~I (
+	.datain(gnd),
+	.oe(gnd),
+	.outclk(gnd),
+	.outclkena(vcc),
+	.inclk(gnd),
+	.inclkena(vcc),
+	.areset(gnd),
+	.sreset(gnd),
+	.differentialin(gnd),
+	.linkin(gnd),
+	.devclrn(devclrn),
+	.devpor(devpor),
+	.devoe(devoe),
+	.combout(),
+	.regout(),
+	.differentialout(),
+	.linkout(),
+	.padio(Fonte2[0]));
+// synopsys translate_off
+defparam \Fonte2[0]~I .input_async_reset = "none";
+defparam \Fonte2[0]~I .input_power_up = "low";
+defparam \Fonte2[0]~I .input_register_mode = "none";
+defparam \Fonte2[0]~I .input_sync_reset = "none";
+defparam \Fonte2[0]~I .oe_async_reset = "none";
+defparam \Fonte2[0]~I .oe_power_up = "low";
+defparam \Fonte2[0]~I .oe_register_mode = "none";
+defparam \Fonte2[0]~I .oe_sync_reset = "none";
+defparam \Fonte2[0]~I .operation_mode = "input";
+defparam \Fonte2[0]~I .output_async_reset = "none";
+defparam \Fonte2[0]~I .output_power_up = "low";
+defparam \Fonte2[0]~I .output_register_mode = "none";
+defparam \Fonte2[0]~I .output_sync_reset = "none";
+// synopsys translate_on
+
+// Location: PIN_AC12,	 I/O Standard: 3.3-V LVTTL,	 Current Strength: Default
+cycloneii_io \Fonte2[1]~I (
+	.datain(gnd),
+	.oe(gnd),
+	.outclk(gnd),
+	.outclkena(vcc),
+	.inclk(gnd),
+	.inclkena(vcc),
+	.areset(gnd),
+	.sreset(gnd),
+	.differentialin(gnd),
+	.linkin(gnd),
+	.devclrn(devclrn),
+	.devpor(devpor),
+	.devoe(devoe),
+	.combout(),
+	.regout(),
+	.differentialout(),
+	.linkout(),
+	.padio(Fonte2[1]));
+// synopsys translate_off
+defparam \Fonte2[1]~I .input_async_reset = "none";
+defparam \Fonte2[1]~I .input_power_up = "low";
+defparam \Fonte2[1]~I .input_register_mode = "none";
+defparam \Fonte2[1]~I .input_sync_reset = "none";
+defparam \Fonte2[1]~I .oe_async_reset = "none";
+defparam \Fonte2[1]~I .oe_power_up = "low";
+defparam \Fonte2[1]~I .oe_register_mode = "none";
+defparam \Fonte2[1]~I .oe_sync_reset = "none";
+defparam \Fonte2[1]~I .operation_mode = "input";
+defparam \Fonte2[1]~I .output_async_reset = "none";
+defparam \Fonte2[1]~I .output_power_up = "low";
+defparam \Fonte2[1]~I .output_register_mode = "none";
+defparam \Fonte2[1]~I .output_sync_reset = "none";
+// synopsys translate_on
+
+// Location: PIN_J14,	 I/O Standard: 3.3-V LVTTL,	 Current Strength: Default
+cycloneii_io \Esc~I (
+	.datain(gnd),
+	.oe(gnd),
+	.outclk(gnd),
+	.outclkena(vcc),
+	.inclk(gnd),
+	.inclkena(vcc),
+	.areset(gnd),
+	.sreset(gnd),
+	.differentialin(gnd),
+	.linkin(gnd),
+	.devclrn(devclrn),
+	.devpor(devpor),
+	.devoe(devoe),
+	.combout(),
+	.regout(),
+	.differentialout(),
+	.linkout(),
+	.padio(Esc));
+// synopsys translate_off
+defparam \Esc~I .input_async_reset = "none";
+defparam \Esc~I .input_power_up = "low";
+defparam \Esc~I .input_register_mode = "none";
+defparam \Esc~I .input_sync_reset = "none";
+defparam \Esc~I .oe_async_reset = "none";
+defparam \Esc~I .oe_power_up = "low";
+defparam \Esc~I .oe_register_mode = "none";
+defparam \Esc~I .oe_sync_reset = "none";
+defparam \Esc~I .operation_mode = "input";
+defparam \Esc~I .output_async_reset = "none";
+defparam \Esc~I .output_power_up = "low";
+defparam \Esc~I .output_register_mode = "none";
+defparam \Esc~I .output_sync_reset = "none";
+// synopsys translate_on
+
+// Location: PIN_B14,	 I/O Standard: 3.3-V LVTTL,	 Current Strength: Default
+cycloneii_io \Clk~I (
+	.datain(gnd),
+	.oe(gnd),
+	.outclk(gnd),
+	.outclkena(vcc),
+	.inclk(gnd),
+	.inclkena(vcc),
+	.areset(gnd),
+	.sreset(gnd),
+	.differentialin(gnd),
+	.linkin(gnd),
+	.devclrn(devclrn),
+	.devpor(devpor),
+	.devoe(devoe),
+	.combout(),
+	.regout(),
+	.differentialout(),
+	.linkout(),
+	.padio(Clk));
+// synopsys translate_off
+defparam \Clk~I .input_async_reset = "none";
+defparam \Clk~I .input_power_up = "low";
+defparam \Clk~I .input_register_mode = "none";
+defparam \Clk~I .input_sync_reset = "none";
+defparam \Clk~I .oe_async_reset = "none";
+defparam \Clk~I .oe_power_up = "low";
+defparam \Clk~I .oe_register_mode = "none";
+defparam \Clk~I .oe_sync_reset = "none";
+defparam \Clk~I .operation_mode = "input";
+defparam \Clk~I .output_async_reset = "none";
+defparam \Clk~I .output_power_up = "low";
+defparam \Clk~I .output_register_mode = "none";
+defparam \Clk~I .output_sync_reset = "none";
+// synopsys translate_on
+
+// Location: PIN_Y13,	 I/O Standard: 3.3-V LVTTL,	 Current Strength: Default
+cycloneii_io \Dado[0]~I (
+	.datain(gnd),
+	.oe(gnd),
+	.outclk(gnd),
+	.outclkena(vcc),
+	.inclk(gnd),
+	.inclkena(vcc),
+	.areset(gnd),
+	.sreset(gnd),
+	.differentialin(gnd),
+	.linkin(gnd),
+	.devclrn(devclrn),
+	.devpor(devpor),
+	.devoe(devoe),
+	.combout(),
+	.regout(),
+	.differentialout(),
+	.linkout(),
+	.padio(Dado[0]));
+// synopsys translate_off
+defparam \Dado[0]~I .input_async_reset = "none";
+defparam \Dado[0]~I .input_power_up = "low";
+defparam \Dado[0]~I .input_register_mode = "none";
+defparam \Dado[0]~I .input_sync_reset = "none";
+defparam \Dado[0]~I .oe_async_reset = "none";
+defparam \Dado[0]~I .oe_power_up = "low";
+defparam \Dado[0]~I .oe_register_mode = "none";
+defparam \Dado[0]~I .oe_sync_reset = "none";
+defparam \Dado[0]~I .operation_mode = "input";
+defparam \Dado[0]~I .output_async_reset = "none";
+defparam \Dado[0]~I .output_power_up = "low";
+defparam \Dado[0]~I .output_register_mode = "none";
+defparam \Dado[0]~I .output_sync_reset = "none";
+// synopsys translate_on
+
+// Location: PIN_E12,	 I/O Standard: 3.3-V LVTTL,	 Current Strength: Default
+cycloneii_io \Dado[1]~I (
+	.datain(gnd),
+	.oe(gnd),
+	.outclk(gnd),
+	.outclkena(vcc),
+	.inclk(gnd),
+	.inclkena(vcc),
+	.areset(gnd),
+	.sreset(gnd),
+	.differentialin(gnd),
+	.linkin(gnd),
+	.devclrn(devclrn),
+	.devpor(devpor),
+	.devoe(devoe),
+	.combout(),
+	.regout(),
+	.differentialout(),
+	.linkout(),
+	.padio(Dado[1]));
+// synopsys translate_off
+defparam \Dado[1]~I .input_async_reset = "none";
+defparam \Dado[1]~I .input_power_up = "low";
+defparam \Dado[1]~I .input_register_mode = "none";
+defparam \Dado[1]~I .input_sync_reset = "none";
+defparam \Dado[1]~I .oe_async_reset = "none";
+defparam \Dado[1]~I .oe_power_up = "low";
+defparam \Dado[1]~I .oe_register_mode = "none";
+defparam \Dado[1]~I .oe_sync_reset = "none";
+defparam \Dado[1]~I .operation_mode = "input";
+defparam \Dado[1]~I .output_async_reset = "none";
+defparam \Dado[1]~I .output_power_up = "low";
+defparam \Dado[1]~I .output_register_mode = "none";
+defparam \Dado[1]~I .output_sync_reset = "none";
+// synopsys translate_on
+
+// Location: PIN_G11,	 I/O Standard: 3.3-V LVTTL,	 Current Strength: Default
+cycloneii_io \Dado[2]~I (
+	.datain(gnd),
+	.oe(gnd),
+	.outclk(gnd),
+	.outclkena(vcc),
+	.inclk(gnd),
+	.inclkena(vcc),
+	.areset(gnd),
+	.sreset(gnd),
+	.differentialin(gnd),
+	.linkin(gnd),
+	.devclrn(devclrn),
+	.devpor(devpor),
+	.devoe(devoe),
+	.combout(),
+	.regout(),
+	.differentialout(),
+	.linkout(),
+	.padio(Dado[2]));
+// synopsys translate_off
+defparam \Dado[2]~I .input_async_reset = "none";
+defparam \Dado[2]~I .input_power_up = "low";
+defparam \Dado[2]~I .input_register_mode = "none";
+defparam \Dado[2]~I .input_sync_reset = "none";
+defparam \Dado[2]~I .oe_async_reset = "none";
+defparam \Dado[2]~I .oe_power_up = "low";
+defparam \Dado[2]~I .oe_register_mode = "none";
+defparam \Dado[2]~I .oe_sync_reset = "none";
+defparam \Dado[2]~I .operation_mode = "input";
+defparam \Dado[2]~I .output_async_reset = "none";
+defparam \Dado[2]~I .output_power_up = "low";
+defparam \Dado[2]~I .output_register_mode = "none";
+defparam \Dado[2]~I .output_sync_reset = "none";
+// synopsys translate_on
+
+// Location: PIN_H10,	 I/O Standard: 3.3-V LVTTL,	 Current Strength: Default
+cycloneii_io \Dado[3]~I (
+	.datain(gnd),
+	.oe(gnd),
+	.outclk(gnd),
+	.outclkena(vcc),
+	.inclk(gnd),
+	.inclkena(vcc),
+	.areset(gnd),
+	.sreset(gnd),
+	.differentialin(gnd),
+	.linkin(gnd),
+	.devclrn(devclrn),
+	.devpor(devpor),
+	.devoe(devoe),
+	.combout(),
+	.regout(),
+	.differentialout(),
+	.linkout(),
+	.padio(Dado[3]));
+// synopsys translate_off
+defparam \Dado[3]~I .input_async_reset = "none";
+defparam \Dado[3]~I .input_power_up = "low";
+defparam \Dado[3]~I .input_register_mode = "none";
+defparam \Dado[3]~I .input_sync_reset = "none";
+defparam \Dado[3]~I .oe_async_reset = "none";
+defparam \Dado[3]~I .oe_power_up = "low";
+defparam \Dado[3]~I .oe_register_mode = "none";
+defparam \Dado[3]~I .oe_sync_reset = "none";
+defparam \Dado[3]~I .operation_mode = "input";
+defparam \Dado[3]~I .output_async_reset = "none";
+defparam \Dado[3]~I .output_power_up = "low";
+defparam \Dado[3]~I .output_register_mode = "none";
+defparam \Dado[3]~I .output_sync_reset = "none";
+// synopsys translate_on
+
+// Location: PIN_W21,	 I/O Standard: 3.3-V LVTTL,	 Current Strength: Default
+cycloneii_io \Dado[4]~I (
+	.datain(gnd),
+	.oe(gnd),
+	.outclk(gnd),
+	.outclkena(vcc),
+	.inclk(gnd),
+	.inclkena(vcc),
+	.areset(gnd),
+	.sreset(gnd),
+	.differentialin(gnd),
+	.linkin(gnd),
+	.devclrn(devclrn),
+	.devpor(devpor),
+	.devoe(devoe),
+	.combout(),
+	.regout(),
+	.differentialout(),
+	.linkout(),
+	.padio(Dado[4]));
+// synopsys translate_off
+defparam \Dado[4]~I .input_async_reset = "none";
+defparam \Dado[4]~I .input_power_up = "low";
+defparam \Dado[4]~I .input_register_mode = "none";
+defparam \Dado[4]~I .input_sync_reset = "none";
+defparam \Dado[4]~I .oe_async_reset = "none";
+defparam \Dado[4]~I .oe_power_up = "low";
+defparam \Dado[4]~I .oe_register_mode = "none";
+defparam \Dado[4]~I .oe_sync_reset = "none";
+defparam \Dado[4]~I .operation_mode = "input";
+defparam \Dado[4]~I .output_async_reset = "none";
+defparam \Dado[4]~I .output_power_up = "low";
+defparam \Dado[4]~I .output_register_mode = "none";
+defparam \Dado[4]~I .output_sync_reset = "none";
+// synopsys translate_on
+
+// Location: PIN_D10,	 I/O Standard: 3.3-V LVTTL,	 Current Strength: Default
+cycloneii_io \Dado[5]~I (
+	.datain(gnd),
+	.oe(gnd),
+	.outclk(gnd),
+	.outclkena(vcc),
+	.inclk(gnd),
+	.inclkena(vcc),
+	.areset(gnd),
+	.sreset(gnd),
+	.differentialin(gnd),
+	.linkin(gnd),
+	.devclrn(devclrn),
+	.devpor(devpor),
+	.devoe(devoe),
+	.combout(),
+	.regout(),
+	.differentialout(),
+	.linkout(),
+	.padio(Dado[5]));
+// synopsys translate_off
+defparam \Dado[5]~I .input_async_reset = "none";
+defparam \Dado[5]~I .input_power_up = "low";
+defparam \Dado[5]~I .input_register_mode = "none";
+defparam \Dado[5]~I .input_sync_reset = "none";
+defparam \Dado[5]~I .oe_async_reset = "none";
+defparam \Dado[5]~I .oe_power_up = "low";
+defparam \Dado[5]~I .oe_register_mode = "none";
+defparam \Dado[5]~I .oe_sync_reset = "none";
+defparam \Dado[5]~I .operation_mode = "input";
+defparam \Dado[5]~I .output_async_reset = "none";
+defparam \Dado[5]~I .output_power_up = "low";
+defparam \Dado[5]~I .output_register_mode = "none";
+defparam \Dado[5]~I .output_sync_reset = "none";
+// synopsys translate_on
+
+// Location: PIN_C10,	 I/O Standard: 3.3-V LVTTL,	 Current Strength: Default
+cycloneii_io \Dado[6]~I (
+	.datain(gnd),
+	.oe(gnd),
+	.outclk(gnd),
+	.outclkena(vcc),
+	.inclk(gnd),
+	.inclkena(vcc),
+	.areset(gnd),
+	.sreset(gnd),
+	.differentialin(gnd),
+	.linkin(gnd),
+	.devclrn(devclrn),
+	.devpor(devpor),
+	.devoe(devoe),
+	.combout(),
+	.regout(),
+	.differentialout(),
+	.linkout(),
+	.padio(Dado[6]));
+// synopsys translate_off
+defparam \Dado[6]~I .input_async_reset = "none";
+defparam \Dado[6]~I .input_power_up = "low";
+defparam \Dado[6]~I .input_register_mode = "none";
+defparam \Dado[6]~I .input_sync_reset = "none";
+defparam \Dado[6]~I .oe_async_reset = "none";
+defparam \Dado[6]~I .oe_power_up = "low";
+defparam \Dado[6]~I .oe_register_mode = "none";
+defparam \Dado[6]~I .oe_sync_reset = "none";
+defparam \Dado[6]~I .operation_mode = "input";
+defparam \Dado[6]~I .output_async_reset = "none";
+defparam \Dado[6]~I .output_power_up = "low";
+defparam \Dado[6]~I .output_register_mode = "none";
+defparam \Dado[6]~I .output_sync_reset = "none";
+// synopsys translate_on
+
+// Location: PIN_A9,	 I/O Standard: 3.3-V LVTTL,	 Current Strength: Default
+cycloneii_io \Dado[7]~I (
+	.datain(gnd),
+	.oe(gnd),
+	.outclk(gnd),
+	.outclkena(vcc),
+	.inclk(gnd),
+	.inclkena(vcc),
+	.areset(gnd),
+	.sreset(gnd),
+	.differentialin(gnd),
+	.linkin(gnd),
+	.devclrn(devclrn),
+	.devpor(devpor),
+	.devoe(devoe),
+	.combout(),
+	.regout(),
+	.differentialout(),
+	.linkout(),
+	.padio(Dado[7]));
+// synopsys translate_off
+defparam \Dado[7]~I .input_async_reset = "none";
+defparam \Dado[7]~I .input_power_up = "low";
+defparam \Dado[7]~I .input_register_mode = "none";
+defparam \Dado[7]~I .input_sync_reset = "none";
+defparam \Dado[7]~I .oe_async_reset = "none";
+defparam \Dado[7]~I .oe_power_up = "low";
+defparam \Dado[7]~I .oe_register_mode = "none";
+defparam \Dado[7]~I .oe_sync_reset = "none";
+defparam \Dado[7]~I .operation_mode = "input";
+defparam \Dado[7]~I .output_async_reset = "none";
+defparam \Dado[7]~I .output_power_up = "low";
+defparam \Dado[7]~I .output_register_mode = "none";
+defparam \Dado[7]~I .output_sync_reset = "none";
+// synopsys translate_on
+
+// Location: PIN_C22,	 I/O Standard: 3.3-V LVTTL,	 Current Strength: Default
+cycloneii_io \Dado[8]~I (
+	.datain(gnd),
+	.oe(gnd),
+	.outclk(gnd),
+	.outclkena(vcc),
+	.inclk(gnd),
+	.inclkena(vcc),
+	.areset(gnd),
+	.sreset(gnd),
+	.differentialin(gnd),
+	.linkin(gnd),
+	.devclrn(devclrn),
+	.devpor(devpor),
+	.devoe(devoe),
+	.combout(),
+	.regout(),
+	.differentialout(),
+	.linkout(),
+	.padio(Dado[8]));
+// synopsys translate_off
+defparam \Dado[8]~I .input_async_reset = "none";
+defparam \Dado[8]~I .input_power_up = "low";
+defparam \Dado[8]~I .input_register_mode = "none";
+defparam \Dado[8]~I .input_sync_reset = "none";
+defparam \Dado[8]~I .oe_async_reset = "none";
+defparam \Dado[8]~I .oe_power_up = "low";
+defparam \Dado[8]~I .oe_register_mode = "none";
+defparam \Dado[8]~I .oe_sync_reset = "none";
+defparam \Dado[8]~I .operation_mode = "input";
+defparam \Dado[8]~I .output_async_reset = "none";
+defparam \Dado[8]~I .output_power_up = "low";
+defparam \Dado[8]~I .output_register_mode = "none";
+defparam \Dado[8]~I .output_sync_reset = "none";
+// synopsys translate_on
+
+// Location: PIN_H3,	 I/O Standard: 3.3-V LVTTL,	 Current Strength: Default
+cycloneii_io \Dado[9]~I (
+	.datain(gnd),
+	.oe(gnd),
+	.outclk(gnd),
+	.outclkena(vcc),
+	.inclk(gnd),
+	.inclkena(vcc),
+	.areset(gnd),
+	.sreset(gnd),
+	.differentialin(gnd),
+	.linkin(gnd),
+	.devclrn(devclrn),
+	.devpor(devpor),
+	.devoe(devoe),
+	.combout(),
+	.regout(),
+	.differentialout(),
+	.linkout(),
+	.padio(Dado[9]));
+// synopsys translate_off
+defparam \Dado[9]~I .input_async_reset = "none";
+defparam \Dado[9]~I .input_power_up = "low";
+defparam \Dado[9]~I .input_register_mode = "none";
+defparam \Dado[9]~I .input_sync_reset = "none";
+defparam \Dado[9]~I .oe_async_reset = "none";
+defparam \Dado[9]~I .oe_power_up = "low";
+defparam \Dado[9]~I .oe_register_mode = "none";
+defparam \Dado[9]~I .oe_sync_reset = "none";
+defparam \Dado[9]~I .operation_mode = "input";
+defparam \Dado[9]~I .output_async_reset = "none";
+defparam \Dado[9]~I .output_power_up = "low";
+defparam \Dado[9]~I .output_register_mode = "none";
+defparam \Dado[9]~I .output_sync_reset = "none";
+// synopsys translate_on
+
+// Location: PIN_F11,	 I/O Standard: 3.3-V LVTTL,	 Current Strength: Default
+cycloneii_io \Dado[10]~I (
+	.datain(gnd),
+	.oe(gnd),
+	.outclk(gnd),
+	.outclkena(vcc),
+	.inclk(gnd),
+	.inclkena(vcc),
+	.areset(gnd),
+	.sreset(gnd),
+	.differentialin(gnd),
+	.linkin(gnd),
+	.devclrn(devclrn),
+	.devpor(devpor),
+	.devoe(devoe),
+	.combout(),
+	.regout(),
+	.differentialout(),
+	.linkout(),
+	.padio(Dado[10]));
+// synopsys translate_off
+defparam \Dado[10]~I .input_async_reset = "none";
+defparam \Dado[10]~I .input_power_up = "low";
+defparam \Dado[10]~I .input_register_mode = "none";
+defparam \Dado[10]~I .input_sync_reset = "none";
+defparam \Dado[10]~I .oe_async_reset = "none";
+defparam \Dado[10]~I .oe_power_up = "low";
+defparam \Dado[10]~I .oe_register_mode = "none";
+defparam \Dado[10]~I .oe_sync_reset = "none";
+defparam \Dado[10]~I .operation_mode = "input";
+defparam \Dado[10]~I .output_async_reset = "none";
+defparam \Dado[10]~I .output_power_up = "low";
+defparam \Dado[10]~I .output_register_mode = "none";
+defparam \Dado[10]~I .output_sync_reset = "none";
+// synopsys translate_on
+
+// Location: PIN_D6,	 I/O Standard: 3.3-V LVTTL,	 Current Strength: Default
+cycloneii_io \Dado[11]~I (
+	.datain(gnd),
+	.oe(gnd),
+	.outclk(gnd),
+	.outclkena(vcc),
+	.inclk(gnd),
+	.inclkena(vcc),
+	.areset(gnd),
+	.sreset(gnd),
+	.differentialin(gnd),
+	.linkin(gnd),
+	.devclrn(devclrn),
+	.devpor(devpor),
+	.devoe(devoe),
+	.combout(),
+	.regout(),
+	.differentialout(),
+	.linkout(),
+	.padio(Dado[11]));
+// synopsys translate_off
+defparam \Dado[11]~I .input_async_reset = "none";
+defparam \Dado[11]~I .input_power_up = "low";
+defparam \Dado[11]~I .input_register_mode = "none";
+defparam \Dado[11]~I .input_sync_reset = "none";
+defparam \Dado[11]~I .oe_async_reset = "none";
+defparam \Dado[11]~I .oe_power_up = "low";
+defparam \Dado[11]~I .oe_register_mode = "none";
+defparam \Dado[11]~I .oe_sync_reset = "none";
+defparam \Dado[11]~I .operation_mode = "input";
+defparam \Dado[11]~I .output_async_reset = "none";
+defparam \Dado[11]~I .output_power_up = "low";
+defparam \Dado[11]~I .output_register_mode = "none";
+defparam \Dado[11]~I .output_sync_reset = "none";
+// synopsys translate_on
+
+// Location: PIN_C19,	 I/O Standard: 3.3-V LVTTL,	 Current Strength: Default
+cycloneii_io \Dado[12]~I (
+	.datain(gnd),
+	.oe(gnd),
+	.outclk(gnd),
+	.outclkena(vcc),
+	.inclk(gnd),
+	.inclkena(vcc),
+	.areset(gnd),
+	.sreset(gnd),
+	.differentialin(gnd),
+	.linkin(gnd),
+	.devclrn(devclrn),
+	.devpor(devpor),
+	.devoe(devoe),
+	.combout(),
+	.regout(),
+	.differentialout(),
+	.linkout(),
+	.padio(Dado[12]));
+// synopsys translate_off
+defparam \Dado[12]~I .input_async_reset = "none";
+defparam \Dado[12]~I .input_power_up = "low";
+defparam \Dado[12]~I .input_register_mode = "none";
+defparam \Dado[12]~I .input_sync_reset = "none";
+defparam \Dado[12]~I .oe_async_reset = "none";
+defparam \Dado[12]~I .oe_power_up = "low";
+defparam \Dado[12]~I .oe_register_mode = "none";
+defparam \Dado[12]~I .oe_sync_reset = "none";
+defparam \Dado[12]~I .operation_mode = "input";
+defparam \Dado[12]~I .output_async_reset = "none";
+defparam \Dado[12]~I .output_power_up = "low";
+defparam \Dado[12]~I .output_register_mode = "none";
+defparam \Dado[12]~I .output_sync_reset = "none";
+// synopsys translate_on
+
+// Location: PIN_P4,	 I/O Standard: 3.3-V LVTTL,	 Current Strength: Default
+cycloneii_io \Dado[13]~I (
+	.datain(gnd),
+	.oe(gnd),
+	.outclk(gnd),
+	.outclkena(vcc),
+	.inclk(gnd),
+	.inclkena(vcc),
+	.areset(gnd),
+	.sreset(gnd),
+	.differentialin(gnd),
+	.linkin(gnd),
+	.devclrn(devclrn),
+	.devpor(devpor),
+	.devoe(devoe),
+	.combout(),
+	.regout(),
+	.differentialout(),
+	.linkout(),
+	.padio(Dado[13]));
+// synopsys translate_off
+defparam \Dado[13]~I .input_async_reset = "none";
+defparam \Dado[13]~I .input_power_up = "low";
+defparam \Dado[13]~I .input_register_mode = "none";
+defparam \Dado[13]~I .input_sync_reset = "none";
+defparam \Dado[13]~I .oe_async_reset = "none";
+defparam \Dado[13]~I .oe_power_up = "low";
+defparam \Dado[13]~I .oe_register_mode = "none";
+defparam \Dado[13]~I .oe_sync_reset = "none";
+defparam \Dado[13]~I .operation_mode = "input";
+defparam \Dado[13]~I .output_async_reset = "none";
+defparam \Dado[13]~I .output_power_up = "low";
+defparam \Dado[13]~I .output_register_mode = "none";
+defparam \Dado[13]~I .output_sync_reset = "none";
+// synopsys translate_on
+
+// Location: PIN_C5,	 I/O Standard: 3.3-V LVTTL,	 Current Strength: Default
+cycloneii_io \Dado[14]~I (
+	.datain(gnd),
+	.oe(gnd),
+	.outclk(gnd),
+	.outclkena(vcc),
+	.inclk(gnd),
+	.inclkena(vcc),
+	.areset(gnd),
+	.sreset(gnd),
+	.differentialin(gnd),
+	.linkin(gnd),
+	.devclrn(devclrn),
+	.devpor(devpor),
+	.devoe(devoe),
+	.combout(),
+	.regout(),
+	.differentialout(),
+	.linkout(),
+	.padio(Dado[14]));
+// synopsys translate_off
+defparam \Dado[14]~I .input_async_reset = "none";
+defparam \Dado[14]~I .input_power_up = "low";
+defparam \Dado[14]~I .input_register_mode = "none";
+defparam \Dado[14]~I .input_sync_reset = "none";
+defparam \Dado[14]~I .oe_async_reset = "none";
+defparam \Dado[14]~I .oe_power_up = "low";
+defparam \Dado[14]~I .oe_register_mode = "none";
+defparam \Dado[14]~I .oe_sync_reset = "none";
+defparam \Dado[14]~I .operation_mode = "input";
+defparam \Dado[14]~I .output_async_reset = "none";
+defparam \Dado[14]~I .output_power_up = "low";
+defparam \Dado[14]~I .output_register_mode = "none";
+defparam \Dado[14]~I .output_sync_reset = "none";
+// synopsys translate_on
+
+// Location: PIN_C4,	 I/O Standard: 3.3-V LVTTL,	 Current Strength: Default
+cycloneii_io \Dado[15]~I (
+	.datain(gnd),
+	.oe(gnd),
+	.outclk(gnd),
+	.outclkena(vcc),
+	.inclk(gnd),
+	.inclkena(vcc),
+	.areset(gnd),
+	.sreset(gnd),
+	.differentialin(gnd),
+	.linkin(gnd),
+	.devclrn(devclrn),
+	.devpor(devpor),
+	.devoe(devoe),
+	.combout(),
+	.regout(),
+	.differentialout(),
+	.linkout(),
+	.padio(Dado[15]));
+// synopsys translate_off
+defparam \Dado[15]~I .input_async_reset = "none";
+defparam \Dado[15]~I .input_power_up = "low";
+defparam \Dado[15]~I .input_register_mode = "none";
+defparam \Dado[15]~I .input_sync_reset = "none";
+defparam \Dado[15]~I .oe_async_reset = "none";
+defparam \Dado[15]~I .oe_power_up = "low";
+defparam \Dado[15]~I .oe_register_mode = "none";
+defparam \Dado[15]~I .oe_sync_reset = "none";
+defparam \Dado[15]~I .operation_mode = "input";
+defparam \Dado[15]~I .output_async_reset = "none";
+defparam \Dado[15]~I .output_power_up = "low";
+defparam \Dado[15]~I .output_register_mode = "none";
+defparam \Dado[15]~I .output_sync_reset = "none";
+// synopsys translate_on
+
+// Location: PIN_AB23,	 I/O Standard: 3.3-V LVTTL,	 Current Strength: Default
+cycloneii_io \Dado[16]~I (
+	.datain(gnd),
+	.oe(gnd),
+	.outclk(gnd),
+	.outclkena(vcc),
+	.inclk(gnd),
+	.inclkena(vcc),
+	.areset(gnd),
+	.sreset(gnd),
+	.differentialin(gnd),
+	.linkin(gnd),
+	.devclrn(devclrn),
+	.devpor(devpor),
+	.devoe(devoe),
+	.combout(),
+	.regout(),
+	.differentialout(),
+	.linkout(),
+	.padio(Dado[16]));
+// synopsys translate_off
+defparam \Dado[16]~I .input_async_reset = "none";
+defparam \Dado[16]~I .input_power_up = "low";
+defparam \Dado[16]~I .input_register_mode = "none";
+defparam \Dado[16]~I .input_sync_reset = "none";
+defparam \Dado[16]~I .oe_async_reset = "none";
+defparam \Dado[16]~I .oe_power_up = "low";
+defparam \Dado[16]~I .oe_register_mode = "none";
+defparam \Dado[16]~I .oe_sync_reset = "none";
+defparam \Dado[16]~I .operation_mode = "input";
+defparam \Dado[16]~I .output_async_reset = "none";
+defparam \Dado[16]~I .output_power_up = "low";
+defparam \Dado[16]~I .output_register_mode = "none";
+defparam \Dado[16]~I .output_sync_reset = "none";
+// synopsys translate_on
+
+// Location: PIN_N18,	 I/O Standard: 3.3-V LVTTL,	 Current Strength: Default
+cycloneii_io \Dado[17]~I (
+	.datain(gnd),
+	.oe(gnd),
+	.outclk(gnd),
+	.outclkena(vcc),
+	.inclk(gnd),
+	.inclkena(vcc),
+	.areset(gnd),
+	.sreset(gnd),
+	.differentialin(gnd),
+	.linkin(gnd),
+	.devclrn(devclrn),
+	.devpor(devpor),
+	.devoe(devoe),
+	.combout(),
+	.regout(),
+	.differentialout(),
+	.linkout(),
+	.padio(Dado[17]));
+// synopsys translate_off
+defparam \Dado[17]~I .input_async_reset = "none";
+defparam \Dado[17]~I .input_power_up = "low";
+defparam \Dado[17]~I .input_register_mode = "none";
+defparam \Dado[17]~I .input_sync_reset = "none";
+defparam \Dado[17]~I .oe_async_reset = "none";
+defparam \Dado[17]~I .oe_power_up = "low";
+defparam \Dado[17]~I .oe_register_mode = "none";
+defparam \Dado[17]~I .oe_sync_reset = "none";
+defparam \Dado[17]~I .operation_mode = "input";
+defparam \Dado[17]~I .output_async_reset = "none";
+defparam \Dado[17]~I .output_power_up = "low";
+defparam \Dado[17]~I .output_register_mode = "none";
+defparam \Dado[17]~I .output_sync_reset = "none";
+// synopsys translate_on
+
+// Location: PIN_H12,	 I/O Standard: 3.3-V LVTTL,	 Current Strength: Default
+cycloneii_io \Dado[18]~I (
+	.datain(gnd),
+	.oe(gnd),
+	.outclk(gnd),
+	.outclkena(vcc),
+	.inclk(gnd),
+	.inclkena(vcc),
+	.areset(gnd),
+	.sreset(gnd),
+	.differentialin(gnd),
+	.linkin(gnd),
+	.devclrn(devclrn),
+	.devpor(devpor),
+	.devoe(devoe),
+	.combout(),
+	.regout(),
+	.differentialout(),
+	.linkout(),
+	.padio(Dado[18]));
+// synopsys translate_off
+defparam \Dado[18]~I .input_async_reset = "none";
+defparam \Dado[18]~I .input_power_up = "low";
+defparam \Dado[18]~I .input_register_mode = "none";
+defparam \Dado[18]~I .input_sync_reset = "none";
+defparam \Dado[18]~I .oe_async_reset = "none";
+defparam \Dado[18]~I .oe_power_up = "low";
+defparam \Dado[18]~I .oe_register_mode = "none";
+defparam \Dado[18]~I .oe_sync_reset = "none";
+defparam \Dado[18]~I .operation_mode = "input";
+defparam \Dado[18]~I .output_async_reset = "none";
+defparam \Dado[18]~I .output_power_up = "low";
+defparam \Dado[18]~I .output_register_mode = "none";
+defparam \Dado[18]~I .output_sync_reset = "none";
+// synopsys translate_on
+
+// Location: PIN_C7,	 I/O Standard: 3.3-V LVTTL,	 Current Strength: Default
+cycloneii_io \Dado[19]~I (
+	.datain(gnd),
+	.oe(gnd),
+	.outclk(gnd),
+	.outclkena(vcc),
+	.inclk(gnd),
+	.inclkena(vcc),
+	.areset(gnd),
+	.sreset(gnd),
+	.differentialin(gnd),
+	.linkin(gnd),
+	.devclrn(devclrn),
+	.devpor(devpor),
+	.devoe(devoe),
+	.combout(),
+	.regout(),
+	.differentialout(),
+	.linkout(),
+	.padio(Dado[19]));
+// synopsys translate_off
+defparam \Dado[19]~I .input_async_reset = "none";
+defparam \Dado[19]~I .input_power_up = "low";
+defparam \Dado[19]~I .input_register_mode = "none";
+defparam \Dado[19]~I .input_sync_reset = "none";
+defparam \Dado[19]~I .oe_async_reset = "none";
+defparam \Dado[19]~I .oe_power_up = "low";
+defparam \Dado[19]~I .oe_register_mode = "none";
+defparam \Dado[19]~I .oe_sync_reset = "none";
+defparam \Dado[19]~I .operation_mode = "input";
+defparam \Dado[19]~I .output_async_reset = "none";
+defparam \Dado[19]~I .output_power_up = "low";
+defparam \Dado[19]~I .output_register_mode = "none";
+defparam \Dado[19]~I .output_sync_reset = "none";
+// synopsys translate_on
+
+// Location: PIN_D7,	 I/O Standard: 3.3-V LVTTL,	 Current Strength: Default
+cycloneii_io \Dado[20]~I (
+	.datain(gnd),
+	.oe(gnd),
+	.outclk(gnd),
+	.outclkena(vcc),
+	.inclk(gnd),
+	.inclkena(vcc),
+	.areset(gnd),
+	.sreset(gnd),
+	.differentialin(gnd),
+	.linkin(gnd),
+	.devclrn(devclrn),
+	.devpor(devpor),
+	.devoe(devoe),
+	.combout(),
+	.regout(),
+	.differentialout(),
+	.linkout(),
+	.padio(Dado[20]));
+// synopsys translate_off
+defparam \Dado[20]~I .input_async_reset = "none";
+defparam \Dado[20]~I .input_power_up = "low";
+defparam \Dado[20]~I .input_register_mode = "none";
+defparam \Dado[20]~I .input_sync_reset = "none";
+defparam \Dado[20]~I .oe_async_reset = "none";
+defparam \Dado[20]~I .oe_power_up = "low";
+defparam \Dado[20]~I .oe_register_mode = "none";
+defparam \Dado[20]~I .oe_sync_reset = "none";
+defparam \Dado[20]~I .operation_mode = "input";
+defparam \Dado[20]~I .output_async_reset = "none";
+defparam \Dado[20]~I .output_power_up = "low";
+defparam \Dado[20]~I .output_register_mode = "none";
+defparam \Dado[20]~I .output_sync_reset = "none";
+// synopsys translate_on
+
+// Location: PIN_N20,	 I/O Standard: 3.3-V LVTTL,	 Current Strength: Default
+cycloneii_io \Dado[21]~I (
+	.datain(gnd),
+	.oe(gnd),
+	.outclk(gnd),
+	.outclkena(vcc),
+	.inclk(gnd),
+	.inclkena(vcc),
+	.areset(gnd),
+	.sreset(gnd),
+	.differentialin(gnd),
+	.linkin(gnd),
+	.devclrn(devclrn),
+	.devpor(devpor),
+	.devoe(devoe),
+	.combout(),
+	.regout(),
+	.differentialout(),
+	.linkout(),
+	.padio(Dado[21]));
+// synopsys translate_off
+defparam \Dado[21]~I .input_async_reset = "none";
+defparam \Dado[21]~I .input_power_up = "low";
+defparam \Dado[21]~I .input_register_mode = "none";
+defparam \Dado[21]~I .input_sync_reset = "none";
+defparam \Dado[21]~I .oe_async_reset = "none";
+defparam \Dado[21]~I .oe_power_up = "low";
+defparam \Dado[21]~I .oe_register_mode = "none";
+defparam \Dado[21]~I .oe_sync_reset = "none";
+defparam \Dado[21]~I .operation_mode = "input";
+defparam \Dado[21]~I .output_async_reset = "none";
+defparam \Dado[21]~I .output_power_up = "low";
+defparam \Dado[21]~I .output_register_mode = "none";
+defparam \Dado[21]~I .output_sync_reset = "none";
+// synopsys translate_on
+
+// Location: PIN_AA17,	 I/O Standard: 3.3-V LVTTL,	 Current Strength: Default
+cycloneii_io \Dado[22]~I (
+	.datain(gnd),
+	.oe(gnd),
+	.outclk(gnd),
+	.outclkena(vcc),
+	.inclk(gnd),
+	.inclkena(vcc),
+	.areset(gnd),
+	.sreset(gnd),
+	.differentialin(gnd),
+	.linkin(gnd),
+	.devclrn(devclrn),
+	.devpor(devpor),
+	.devoe(devoe),
+	.combout(),
+	.regout(),
+	.differentialout(),
+	.linkout(),
+	.padio(Dado[22]));
+// synopsys translate_off
+defparam \Dado[22]~I .input_async_reset = "none";
+defparam \Dado[22]~I .input_power_up = "low";
+defparam \Dado[22]~I .input_register_mode = "none";
+defparam \Dado[22]~I .input_sync_reset = "none";
+defparam \Dado[22]~I .oe_async_reset = "none";
+defparam \Dado[22]~I .oe_power_up = "low";
+defparam \Dado[22]~I .oe_register_mode = "none";
+defparam \Dado[22]~I .oe_sync_reset = "none";
+defparam \Dado[22]~I .operation_mode = "input";
+defparam \Dado[22]~I .output_async_reset = "none";
+defparam \Dado[22]~I .output_power_up = "low";
+defparam \Dado[22]~I .output_register_mode = "none";
+defparam \Dado[22]~I .output_sync_reset = "none";
+// synopsys translate_on
+
+// Location: PIN_V10,	 I/O Standard: 3.3-V LVTTL,	 Current Strength: Default
+cycloneii_io \Dado[23]~I (
+	.datain(gnd),
+	.oe(gnd),
+	.outclk(gnd),
+	.outclkena(vcc),
+	.inclk(gnd),
+	.inclkena(vcc),
+	.areset(gnd),
+	.sreset(gnd),
+	.differentialin(gnd),
+	.linkin(gnd),
+	.devclrn(devclrn),
+	.devpor(devpor),
+	.devoe(devoe),
+	.combout(),
+	.regout(),
+	.differentialout(),
+	.linkout(),
+	.padio(Dado[23]));
+// synopsys translate_off
+defparam \Dado[23]~I .input_async_reset = "none";
+defparam \Dado[23]~I .input_power_up = "low";
+defparam \Dado[23]~I .input_register_mode = "none";
+defparam \Dado[23]~I .input_sync_reset = "none";
+defparam \Dado[23]~I .oe_async_reset = "none";
+defparam \Dado[23]~I .oe_power_up = "low";
+defparam \Dado[23]~I .oe_register_mode = "none";
+defparam \Dado[23]~I .oe_sync_reset = "none";
+defparam \Dado[23]~I .operation_mode = "input";
+defparam \Dado[23]~I .output_async_reset = "none";
+defparam \Dado[23]~I .output_power_up = "low";
+defparam \Dado[23]~I .output_register_mode = "none";
+defparam \Dado[23]~I .output_sync_reset = "none";
+// synopsys translate_on
+
+// Location: PIN_B11,	 I/O Standard: 3.3-V LVTTL,	 Current Strength: Default
+cycloneii_io \Dado[24]~I (
+	.datain(gnd),
+	.oe(gnd),
+	.outclk(gnd),
+	.outclkena(vcc),
+	.inclk(gnd),
+	.inclkena(vcc),
+	.areset(gnd),
+	.sreset(gnd),
+	.differentialin(gnd),
+	.linkin(gnd),
+	.devclrn(devclrn),
+	.devpor(devpor),
+	.devoe(devoe),
+	.combout(),
+	.regout(),
+	.differentialout(),
+	.linkout(),
+	.padio(Dado[24]));
+// synopsys translate_off
+defparam \Dado[24]~I .input_async_reset = "none";
+defparam \Dado[24]~I .input_power_up = "low";
+defparam \Dado[24]~I .input_register_mode = "none";
+defparam \Dado[24]~I .input_sync_reset = "none";
+defparam \Dado[24]~I .oe_async_reset = "none";
+defparam \Dado[24]~I .oe_power_up = "low";
+defparam \Dado[24]~I .oe_register_mode = "none";
+defparam \Dado[24]~I .oe_sync_reset = "none";
+defparam \Dado[24]~I .operation_mode = "input";
+defparam \Dado[24]~I .output_async_reset = "none";
+defparam \Dado[24]~I .output_power_up = "low";
+defparam \Dado[24]~I .output_register_mode = "none";
+defparam \Dado[24]~I .output_sync_reset = "none";
+// synopsys translate_on
+
+// Location: PIN_J9,	 I/O Standard: 3.3-V LVTTL,	 Current Strength: Default
+cycloneii_io \Dado[25]~I (
+	.datain(gnd),
+	.oe(gnd),
+	.outclk(gnd),
+	.outclkena(vcc),
+	.inclk(gnd),
+	.inclkena(vcc),
+	.areset(gnd),
+	.sreset(gnd),
+	.differentialin(gnd),
+	.linkin(gnd),
+	.devclrn(devclrn),
+	.devpor(devpor),
+	.devoe(devoe),
+	.combout(),
+	.regout(),
+	.differentialout(),
+	.linkout(),
+	.padio(Dado[25]));
+// synopsys translate_off
+defparam \Dado[25]~I .input_async_reset = "none";
+defparam \Dado[25]~I .input_power_up = "low";
+defparam \Dado[25]~I .input_register_mode = "none";
+defparam \Dado[25]~I .input_sync_reset = "none";
+defparam \Dado[25]~I .oe_async_reset = "none";
+defparam \Dado[25]~I .oe_power_up = "low";
+defparam \Dado[25]~I .oe_register_mode = "none";
+defparam \Dado[25]~I .oe_sync_reset = "none";
+defparam \Dado[25]~I .operation_mode = "input";
+defparam \Dado[25]~I .output_async_reset = "none";
+defparam \Dado[25]~I .output_power_up = "low";
+defparam \Dado[25]~I .output_register_mode = "none";
+defparam \Dado[25]~I .output_sync_reset = "none";
+// synopsys translate_on
+
+// Location: PIN_AC22,	 I/O Standard: 3.3-V LVTTL,	 Current Strength: Default
+cycloneii_io \Dado[26]~I (
+	.datain(gnd),
+	.oe(gnd),
+	.outclk(gnd),
+	.outclkena(vcc),
+	.inclk(gnd),
+	.inclkena(vcc),
+	.areset(gnd),
+	.sreset(gnd),
+	.differentialin(gnd),
+	.linkin(gnd),
+	.devclrn(devclrn),
+	.devpor(devpor),
+	.devoe(devoe),
+	.combout(),
+	.regout(),
+	.differentialout(),
+	.linkout(),
+	.padio(Dado[26]));
+// synopsys translate_off
+defparam \Dado[26]~I .input_async_reset = "none";
+defparam \Dado[26]~I .input_power_up = "low";
+defparam \Dado[26]~I .input_register_mode = "none";
+defparam \Dado[26]~I .input_sync_reset = "none";
+defparam \Dado[26]~I .oe_async_reset = "none";
+defparam \Dado[26]~I .oe_power_up = "low";
+defparam \Dado[26]~I .oe_register_mode = "none";
+defparam \Dado[26]~I .oe_sync_reset = "none";
+defparam \Dado[26]~I .operation_mode = "input";
+defparam \Dado[26]~I .output_async_reset = "none";
+defparam \Dado[26]~I .output_power_up = "low";
+defparam \Dado[26]~I .output_register_mode = "none";
+defparam \Dado[26]~I .output_sync_reset = "none";
+// synopsys translate_on
+
+// Location: PIN_W10,	 I/O Standard: 3.3-V LVTTL,	 Current Strength: Default
+cycloneii_io \Dado[27]~I (
+	.datain(gnd),
+	.oe(gnd),
+	.outclk(gnd),
+	.outclkena(vcc),
+	.inclk(gnd),
+	.inclkena(vcc),
+	.areset(gnd),
+	.sreset(gnd),
+	.differentialin(gnd),
+	.linkin(gnd),
+	.devclrn(devclrn),
+	.devpor(devpor),
+	.devoe(devoe),
+	.combout(),
+	.regout(),
+	.differentialout(),
+	.linkout(),
+	.padio(Dado[27]));
+// synopsys translate_off
+defparam \Dado[27]~I .input_async_reset = "none";
+defparam \Dado[27]~I .input_power_up = "low";
+defparam \Dado[27]~I .input_register_mode = "none";
+defparam \Dado[27]~I .input_sync_reset = "none";
+defparam \Dado[27]~I .oe_async_reset = "none";
+defparam \Dado[27]~I .oe_power_up = "low";
+defparam \Dado[27]~I .oe_register_mode = "none";
+defparam \Dado[27]~I .oe_sync_reset = "none";
+defparam \Dado[27]~I .operation_mode = "input";
+defparam \Dado[27]~I .output_async_reset = "none";
+defparam \Dado[27]~I .output_power_up = "low";
+defparam \Dado[27]~I .output_register_mode = "none";
+defparam \Dado[27]~I .output_sync_reset = "none";
+// synopsys translate_on
+
+// Location: PIN_D8,	 I/O Standard: 3.3-V LVTTL,	 Current Strength: Default
+cycloneii_io \Dado[28]~I (
+	.datain(gnd),
+	.oe(gnd),
+	.outclk(gnd),
+	.outclkena(vcc),
+	.inclk(gnd),
+	.inclkena(vcc),
+	.areset(gnd),
+	.sreset(gnd),
+	.differentialin(gnd),
+	.linkin(gnd),
+	.devclrn(devclrn),
+	.devpor(devpor),
+	.devoe(devoe),
+	.combout(),
+	.regout(),
+	.differentialout(),
+	.linkout(),
+	.padio(Dado[28]));
+// synopsys translate_off
+defparam \Dado[28]~I .input_async_reset = "none";
+defparam \Dado[28]~I .input_power_up = "low";
+defparam \Dado[28]~I .input_register_mode = "none";
+defparam \Dado[28]~I .input_sync_reset = "none";
+defparam \Dado[28]~I .oe_async_reset = "none";
+defparam \Dado[28]~I .oe_power_up = "low";
+defparam \Dado[28]~I .oe_register_mode = "none";
+defparam \Dado[28]~I .oe_sync_reset = "none";
+defparam \Dado[28]~I .operation_mode = "input";
+defparam \Dado[28]~I .output_async_reset = "none";
+defparam \Dado[28]~I .output_power_up = "low";
+defparam \Dado[28]~I .output_register_mode = "none";
+defparam \Dado[28]~I .output_sync_reset = "none";
+// synopsys translate_on
+
+// Location: PIN_A6,	 I/O Standard: 3.3-V LVTTL,	 Current Strength: Default
+cycloneii_io \Dado[29]~I (
+	.datain(gnd),
+	.oe(gnd),
+	.outclk(gnd),
+	.outclkena(vcc),
+	.inclk(gnd),
+	.inclkena(vcc),
+	.areset(gnd),
+	.sreset(gnd),
+	.differentialin(gnd),
+	.linkin(gnd),
+	.devclrn(devclrn),
+	.devpor(devpor),
+	.devoe(devoe),
+	.combout(),
+	.regout(),
+	.differentialout(),
+	.linkout(),
+	.padio(Dado[29]));
+// synopsys translate_off
+defparam \Dado[29]~I .input_async_reset = "none";
+defparam \Dado[29]~I .input_power_up = "low";
+defparam \Dado[29]~I .input_register_mode = "none";
+defparam \Dado[29]~I .input_sync_reset = "none";
+defparam \Dado[29]~I .oe_async_reset = "none";
+defparam \Dado[29]~I .oe_power_up = "low";
+defparam \Dado[29]~I .oe_register_mode = "none";
+defparam \Dado[29]~I .oe_sync_reset = "none";
+defparam \Dado[29]~I .operation_mode = "input";
+defparam \Dado[29]~I .output_async_reset = "none";
+defparam \Dado[29]~I .output_power_up = "low";
+defparam \Dado[29]~I .output_register_mode = "none";
+defparam \Dado[29]~I .output_sync_reset = "none";
+// synopsys translate_on
+
+// Location: PIN_AE15,	 I/O Standard: 3.3-V LVTTL,	 Current Strength: Default
+cycloneii_io \Dado[30]~I (
+	.datain(gnd),
+	.oe(gnd),
+	.outclk(gnd),
+	.outclkena(vcc),
+	.inclk(gnd),
+	.inclkena(vcc),
+	.areset(gnd),
+	.sreset(gnd),
+	.differentialin(gnd),
+	.linkin(gnd),
+	.devclrn(devclrn),
+	.devpor(devpor),
+	.devoe(devoe),
+	.combout(),
+	.regout(),
+	.differentialout(),
+	.linkout(),
+	.padio(Dado[30]));
+// synopsys translate_off
+defparam \Dado[30]~I .input_async_reset = "none";
+defparam \Dado[30]~I .input_power_up = "low";
+defparam \Dado[30]~I .input_register_mode = "none";
+defparam \Dado[30]~I .input_sync_reset = "none";
+defparam \Dado[30]~I .oe_async_reset = "none";
+defparam \Dado[30]~I .oe_power_up = "low";
+defparam \Dado[30]~I .oe_register_mode = "none";
+defparam \Dado[30]~I .oe_sync_reset = "none";
+defparam \Dado[30]~I .operation_mode = "input";
+defparam \Dado[30]~I .output_async_reset = "none";
+defparam \Dado[30]~I .output_power_up = "low";
+defparam \Dado[30]~I .output_register_mode = "none";
+defparam \Dado[30]~I .output_sync_reset = "none";
+// synopsys translate_on
+
+// Location: PIN_L2,	 I/O Standard: 3.3-V LVTTL,	 Current Strength: Default
+cycloneii_io \Dado[31]~I (
+	.datain(gnd),
+	.oe(gnd),
+	.outclk(gnd),
+	.outclkena(vcc),
+	.inclk(gnd),
+	.inclkena(vcc),
+	.areset(gnd),
+	.sreset(gnd),
+	.differentialin(gnd),
+	.linkin(gnd),
+	.devclrn(devclrn),
+	.devpor(devpor),
+	.devoe(devoe),
+	.combout(),
+	.regout(),
+	.differentialout(),
+	.linkout(),
+	.padio(Dado[31]));
+// synopsys translate_off
+defparam \Dado[31]~I .input_async_reset = "none";
+defparam \Dado[31]~I .input_power_up = "low";
+defparam \Dado[31]~I .input_register_mode = "none";
+defparam \Dado[31]~I .input_sync_reset = "none";
+defparam \Dado[31]~I .oe_async_reset = "none";
+defparam \Dado[31]~I .oe_power_up = "low";
+defparam \Dado[31]~I .oe_register_mode = "none";
+defparam \Dado[31]~I .oe_sync_reset = "none";
+defparam \Dado[31]~I .operation_mode = "input";
+defparam \Dado[31]~I .output_async_reset = "none";
+defparam \Dado[31]~I .output_power_up = "low";
+defparam \Dado[31]~I .output_register_mode = "none";
+defparam \Dado[31]~I .output_sync_reset = "none";
+// synopsys translate_on
+
+// Location: PIN_K5,	 I/O Standard: 3.3-V LVTTL,	 Current Strength: 24mA
+cycloneii_io \Dado1[0]~I (
+	.datain(gnd),
+	.oe(vcc),
+	.outclk(gnd),
+	.outclkena(vcc),
+	.inclk(gnd),
+	.inclkena(vcc),
+	.areset(gnd),
+	.sreset(gnd),
+	.differentialin(gnd),
+	.linkin(gnd),
+	.devclrn(devclrn),
+	.devpor(devpor),
+	.devoe(devoe),
+	.combout(),
+	.regout(),
+	.differentialout(),
+	.linkout(),
+	.padio(Dado1[0]));
+// synopsys translate_off
+defparam \Dado1[0]~I .input_async_reset = "none";
+defparam \Dado1[0]~I .input_power_up = "low";
+defparam \Dado1[0]~I .input_register_mode = "none";
+defparam \Dado1[0]~I .input_sync_reset = "none";
+defparam \Dado1[0]~I .oe_async_reset = "none";
+defparam \Dado1[0]~I .oe_power_up = "low";
+defparam \Dado1[0]~I .oe_register_mode = "none";
+defparam \Dado1[0]~I .oe_sync_reset = "none";
+defparam \Dado1[0]~I .operation_mode = "output";
+defparam \Dado1[0]~I .output_async_reset = "none";
+defparam \Dado1[0]~I .output_power_up = "low";
+defparam \Dado1[0]~I .output_register_mode = "none";
+defparam \Dado1[0]~I .output_sync_reset = "none";
+// synopsys translate_on
+
+// Location: PIN_AC17,	 I/O Standard: 3.3-V LVTTL,	 Current Strength: 24mA
+cycloneii_io \Dado1[1]~I (
+	.datain(gnd),
+	.oe(vcc),
+	.outclk(gnd),
+	.outclkena(vcc),
+	.inclk(gnd),
+	.inclkena(vcc),
+	.areset(gnd),
+	.sreset(gnd),
+	.differentialin(gnd),
+	.linkin(gnd),
+	.devclrn(devclrn),
+	.devpor(devpor),
+	.devoe(devoe),
+	.combout(),
+	.regout(),
+	.differentialout(),
+	.linkout(),
+	.padio(Dado1[1]));
+// synopsys translate_off
+defparam \Dado1[1]~I .input_async_reset = "none";
+defparam \Dado1[1]~I .input_power_up = "low";
+defparam \Dado1[1]~I .input_register_mode = "none";
+defparam \Dado1[1]~I .input_sync_reset = "none";
+defparam \Dado1[1]~I .oe_async_reset = "none";
+defparam \Dado1[1]~I .oe_power_up = "low";
+defparam \Dado1[1]~I .oe_register_mode = "none";
+defparam \Dado1[1]~I .oe_sync_reset = "none";
+defparam \Dado1[1]~I .operation_mode = "output";
+defparam \Dado1[1]~I .output_async_reset = "none";
+defparam \Dado1[1]~I .output_power_up = "low";
+defparam \Dado1[1]~I .output_register_mode = "none";
+defparam \Dado1[1]~I .output_sync_reset = "none";
+// synopsys translate_on
+
+// Location: PIN_B3,	 I/O Standard: 3.3-V LVTTL,	 Current Strength: 24mA
+cycloneii_io \Dado1[2]~I (
+	.datain(gnd),
+	.oe(vcc),
+	.outclk(gnd),
+	.outclkena(vcc),
+	.inclk(gnd),
+	.inclkena(vcc),
+	.areset(gnd),
+	.sreset(gnd),
+	.differentialin(gnd),
+	.linkin(gnd),
+	.devclrn(devclrn),
+	.devpor(devpor),
+	.devoe(devoe),
+	.combout(),
+	.regout(),
+	.differentialout(),
+	.linkout(),
+	.padio(Dado1[2]));
+// synopsys translate_off
+defparam \Dado1[2]~I .input_async_reset = "none";
+defparam \Dado1[2]~I .input_power_up = "low";
+defparam \Dado1[2]~I .input_register_mode = "none";
+defparam \Dado1[2]~I .input_sync_reset = "none";
+defparam \Dado1[2]~I .oe_async_reset = "none";
+defparam \Dado1[2]~I .oe_power_up = "low";
+defparam \Dado1[2]~I .oe_register_mode = "none";
+defparam \Dado1[2]~I .oe_sync_reset = "none";
+defparam \Dado1[2]~I .operation_mode = "output";
+defparam \Dado1[2]~I .output_async_reset = "none";
+defparam \Dado1[2]~I .output_power_up = "low";
+defparam \Dado1[2]~I .output_register_mode = "none";
+defparam \Dado1[2]~I .output_sync_reset = "none";
+// synopsys translate_on
+
+// Location: PIN_H4,	 I/O Standard: 3.3-V LVTTL,	 Current Strength: 24mA
+cycloneii_io \Dado1[3]~I (
+	.datain(gnd),
+	.oe(vcc),
+	.outclk(gnd),
+	.outclkena(vcc),
+	.inclk(gnd),
+	.inclkena(vcc),
+	.areset(gnd),
+	.sreset(gnd),
+	.differentialin(gnd),
+	.linkin(gnd),
+	.devclrn(devclrn),
+	.devpor(devpor),
+	.devoe(devoe),
+	.combout(),
+	.regout(),
+	.differentialout(),
+	.linkout(),
+	.padio(Dado1[3]));
+// synopsys translate_off
+defparam \Dado1[3]~I .input_async_reset = "none";
+defparam \Dado1[3]~I .input_power_up = "low";
+defparam \Dado1[3]~I .input_register_mode = "none";
+defparam \Dado1[3]~I .input_sync_reset = "none";
+defparam \Dado1[3]~I .oe_async_reset = "none";
+defparam \Dado1[3]~I .oe_power_up = "low";
+defparam \Dado1[3]~I .oe_register_mode = "none";
+defparam \Dado1[3]~I .oe_sync_reset = "none";
+defparam \Dado1[3]~I .operation_mode = "output";
+defparam \Dado1[3]~I .output_async_reset = "none";
+defparam \Dado1[3]~I .output_power_up = "low";
+defparam \Dado1[3]~I .output_register_mode = "none";
+defparam \Dado1[3]~I .output_sync_reset = "none";
+// synopsys translate_on
+
+// Location: PIN_V17,	 I/O Standard: 3.3-V LVTTL,	 Current Strength: 24mA
+cycloneii_io \Dado1[4]~I (
+	.datain(gnd),
+	.oe(vcc),
+	.outclk(gnd),
+	.outclkena(vcc),
+	.inclk(gnd),
+	.inclkena(vcc),
+	.areset(gnd),
+	.sreset(gnd),
+	.differentialin(gnd),
+	.linkin(gnd),
+	.devclrn(devclrn),
+	.devpor(devpor),
+	.devoe(devoe),
+	.combout(),
+	.regout(),
+	.differentialout(),
+	.linkout(),
+	.padio(Dado1[4]));
+// synopsys translate_off
+defparam \Dado1[4]~I .input_async_reset = "none";
+defparam \Dado1[4]~I .input_power_up = "low";
+defparam \Dado1[4]~I .input_register_mode = "none";
+defparam \Dado1[4]~I .input_sync_reset = "none";
+defparam \Dado1[4]~I .oe_async_reset = "none";
+defparam \Dado1[4]~I .oe_power_up = "low";
+defparam \Dado1[4]~I .oe_register_mode = "none";
+defparam \Dado1[4]~I .oe_sync_reset = "none";
+defparam \Dado1[4]~I .operation_mode = "output";
+defparam \Dado1[4]~I .output_async_reset = "none";
+defparam \Dado1[4]~I .output_power_up = "low";
+defparam \Dado1[4]~I .output_register_mode = "none";
+defparam \Dado1[4]~I .output_sync_reset = "none";
+// synopsys translate_on
+
+// Location: PIN_AF5,	 I/O Standard: 3.3-V LVTTL,	 Current Strength: 24mA
+cycloneii_io \Dado1[5]~I (
+	.datain(gnd),
+	.oe(vcc),
+	.outclk(gnd),
+	.outclkena(vcc),
+	.inclk(gnd),
+	.inclkena(vcc),
+	.areset(gnd),
+	.sreset(gnd),
+	.differentialin(gnd),
+	.linkin(gnd),
+	.devclrn(devclrn),
+	.devpor(devpor),
+	.devoe(devoe),
+	.combout(),
+	.regout(),
+	.differentialout(),
+	.linkout(),
+	.padio(Dado1[5]));
+// synopsys translate_off
+defparam \Dado1[5]~I .input_async_reset = "none";
+defparam \Dado1[5]~I .input_power_up = "low";
+defparam \Dado1[5]~I .input_register_mode = "none";
+defparam \Dado1[5]~I .input_sync_reset = "none";
+defparam \Dado1[5]~I .oe_async_reset = "none";
+defparam \Dado1[5]~I .oe_power_up = "low";
+defparam \Dado1[5]~I .oe_register_mode = "none";
+defparam \Dado1[5]~I .oe_sync_reset = "none";
+defparam \Dado1[5]~I .operation_mode = "output";
+defparam \Dado1[5]~I .output_async_reset = "none";
+defparam \Dado1[5]~I .output_power_up = "low";
+defparam \Dado1[5]~I .output_register_mode = "none";
+defparam \Dado1[5]~I .output_sync_reset = "none";
+// synopsys translate_on
+
+// Location: PIN_D17,	 I/O Standard: 3.3-V LVTTL,	 Current Strength: 24mA
+cycloneii_io \Dado1[6]~I (
+	.datain(gnd),
+	.oe(vcc),
+	.outclk(gnd),
+	.outclkena(vcc),
+	.inclk(gnd),
+	.inclkena(vcc),
+	.areset(gnd),
+	.sreset(gnd),
+	.differentialin(gnd),
+	.linkin(gnd),
+	.devclrn(devclrn),
+	.devpor(devpor),
+	.devoe(devoe),
+	.combout(),
+	.regout(),
+	.differentialout(),
+	.linkout(),
+	.padio(Dado1[6]));
+// synopsys translate_off
+defparam \Dado1[6]~I .input_async_reset = "none";
+defparam \Dado1[6]~I .input_power_up = "low";
+defparam \Dado1[6]~I .input_register_mode = "none";
+defparam \Dado1[6]~I .input_sync_reset = "none";
+defparam \Dado1[6]~I .oe_async_reset = "none";
+defparam \Dado1[6]~I .oe_power_up = "low";
+defparam \Dado1[6]~I .oe_register_mode = "none";
+defparam \Dado1[6]~I .oe_sync_reset = "none";
+defparam \Dado1[6]~I .operation_mode = "output";
+defparam \Dado1[6]~I .output_async_reset = "none";
+defparam \Dado1[6]~I .output_power_up = "low";
+defparam \Dado1[6]~I .output_register_mode = "none";
+defparam \Dado1[6]~I .output_sync_reset = "none";
+// synopsys translate_on
+
+// Location: PIN_AC11,	 I/O Standard: 3.3-V LVTTL,	 Current Strength: 24mA
+cycloneii_io \Dado1[7]~I (
+	.datain(gnd),
+	.oe(vcc),
+	.outclk(gnd),
+	.outclkena(vcc),
+	.inclk(gnd),
+	.inclkena(vcc),
+	.areset(gnd),
+	.sreset(gnd),
+	.differentialin(gnd),
+	.linkin(gnd),
+	.devclrn(devclrn),
+	.devpor(devpor),
+	.devoe(devoe),
+	.combout(),
+	.regout(),
+	.differentialout(),
+	.linkout(),
+	.padio(Dado1[7]));
+// synopsys translate_off
+defparam \Dado1[7]~I .input_async_reset = "none";
+defparam \Dado1[7]~I .input_power_up = "low";
+defparam \Dado1[7]~I .input_register_mode = "none";
+defparam \Dado1[7]~I .input_sync_reset = "none";
+defparam \Dado1[7]~I .oe_async_reset = "none";
+defparam \Dado1[7]~I .oe_power_up = "low";
+defparam \Dado1[7]~I .oe_register_mode = "none";
+defparam \Dado1[7]~I .oe_sync_reset = "none";
+defparam \Dado1[7]~I .operation_mode = "output";
+defparam \Dado1[7]~I .output_async_reset = "none";
+defparam \Dado1[7]~I .output_power_up = "low";
+defparam \Dado1[7]~I .output_register_mode = "none";
+defparam \Dado1[7]~I .output_sync_reset = "none";
+// synopsys translate_on
+
+// Location: PIN_L3,	 I/O Standard: 3.3-V LVTTL,	 Current Strength: 24mA
+cycloneii_io \Dado1[8]~I (
+	.datain(gnd),
+	.oe(vcc),
+	.outclk(gnd),
+	.outclkena(vcc),
+	.inclk(gnd),
+	.inclkena(vcc),
+	.areset(gnd),
+	.sreset(gnd),
+	.differentialin(gnd),
+	.linkin(gnd),
+	.devclrn(devclrn),
+	.devpor(devpor),
+	.devoe(devoe),
+	.combout(),
+	.regout(),
+	.differentialout(),
+	.linkout(),
+	.padio(Dado1[8]));
+// synopsys translate_off
+defparam \Dado1[8]~I .input_async_reset = "none";
+defparam \Dado1[8]~I .input_power_up = "low";
+defparam \Dado1[8]~I .input_register_mode = "none";
+defparam \Dado1[8]~I .input_sync_reset = "none";
+defparam \Dado1[8]~I .oe_async_reset = "none";
+defparam \Dado1[8]~I .oe_power_up = "low";
+defparam \Dado1[8]~I .oe_register_mode = "none";
+defparam \Dado1[8]~I .oe_sync_reset = "none";
+defparam \Dado1[8]~I .operation_mode = "output";
+defparam \Dado1[8]~I .output_async_reset = "none";
+defparam \Dado1[8]~I .output_power_up = "low";
+defparam \Dado1[8]~I .output_register_mode = "none";
+defparam \Dado1[8]~I .output_sync_reset = "none";
+// synopsys translate_on
+
+// Location: PIN_M3,	 I/O Standard: 3.3-V LVTTL,	 Current Strength: 24mA
+cycloneii_io \Dado1[9]~I (
+	.datain(gnd),
+	.oe(vcc),
+	.outclk(gnd),
+	.outclkena(vcc),
+	.inclk(gnd),
+	.inclkena(vcc),
+	.areset(gnd),
+	.sreset(gnd),
+	.differentialin(gnd),
+	.linkin(gnd),
+	.devclrn(devclrn),
+	.devpor(devpor),
+	.devoe(devoe),
+	.combout(),
+	.regout(),
+	.differentialout(),
+	.linkout(),
+	.padio(Dado1[9]));
+// synopsys translate_off
+defparam \Dado1[9]~I .input_async_reset = "none";
+defparam \Dado1[9]~I .input_power_up = "low";
+defparam \Dado1[9]~I .input_register_mode = "none";
+defparam \Dado1[9]~I .input_sync_reset = "none";
+defparam \Dado1[9]~I .oe_async_reset = "none";
+defparam \Dado1[9]~I .oe_power_up = "low";
+defparam \Dado1[9]~I .oe_register_mode = "none";
+defparam \Dado1[9]~I .oe_sync_reset = "none";
+defparam \Dado1[9]~I .operation_mode = "output";
+defparam \Dado1[9]~I .output_async_reset = "none";
+defparam \Dado1[9]~I .output_power_up = "low";
+defparam \Dado1[9]~I .output_register_mode = "none";
+defparam \Dado1[9]~I .output_sync_reset = "none";
+// synopsys translate_on
+
+// Location: PIN_C3,	 I/O Standard: 3.3-V LVTTL,	 Current Strength: 24mA
+cycloneii_io \Dado1[10]~I (
+	.datain(gnd),
+	.oe(vcc),
+	.outclk(gnd),
+	.outclkena(vcc),
+	.inclk(gnd),
+	.inclkena(vcc),
+	.areset(gnd),
+	.sreset(gnd),
+	.differentialin(gnd),
+	.linkin(gnd),
+	.devclrn(devclrn),
+	.devpor(devpor),
+	.devoe(devoe),
+	.combout(),
+	.regout(),
+	.differentialout(),
+	.linkout(),
+	.padio(Dado1[10]));
+// synopsys translate_off
+defparam \Dado1[10]~I .input_async_reset = "none";
+defparam \Dado1[10]~I .input_power_up = "low";
+defparam \Dado1[10]~I .input_register_mode = "none";
+defparam \Dado1[10]~I .input_sync_reset = "none";
+defparam \Dado1[10]~I .oe_async_reset = "none";
+defparam \Dado1[10]~I .oe_power_up = "low";
+defparam \Dado1[10]~I .oe_register_mode = "none";
+defparam \Dado1[10]~I .oe_sync_reset = "none";
+defparam \Dado1[10]~I .operation_mode = "output";
+defparam \Dado1[10]~I .output_async_reset = "none";
+defparam \Dado1[10]~I .output_power_up = "low";
+defparam \Dado1[10]~I .output_register_mode = "none";
+defparam \Dado1[10]~I .output_sync_reset = "none";
+// synopsys translate_on
+
+// Location: PIN_H1,	 I/O Standard: 3.3-V LVTTL,	 Current Strength: 24mA
+cycloneii_io \Dado1[11]~I (
+	.datain(gnd),
+	.oe(vcc),
+	.outclk(gnd),
+	.outclkena(vcc),
+	.inclk(gnd),
+	.inclkena(vcc),
+	.areset(gnd),
+	.sreset(gnd),
+	.differentialin(gnd),
+	.linkin(gnd),
+	.devclrn(devclrn),
+	.devpor(devpor),
+	.devoe(devoe),
+	.combout(),
+	.regout(),
+	.differentialout(),
+	.linkout(),
+	.padio(Dado1[11]));
+// synopsys translate_off
+defparam \Dado1[11]~I .input_async_reset = "none";
+defparam \Dado1[11]~I .input_power_up = "low";
+defparam \Dado1[11]~I .input_register_mode = "none";
+defparam \Dado1[11]~I .input_sync_reset = "none";
+defparam \Dado1[11]~I .oe_async_reset = "none";
+defparam \Dado1[11]~I .oe_power_up = "low";
+defparam \Dado1[11]~I .oe_register_mode = "none";
+defparam \Dado1[11]~I .oe_sync_reset = "none";
+defparam \Dado1[11]~I .operation_mode = "output";
+defparam \Dado1[11]~I .output_async_reset = "none";
+defparam \Dado1[11]~I .output_power_up = "low";
+defparam \Dado1[11]~I .output_register_mode = "none";
+defparam \Dado1[11]~I .output_sync_reset = "none";
+// synopsys translate_on
+
+// Location: PIN_G12,	 I/O Standard: 3.3-V LVTTL,	 Current Strength: 24mA
+cycloneii_io \Dado1[12]~I (
+	.datain(gnd),
+	.oe(vcc),
+	.outclk(gnd),
+	.outclkena(vcc),
+	.inclk(gnd),
+	.inclkena(vcc),
+	.areset(gnd),
+	.sreset(gnd),
+	.differentialin(gnd),
+	.linkin(gnd),
+	.devclrn(devclrn),
+	.devpor(devpor),
+	.devoe(devoe),
+	.combout(),
+	.regout(),
+	.differentialout(),
+	.linkout(),
+	.padio(Dado1[12]));
+// synopsys translate_off
+defparam \Dado1[12]~I .input_async_reset = "none";
+defparam \Dado1[12]~I .input_power_up = "low";
+defparam \Dado1[12]~I .input_register_mode = "none";
+defparam \Dado1[12]~I .input_sync_reset = "none";
+defparam \Dado1[12]~I .oe_async_reset = "none";
+defparam \Dado1[12]~I .oe_power_up = "low";
+defparam \Dado1[12]~I .oe_register_mode = "none";
+defparam \Dado1[12]~I .oe_sync_reset = "none";
+defparam \Dado1[12]~I .operation_mode = "output";
+defparam \Dado1[12]~I .output_async_reset = "none";
+defparam \Dado1[12]~I .output_power_up = "low";
+defparam \Dado1[12]~I .output_register_mode = "none";
+defparam \Dado1[12]~I .output_sync_reset = "none";
+// synopsys translate_on
+
+// Location: PIN_R4,	 I/O Standard: 3.3-V LVTTL,	 Current Strength: 24mA
+cycloneii_io \Dado1[13]~I (
+	.datain(gnd),
+	.oe(vcc),
+	.outclk(gnd),
+	.outclkena(vcc),
+	.inclk(gnd),
+	.inclkena(vcc),
+	.areset(gnd),
+	.sreset(gnd),
+	.differentialin(gnd),
+	.linkin(gnd),
+	.devclrn(devclrn),
+	.devpor(devpor),
+	.devoe(devoe),
+	.combout(),
+	.regout(),
+	.differentialout(),
+	.linkout(),
+	.padio(Dado1[13]));
+// synopsys translate_off
+defparam \Dado1[13]~I .input_async_reset = "none";
+defparam \Dado1[13]~I .input_power_up = "low";
+defparam \Dado1[13]~I .input_register_mode = "none";
+defparam \Dado1[13]~I .input_sync_reset = "none";
+defparam \Dado1[13]~I .oe_async_reset = "none";
+defparam \Dado1[13]~I .oe_power_up = "low";
+defparam \Dado1[13]~I .oe_register_mode = "none";
+defparam \Dado1[13]~I .oe_sync_reset = "none";
+defparam \Dado1[13]~I .operation_mode = "output";
+defparam \Dado1[13]~I .output_async_reset = "none";
+defparam \Dado1[13]~I .output_power_up = "low";
+defparam \Dado1[13]~I .output_register_mode = "none";
+defparam \Dado1[13]~I .output_sync_reset = "none";
+// synopsys translate_on
+
+// Location: PIN_G6,	 I/O Standard: 3.3-V LVTTL,	 Current Strength: 24mA
+cycloneii_io \Dado1[14]~I (
+	.datain(gnd),
+	.oe(vcc),
+	.outclk(gnd),
+	.outclkena(vcc),
+	.inclk(gnd),
+	.inclkena(vcc),
+	.areset(gnd),
+	.sreset(gnd),
+	.differentialin(gnd),
+	.linkin(gnd),
+	.devclrn(devclrn),
+	.devpor(devpor),
+	.devoe(devoe),
+	.combout(),
+	.regout(),
+	.differentialout(),
+	.linkout(),
+	.padio(Dado1[14]));
+// synopsys translate_off
+defparam \Dado1[14]~I .input_async_reset = "none";
+defparam \Dado1[14]~I .input_power_up = "low";
+defparam \Dado1[14]~I .input_register_mode = "none";
+defparam \Dado1[14]~I .input_sync_reset = "none";
+defparam \Dado1[14]~I .oe_async_reset = "none";
+defparam \Dado1[14]~I .oe_power_up = "low";
+defparam \Dado1[14]~I .oe_register_mode = "none";
+defparam \Dado1[14]~I .oe_sync_reset = "none";
+defparam \Dado1[14]~I .operation_mode = "output";
+defparam \Dado1[14]~I .output_async_reset = "none";
+defparam \Dado1[14]~I .output_power_up = "low";
+defparam \Dado1[14]~I .output_register_mode = "none";
+defparam \Dado1[14]~I .output_sync_reset = "none";
+// synopsys translate_on
+
+// Location: PIN_AE9,	 I/O Standard: 3.3-V LVTTL,	 Current Strength: 24mA
+cycloneii_io \Dado1[15]~I (
+	.datain(gnd),
+	.oe(vcc),
+	.outclk(gnd),
+	.outclkena(vcc),
+	.inclk(gnd),
+	.inclkena(vcc),
+	.areset(gnd),
+	.sreset(gnd),
+	.differentialin(gnd),
+	.linkin(gnd),
+	.devclrn(devclrn),
+	.devpor(devpor),
+	.devoe(devoe),
+	.combout(),
+	.regout(),
+	.differentialout(),
+	.linkout(),
+	.padio(Dado1[15]));
+// synopsys translate_off
+defparam \Dado1[15]~I .input_async_reset = "none";
+defparam \Dado1[15]~I .input_power_up = "low";
+defparam \Dado1[15]~I .input_register_mode = "none";
+defparam \Dado1[15]~I .input_sync_reset = "none";
+defparam \Dado1[15]~I .oe_async_reset = "none";
+defparam \Dado1[15]~I .oe_power_up = "low";
+defparam \Dado1[15]~I .oe_register_mode = "none";
+defparam \Dado1[15]~I .oe_sync_reset = "none";
+defparam \Dado1[15]~I .operation_mode = "output";
+defparam \Dado1[15]~I .output_async_reset = "none";
+defparam \Dado1[15]~I .output_power_up = "low";
+defparam \Dado1[15]~I .output_register_mode = "none";
+defparam \Dado1[15]~I .output_sync_reset = "none";
+// synopsys translate_on
+
+// Location: PIN_AC3,	 I/O Standard: 3.3-V LVTTL,	 Current Strength: 24mA
+cycloneii_io \Dado1[16]~I (
+	.datain(gnd),
+	.oe(vcc),
+	.outclk(gnd),
+	.outclkena(vcc),
+	.inclk(gnd),
+	.inclkena(vcc),
+	.areset(gnd),
+	.sreset(gnd),
+	.differentialin(gnd),
+	.linkin(gnd),
+	.devclrn(devclrn),
+	.devpor(devpor),
+	.devoe(devoe),
+	.combout(),
+	.regout(),
+	.differentialout(),
+	.linkout(),
+	.padio(Dado1[16]));
+// synopsys translate_off
+defparam \Dado1[16]~I .input_async_reset = "none";
+defparam \Dado1[16]~I .input_power_up = "low";
+defparam \Dado1[16]~I .input_register_mode = "none";
+defparam \Dado1[16]~I .input_sync_reset = "none";
+defparam \Dado1[16]~I .oe_async_reset = "none";
+defparam \Dado1[16]~I .oe_power_up = "low";
+defparam \Dado1[16]~I .oe_register_mode = "none";
+defparam \Dado1[16]~I .oe_sync_reset = "none";
+defparam \Dado1[16]~I .operation_mode = "output";
+defparam \Dado1[16]~I .output_async_reset = "none";
+defparam \Dado1[16]~I .output_power_up = "low";
+defparam \Dado1[16]~I .output_register_mode = "none";
+defparam \Dado1[16]~I .output_sync_reset = "none";
+// synopsys translate_on
+
+// Location: PIN_M24,	 I/O Standard: 3.3-V LVTTL,	 Current Strength: 24mA
+cycloneii_io \Dado1[17]~I (
+	.datain(gnd),
+	.oe(vcc),
+	.outclk(gnd),
+	.outclkena(vcc),
+	.inclk(gnd),
+	.inclkena(vcc),
+	.areset(gnd),
+	.sreset(gnd),
+	.differentialin(gnd),
+	.linkin(gnd),
+	.devclrn(devclrn),
+	.devpor(devpor),
+	.devoe(devoe),
+	.combout(),
+	.regout(),
+	.differentialout(),
+	.linkout(),
+	.padio(Dado1[17]));
+// synopsys translate_off
+defparam \Dado1[17]~I .input_async_reset = "none";
+defparam \Dado1[17]~I .input_power_up = "low";
+defparam \Dado1[17]~I .input_register_mode = "none";
+defparam \Dado1[17]~I .input_sync_reset = "none";
+defparam \Dado1[17]~I .oe_async_reset = "none";
+defparam \Dado1[17]~I .oe_power_up = "low";
+defparam \Dado1[17]~I .oe_register_mode = "none";
+defparam \Dado1[17]~I .oe_sync_reset = "none";
+defparam \Dado1[17]~I .operation_mode = "output";
+defparam \Dado1[17]~I .output_async_reset = "none";
+defparam \Dado1[17]~I .output_power_up = "low";
+defparam \Dado1[17]~I .output_register_mode = "none";
+defparam \Dado1[17]~I .output_sync_reset = "none";
+// synopsys translate_on
+
+// Location: PIN_D14,	 I/O Standard: 3.3-V LVTTL,	 Current Strength: 24mA
+cycloneii_io \Dado1[18]~I (
+	.datain(gnd),
+	.oe(vcc),
+	.outclk(gnd),
+	.outclkena(vcc),
+	.inclk(gnd),
+	.inclkena(vcc),
+	.areset(gnd),
+	.sreset(gnd),
+	.differentialin(gnd),
+	.linkin(gnd),
+	.devclrn(devclrn),
+	.devpor(devpor),
+	.devoe(devoe),
+	.combout(),
+	.regout(),
+	.differentialout(),
+	.linkout(),
+	.padio(Dado1[18]));
+// synopsys translate_off
+defparam \Dado1[18]~I .input_async_reset = "none";
+defparam \Dado1[18]~I .input_power_up = "low";
+defparam \Dado1[18]~I .input_register_mode = "none";
+defparam \Dado1[18]~I .input_sync_reset = "none";
+defparam \Dado1[18]~I .oe_async_reset = "none";
+defparam \Dado1[18]~I .oe_power_up = "low";
+defparam \Dado1[18]~I .oe_register_mode = "none";
+defparam \Dado1[18]~I .oe_sync_reset = "none";
+defparam \Dado1[18]~I .operation_mode = "output";
+defparam \Dado1[18]~I .output_async_reset = "none";
+defparam \Dado1[18]~I .output_power_up = "low";
+defparam \Dado1[18]~I .output_register_mode = "none";
+defparam \Dado1[18]~I .output_sync_reset = "none";
+// synopsys translate_on
+
+// Location: PIN_K3,	 I/O Standard: 3.3-V LVTTL,	 Current Strength: 24mA
+cycloneii_io \Dado1[19]~I (
+	.datain(gnd),
+	.oe(vcc),
+	.outclk(gnd),
+	.outclkena(vcc),
+	.inclk(gnd),
+	.inclkena(vcc),
+	.areset(gnd),
+	.sreset(gnd),
+	.differentialin(gnd),
+	.linkin(gnd),
+	.devclrn(devclrn),
+	.devpor(devpor),
+	.devoe(devoe),
+	.combout(),
+	.regout(),
+	.differentialout(),
+	.linkout(),
+	.padio(Dado1[19]));
+// synopsys translate_off
+defparam \Dado1[19]~I .input_async_reset = "none";
+defparam \Dado1[19]~I .input_power_up = "low";
+defparam \Dado1[19]~I .input_register_mode = "none";
+defparam \Dado1[19]~I .input_sync_reset = "none";
+defparam \Dado1[19]~I .oe_async_reset = "none";
+defparam \Dado1[19]~I .oe_power_up = "low";
+defparam \Dado1[19]~I .oe_register_mode = "none";
+defparam \Dado1[19]~I .oe_sync_reset = "none";
+defparam \Dado1[19]~I .operation_mode = "output";
+defparam \Dado1[19]~I .output_async_reset = "none";
+defparam \Dado1[19]~I .output_power_up = "low";
+defparam \Dado1[19]~I .output_register_mode = "none";
+defparam \Dado1[19]~I .output_sync_reset = "none";
+// synopsys translate_on
+
+// Location: PIN_R2,	 I/O Standard: 3.3-V LVTTL,	 Current Strength: 24mA
+cycloneii_io \Dado1[20]~I (
+	.datain(gnd),
+	.oe(vcc),
+	.outclk(gnd),
+	.outclkena(vcc),
+	.inclk(gnd),
+	.inclkena(vcc),
+	.areset(gnd),
+	.sreset(gnd),
+	.differentialin(gnd),
+	.linkin(gnd),
+	.devclrn(devclrn),
+	.devpor(devpor),
+	.devoe(devoe),
+	.combout(),
+	.regout(),
+	.differentialout(),
+	.linkout(),
+	.padio(Dado1[20]));
+// synopsys translate_off
+defparam \Dado1[20]~I .input_async_reset = "none";
+defparam \Dado1[20]~I .input_power_up = "low";
+defparam \Dado1[20]~I .input_register_mode = "none";
+defparam \Dado1[20]~I .input_sync_reset = "none";
+defparam \Dado1[20]~I .oe_async_reset = "none";
+defparam \Dado1[20]~I .oe_power_up = "low";
+defparam \Dado1[20]~I .oe_register_mode = "none";
+defparam \Dado1[20]~I .oe_sync_reset = "none";
+defparam \Dado1[20]~I .operation_mode = "output";
+defparam \Dado1[20]~I .output_async_reset = "none";
+defparam \Dado1[20]~I .output_power_up = "low";
+defparam \Dado1[20]~I .output_register_mode = "none";
+defparam \Dado1[20]~I .output_sync_reset = "none";
+// synopsys translate_on
+
+// Location: PIN_L9,	 I/O Standard: 3.3-V LVTTL,	 Current Strength: 24mA
+cycloneii_io \Dado1[21]~I (
+	.datain(gnd),
+	.oe(vcc),
+	.outclk(gnd),
+	.outclkena(vcc),
+	.inclk(gnd),
+	.inclkena(vcc),
+	.areset(gnd),
+	.sreset(gnd),
+	.differentialin(gnd),
+	.linkin(gnd),
+	.devclrn(devclrn),
+	.devpor(devpor),
+	.devoe(devoe),
+	.combout(),
+	.regout(),
+	.differentialout(),
+	.linkout(),
+	.padio(Dado1[21]));
+// synopsys translate_off
+defparam \Dado1[21]~I .input_async_reset = "none";
+defparam \Dado1[21]~I .input_power_up = "low";
+defparam \Dado1[21]~I .input_register_mode = "none";
+defparam \Dado1[21]~I .input_sync_reset = "none";
+defparam \Dado1[21]~I .oe_async_reset = "none";
+defparam \Dado1[21]~I .oe_power_up = "low";
+defparam \Dado1[21]~I .oe_register_mode = "none";
+defparam \Dado1[21]~I .oe_sync_reset = "none";
+defparam \Dado1[21]~I .operation_mode = "output";
+defparam \Dado1[21]~I .output_async_reset = "none";
+defparam \Dado1[21]~I .output_power_up = "low";
+defparam \Dado1[21]~I .output_register_mode = "none";
+defparam \Dado1[21]~I .output_sync_reset = "none";
+// synopsys translate_on
+
+// Location: PIN_V11,	 I/O Standard: 3.3-V LVTTL,	 Current Strength: 24mA
+cycloneii_io \Dado1[22]~I (
+	.datain(gnd),
+	.oe(vcc),
+	.outclk(gnd),
+	.outclkena(vcc),
+	.inclk(gnd),
+	.inclkena(vcc),
+	.areset(gnd),
+	.sreset(gnd),
+	.differentialin(gnd),
+	.linkin(gnd),
+	.devclrn(devclrn),
+	.devpor(devpor),
+	.devoe(devoe),
+	.combout(),
+	.regout(),
+	.differentialout(),
+	.linkout(),
+	.padio(Dado1[22]));
+// synopsys translate_off
+defparam \Dado1[22]~I .input_async_reset = "none";
+defparam \Dado1[22]~I .input_power_up = "low";
+defparam \Dado1[22]~I .input_register_mode = "none";
+defparam \Dado1[22]~I .input_sync_reset = "none";
+defparam \Dado1[22]~I .oe_async_reset = "none";
+defparam \Dado1[22]~I .oe_power_up = "low";
+defparam \Dado1[22]~I .oe_register_mode = "none";
+defparam \Dado1[22]~I .oe_sync_reset = "none";
+defparam \Dado1[22]~I .operation_mode = "output";
+defparam \Dado1[22]~I .output_async_reset = "none";
+defparam \Dado1[22]~I .output_power_up = "low";
+defparam \Dado1[22]~I .output_register_mode = "none";
+defparam \Dado1[22]~I .output_sync_reset = "none";
+// synopsys translate_on
+
+// Location: PIN_K2,	 I/O Standard: 3.3-V LVTTL,	 Current Strength: 24mA
+cycloneii_io \Dado1[23]~I (
+	.datain(gnd),
+	.oe(vcc),
+	.outclk(gnd),
+	.outclkena(vcc),
+	.inclk(gnd),
+	.inclkena(vcc),
+	.areset(gnd),
+	.sreset(gnd),
+	.differentialin(gnd),
+	.linkin(gnd),
+	.devclrn(devclrn),
+	.devpor(devpor),
+	.devoe(devoe),
+	.combout(),
+	.regout(),
+	.differentialout(),
+	.linkout(),
+	.padio(Dado1[23]));
+// synopsys translate_off
+defparam \Dado1[23]~I .input_async_reset = "none";
+defparam \Dado1[23]~I .input_power_up = "low";
+defparam \Dado1[23]~I .input_register_mode = "none";
+defparam \Dado1[23]~I .input_sync_reset = "none";
+defparam \Dado1[23]~I .oe_async_reset = "none";
+defparam \Dado1[23]~I .oe_power_up = "low";
+defparam \Dado1[23]~I .oe_register_mode = "none";
+defparam \Dado1[23]~I .oe_sync_reset = "none";
+defparam \Dado1[23]~I .operation_mode = "output";
+defparam \Dado1[23]~I .output_async_reset = "none";
+defparam \Dado1[23]~I .output_power_up = "low";
+defparam \Dado1[23]~I .output_register_mode = "none";
+defparam \Dado1[23]~I .output_sync_reset = "none";
+// synopsys translate_on
+
+// Location: PIN_A17,	 I/O Standard: 3.3-V LVTTL,	 Current Strength: 24mA
+cycloneii_io \Dado1[24]~I (
+	.datain(gnd),
+	.oe(vcc),
+	.outclk(gnd),
+	.outclkena(vcc),
+	.inclk(gnd),
+	.inclkena(vcc),
+	.areset(gnd),
+	.sreset(gnd),
+	.differentialin(gnd),
+	.linkin(gnd),
+	.devclrn(devclrn),
+	.devpor(devpor),
+	.devoe(devoe),
+	.combout(),
+	.regout(),
+	.differentialout(),
+	.linkout(),
+	.padio(Dado1[24]));
+// synopsys translate_off
+defparam \Dado1[24]~I .input_async_reset = "none";
+defparam \Dado1[24]~I .input_power_up = "low";
+defparam \Dado1[24]~I .input_register_mode = "none";
+defparam \Dado1[24]~I .input_sync_reset = "none";
+defparam \Dado1[24]~I .oe_async_reset = "none";
+defparam \Dado1[24]~I .oe_power_up = "low";
+defparam \Dado1[24]~I .oe_register_mode = "none";
+defparam \Dado1[24]~I .oe_sync_reset = "none";
+defparam \Dado1[24]~I .operation_mode = "output";
+defparam \Dado1[24]~I .output_async_reset = "none";
+defparam \Dado1[24]~I .output_power_up = "low";
+defparam \Dado1[24]~I .output_register_mode = "none";
+defparam \Dado1[24]~I .output_sync_reset = "none";
+// synopsys translate_on
+
+// Location: PIN_N9,	 I/O Standard: 3.3-V LVTTL,	 Current Strength: 24mA
+cycloneii_io \Dado1[25]~I (
+	.datain(gnd),
+	.oe(vcc),
+	.outclk(gnd),
+	.outclkena(vcc),
+	.inclk(gnd),
+	.inclkena(vcc),
+	.areset(gnd),
+	.sreset(gnd),
+	.differentialin(gnd),
+	.linkin(gnd),
+	.devclrn(devclrn),
+	.devpor(devpor),
+	.devoe(devoe),
+	.combout(),
+	.regout(),
+	.differentialout(),
+	.linkout(),
+	.padio(Dado1[25]));
+// synopsys translate_off
+defparam \Dado1[25]~I .input_async_reset = "none";
+defparam \Dado1[25]~I .input_power_up = "low";
+defparam \Dado1[25]~I .input_register_mode = "none";
+defparam \Dado1[25]~I .input_sync_reset = "none";
+defparam \Dado1[25]~I .oe_async_reset = "none";
+defparam \Dado1[25]~I .oe_power_up = "low";
+defparam \Dado1[25]~I .oe_register_mode = "none";
+defparam \Dado1[25]~I .oe_sync_reset = "none";
+defparam \Dado1[25]~I .operation_mode = "output";
+defparam \Dado1[25]~I .output_async_reset = "none";
+defparam \Dado1[25]~I .output_power_up = "low";
+defparam \Dado1[25]~I .output_register_mode = "none";
+defparam \Dado1[25]~I .output_sync_reset = "none";
+// synopsys translate_on
+
+// Location: PIN_AC6,	 I/O Standard: 3.3-V LVTTL,	 Current Strength: 24mA
+cycloneii_io \Dado1[26]~I (
+	.datain(gnd),
+	.oe(vcc),
+	.outclk(gnd),
+	.outclkena(vcc),
+	.inclk(gnd),
+	.inclkena(vcc),
+	.areset(gnd),
+	.sreset(gnd),
+	.differentialin(gnd),
+	.linkin(gnd),
+	.devclrn(devclrn),
+	.devpor(devpor),
+	.devoe(devoe),
+	.combout(),
+	.regout(),
+	.differentialout(),
+	.linkout(),
+	.padio(Dado1[26]));
+// synopsys translate_off
+defparam \Dado1[26]~I .input_async_reset = "none";
+defparam \Dado1[26]~I .input_power_up = "low";
+defparam \Dado1[26]~I .input_register_mode = "none";
+defparam \Dado1[26]~I .input_sync_reset = "none";
+defparam \Dado1[26]~I .oe_async_reset = "none";
+defparam \Dado1[26]~I .oe_power_up = "low";
+defparam \Dado1[26]~I .oe_register_mode = "none";
+defparam \Dado1[26]~I .oe_sync_reset = "none";
+defparam \Dado1[26]~I .operation_mode = "output";
+defparam \Dado1[26]~I .output_async_reset = "none";
+defparam \Dado1[26]~I .output_power_up = "low";
+defparam \Dado1[26]~I .output_register_mode = "none";
+defparam \Dado1[26]~I .output_sync_reset = "none";
+// synopsys translate_on
+
+// Location: PIN_AD10,	 I/O Standard: 3.3-V LVTTL,	 Current Strength: 24mA
+cycloneii_io \Dado1[27]~I (
+	.datain(gnd),
+	.oe(vcc),
+	.outclk(gnd),
+	.outclkena(vcc),
+	.inclk(gnd),
+	.inclkena(vcc),
+	.areset(gnd),
+	.sreset(gnd),
+	.differentialin(gnd),
+	.linkin(gnd),
+	.devclrn(devclrn),
+	.devpor(devpor),
+	.devoe(devoe),
+	.combout(),
+	.regout(),
+	.differentialout(),
+	.linkout(),
+	.padio(Dado1[27]));
+// synopsys translate_off
+defparam \Dado1[27]~I .input_async_reset = "none";
+defparam \Dado1[27]~I .input_power_up = "low";
+defparam \Dado1[27]~I .input_register_mode = "none";
+defparam \Dado1[27]~I .input_sync_reset = "none";
+defparam \Dado1[27]~I .oe_async_reset = "none";
+defparam \Dado1[27]~I .oe_power_up = "low";
+defparam \Dado1[27]~I .oe_register_mode = "none";
+defparam \Dado1[27]~I .oe_sync_reset = "none";
+defparam \Dado1[27]~I .operation_mode = "output";
+defparam \Dado1[27]~I .output_async_reset = "none";
+defparam \Dado1[27]~I .output_power_up = "low";
+defparam \Dado1[27]~I .output_register_mode = "none";
+defparam \Dado1[27]~I .output_sync_reset = "none";
+// synopsys translate_on
+
+// Location: PIN_K4,	 I/O Standard: 3.3-V LVTTL,	 Current Strength: 24mA
+cycloneii_io \Dado1[28]~I (
+	.datain(gnd),
+	.oe(vcc),
+	.outclk(gnd),
+	.outclkena(vcc),
+	.inclk(gnd),
+	.inclkena(vcc),
+	.areset(gnd),
+	.sreset(gnd),
+	.differentialin(gnd),
+	.linkin(gnd),
+	.devclrn(devclrn),
+	.devpor(devpor),
+	.devoe(devoe),
+	.combout(),
+	.regout(),
+	.differentialout(),
+	.linkout(),
+	.padio(Dado1[28]));
+// synopsys translate_off
+defparam \Dado1[28]~I .input_async_reset = "none";
+defparam \Dado1[28]~I .input_power_up = "low";
+defparam \Dado1[28]~I .input_register_mode = "none";
+defparam \Dado1[28]~I .input_sync_reset = "none";
+defparam \Dado1[28]~I .oe_async_reset = "none";
+defparam \Dado1[28]~I .oe_power_up = "low";
+defparam \Dado1[28]~I .oe_register_mode = "none";
+defparam \Dado1[28]~I .oe_sync_reset = "none";
+defparam \Dado1[28]~I .operation_mode = "output";
+defparam \Dado1[28]~I .output_async_reset = "none";
+defparam \Dado1[28]~I .output_power_up = "low";
+defparam \Dado1[28]~I .output_register_mode = "none";
+defparam \Dado1[28]~I .output_sync_reset = "none";
+// synopsys translate_on
+
+// Location: PIN_L7,	 I/O Standard: 3.3-V LVTTL,	 Current Strength: 24mA
+cycloneii_io \Dado1[29]~I (
+	.datain(gnd),
+	.oe(vcc),
+	.outclk(gnd),
+	.outclkena(vcc),
+	.inclk(gnd),
+	.inclkena(vcc),
+	.areset(gnd),
+	.sreset(gnd),
+	.differentialin(gnd),
+	.linkin(gnd),
+	.devclrn(devclrn),
+	.devpor(devpor),
+	.devoe(devoe),
+	.combout(),
+	.regout(),
+	.differentialout(),
+	.linkout(),
+	.padio(Dado1[29]));
+// synopsys translate_off
+defparam \Dado1[29]~I .input_async_reset = "none";
+defparam \Dado1[29]~I .input_power_up = "low";
+defparam \Dado1[29]~I .input_register_mode = "none";
+defparam \Dado1[29]~I .input_sync_reset = "none";
+defparam \Dado1[29]~I .oe_async_reset = "none";
+defparam \Dado1[29]~I .oe_power_up = "low";
+defparam \Dado1[29]~I .oe_register_mode = "none";
+defparam \Dado1[29]~I .oe_sync_reset = "none";
+defparam \Dado1[29]~I .operation_mode = "output";
+defparam \Dado1[29]~I .output_async_reset = "none";
+defparam \Dado1[29]~I .output_power_up = "low";
+defparam \Dado1[29]~I .output_register_mode = "none";
+defparam \Dado1[29]~I .output_sync_reset = "none";
+// synopsys translate_on
+
+// Location: PIN_H6,	 I/O Standard: 3.3-V LVTTL,	 Current Strength: 24mA
+cycloneii_io \Dado1[30]~I (
+	.datain(gnd),
+	.oe(vcc),
+	.outclk(gnd),
+	.outclkena(vcc),
+	.inclk(gnd),
+	.inclkena(vcc),
+	.areset(gnd),
+	.sreset(gnd),
+	.differentialin(gnd),
+	.linkin(gnd),
+	.devclrn(devclrn),
+	.devpor(devpor),
+	.devoe(devoe),
+	.combout(),
+	.regout(),
+	.differentialout(),
+	.linkout(),
+	.padio(Dado1[30]));
+// synopsys translate_off
+defparam \Dado1[30]~I .input_async_reset = "none";
+defparam \Dado1[30]~I .input_power_up = "low";
+defparam \Dado1[30]~I .input_register_mode = "none";
+defparam \Dado1[30]~I .input_sync_reset = "none";
+defparam \Dado1[30]~I .oe_async_reset = "none";
+defparam \Dado1[30]~I .oe_power_up = "low";
+defparam \Dado1[30]~I .oe_register_mode = "none";
+defparam \Dado1[30]~I .oe_sync_reset = "none";
+defparam \Dado1[30]~I .operation_mode = "output";
+defparam \Dado1[30]~I .output_async_reset = "none";
+defparam \Dado1[30]~I .output_power_up = "low";
+defparam \Dado1[30]~I .output_register_mode = "none";
+defparam \Dado1[30]~I .output_sync_reset = "none";
+// synopsys translate_on
+
+// Location: PIN_AD4,	 I/O Standard: 3.3-V LVTTL,	 Current Strength: 24mA
+cycloneii_io \Dado1[31]~I (
+	.datain(gnd),
+	.oe(vcc),
+	.outclk(gnd),
+	.outclkena(vcc),
+	.inclk(gnd),
+	.inclkena(vcc),
+	.areset(gnd),
+	.sreset(gnd),
+	.differentialin(gnd),
+	.linkin(gnd),
+	.devclrn(devclrn),
+	.devpor(devpor),
+	.devoe(devoe),
+	.combout(),
+	.regout(),
+	.differentialout(),
+	.linkout(),
+	.padio(Dado1[31]));
+// synopsys translate_off
+defparam \Dado1[31]~I .input_async_reset = "none";
+defparam \Dado1[31]~I .input_power_up = "low";
+defparam \Dado1[31]~I .input_register_mode = "none";
+defparam \Dado1[31]~I .input_sync_reset = "none";
+defparam \Dado1[31]~I .oe_async_reset = "none";
+defparam \Dado1[31]~I .oe_power_up = "low";
+defparam \Dado1[31]~I .oe_register_mode = "none";
+defparam \Dado1[31]~I .oe_sync_reset = "none";
+defparam \Dado1[31]~I .operation_mode = "output";
+defparam \Dado1[31]~I .output_async_reset = "none";
+defparam \Dado1[31]~I .output_power_up = "low";
+defparam \Dado1[31]~I .output_register_mode = "none";
+defparam \Dado1[31]~I .output_sync_reset = "none";
+// synopsys translate_on
+
+// Location: PIN_G21,	 I/O Standard: 3.3-V LVTTL,	 Current Strength: 24mA
+cycloneii_io \Dado2[0]~I (
+	.datain(gnd),
+	.oe(vcc),
+	.outclk(gnd),
+	.outclkena(vcc),
+	.inclk(gnd),
+	.inclkena(vcc),
+	.areset(gnd),
+	.sreset(gnd),
+	.differentialin(gnd),
+	.linkin(gnd),
+	.devclrn(devclrn),
+	.devpor(devpor),
+	.devoe(devoe),
+	.combout(),
+	.regout(),
+	.differentialout(),
+	.linkout(),
+	.padio(Dado2[0]));
+// synopsys translate_off
+defparam \Dado2[0]~I .input_async_reset = "none";
+defparam \Dado2[0]~I .input_power_up = "low";
+defparam \Dado2[0]~I .input_register_mode = "none";
+defparam \Dado2[0]~I .input_sync_reset = "none";
+defparam \Dado2[0]~I .oe_async_reset = "none";
+defparam \Dado2[0]~I .oe_power_up = "low";
+defparam \Dado2[0]~I .oe_register_mode = "none";
+defparam \Dado2[0]~I .oe_sync_reset = "none";
+defparam \Dado2[0]~I .operation_mode = "output";
+defparam \Dado2[0]~I .output_async_reset = "none";
+defparam \Dado2[0]~I .output_power_up = "low";
+defparam \Dado2[0]~I .output_register_mode = "none";
+defparam \Dado2[0]~I .output_sync_reset = "none";
+// synopsys translate_on
+
+// Location: PIN_K1,	 I/O Standard: 3.3-V LVTTL,	 Current Strength: 24mA
+cycloneii_io \Dado2[1]~I (
+	.datain(gnd),
+	.oe(vcc),
+	.outclk(gnd),
+	.outclkena(vcc),
+	.inclk(gnd),
+	.inclkena(vcc),
+	.areset(gnd),
+	.sreset(gnd),
+	.differentialin(gnd),
+	.linkin(gnd),
+	.devclrn(devclrn),
+	.devpor(devpor),
+	.devoe(devoe),
+	.combout(),
+	.regout(),
+	.differentialout(),
+	.linkout(),
+	.padio(Dado2[1]));
+// synopsys translate_off
+defparam \Dado2[1]~I .input_async_reset = "none";
+defparam \Dado2[1]~I .input_power_up = "low";
+defparam \Dado2[1]~I .input_register_mode = "none";
+defparam \Dado2[1]~I .input_sync_reset = "none";
+defparam \Dado2[1]~I .oe_async_reset = "none";
+defparam \Dado2[1]~I .oe_power_up = "low";
+defparam \Dado2[1]~I .oe_register_mode = "none";
+defparam \Dado2[1]~I .oe_sync_reset = "none";
+defparam \Dado2[1]~I .operation_mode = "output";
+defparam \Dado2[1]~I .output_async_reset = "none";
+defparam \Dado2[1]~I .output_power_up = "low";
+defparam \Dado2[1]~I .output_register_mode = "none";
+defparam \Dado2[1]~I .output_sync_reset = "none";
+// synopsys translate_on
+
+// Location: PIN_E1,	 I/O Standard: 3.3-V LVTTL,	 Current Strength: 24mA
+cycloneii_io \Dado2[2]~I (
+	.datain(gnd),
+	.oe(vcc),
+	.outclk(gnd),
+	.outclkena(vcc),
+	.inclk(gnd),
+	.inclkena(vcc),
+	.areset(gnd),
+	.sreset(gnd),
+	.differentialin(gnd),
+	.linkin(gnd),
+	.devclrn(devclrn),
+	.devpor(devpor),
+	.devoe(devoe),
+	.combout(),
+	.regout(),
+	.differentialout(),
+	.linkout(),
+	.padio(Dado2[2]));
+// synopsys translate_off
+defparam \Dado2[2]~I .input_async_reset = "none";
+defparam \Dado2[2]~I .input_power_up = "low";
+defparam \Dado2[2]~I .input_register_mode = "none";
+defparam \Dado2[2]~I .input_sync_reset = "none";
+defparam \Dado2[2]~I .oe_async_reset = "none";
+defparam \Dado2[2]~I .oe_power_up = "low";
+defparam \Dado2[2]~I .oe_register_mode = "none";
+defparam \Dado2[2]~I .oe_sync_reset = "none";
+defparam \Dado2[2]~I .operation_mode = "output";
+defparam \Dado2[2]~I .output_async_reset = "none";
+defparam \Dado2[2]~I .output_power_up = "low";
+defparam \Dado2[2]~I .output_register_mode = "none";
+defparam \Dado2[2]~I .output_sync_reset = "none";
+// synopsys translate_on
+
+// Location: PIN_K23,	 I/O Standard: 3.3-V LVTTL,	 Current Strength: 24mA
+cycloneii_io \Dado2[3]~I (
+	.datain(gnd),
+	.oe(vcc),
+	.outclk(gnd),
+	.outclkena(vcc),
+	.inclk(gnd),
+	.inclkena(vcc),
+	.areset(gnd),
+	.sreset(gnd),
+	.differentialin(gnd),
+	.linkin(gnd),
+	.devclrn(devclrn),
+	.devpor(devpor),
+	.devoe(devoe),
+	.combout(),
+	.regout(),
+	.differentialout(),
+	.linkout(),
+	.padio(Dado2[3]));
+// synopsys translate_off
+defparam \Dado2[3]~I .input_async_reset = "none";
+defparam \Dado2[3]~I .input_power_up = "low";
+defparam \Dado2[3]~I .input_register_mode = "none";
+defparam \Dado2[3]~I .input_sync_reset = "none";
+defparam \Dado2[3]~I .oe_async_reset = "none";
+defparam \Dado2[3]~I .oe_power_up = "low";
+defparam \Dado2[3]~I .oe_register_mode = "none";
+defparam \Dado2[3]~I .oe_sync_reset = "none";
+defparam \Dado2[3]~I .operation_mode = "output";
+defparam \Dado2[3]~I .output_async_reset = "none";
+defparam \Dado2[3]~I .output_power_up = "low";
+defparam \Dado2[3]~I .output_register_mode = "none";
+defparam \Dado2[3]~I .output_sync_reset = "none";
+// synopsys translate_on
+
+// Location: PIN_A10,	 I/O Standard: 3.3-V LVTTL,	 Current Strength: 24mA
+cycloneii_io \Dado2[4]~I (
+	.datain(gnd),
+	.oe(vcc),
+	.outclk(gnd),
+	.outclkena(vcc),
+	.inclk(gnd),
+	.inclkena(vcc),
+	.areset(gnd),
+	.sreset(gnd),
+	.differentialin(gnd),
+	.linkin(gnd),
+	.devclrn(devclrn),
+	.devpor(devpor),
+	.devoe(devoe),
+	.combout(),
+	.regout(),
+	.differentialout(),
+	.linkout(),
+	.padio(Dado2[4]));
+// synopsys translate_off
+defparam \Dado2[4]~I .input_async_reset = "none";
+defparam \Dado2[4]~I .input_power_up = "low";
+defparam \Dado2[4]~I .input_register_mode = "none";
+defparam \Dado2[4]~I .input_sync_reset = "none";
+defparam \Dado2[4]~I .oe_async_reset = "none";
+defparam \Dado2[4]~I .oe_power_up = "low";
+defparam \Dado2[4]~I .oe_register_mode = "none";
+defparam \Dado2[4]~I .oe_sync_reset = "none";
+defparam \Dado2[4]~I .operation_mode = "output";
+defparam \Dado2[4]~I .output_async_reset = "none";
+defparam \Dado2[4]~I .output_power_up = "low";
+defparam \Dado2[4]~I .output_register_mode = "none";
+defparam \Dado2[4]~I .output_sync_reset = "none";
+// synopsys translate_on
+
+// Location: PIN_AC10,	 I/O Standard: 3.3-V LVTTL,	 Current Strength: 24mA
+cycloneii_io \Dado2[5]~I (
+	.datain(gnd),
+	.oe(vcc),
+	.outclk(gnd),
+	.outclkena(vcc),
+	.inclk(gnd),
+	.inclkena(vcc),
+	.areset(gnd),
+	.sreset(gnd),
+	.differentialin(gnd),
+	.linkin(gnd),
+	.devclrn(devclrn),
+	.devpor(devpor),
+	.devoe(devoe),
+	.combout(),
+	.regout(),
+	.differentialout(),
+	.linkout(),
+	.padio(Dado2[5]));
+// synopsys translate_off
+defparam \Dado2[5]~I .input_async_reset = "none";
+defparam \Dado2[5]~I .input_power_up = "low";
+defparam \Dado2[5]~I .input_register_mode = "none";
+defparam \Dado2[5]~I .input_sync_reset = "none";
+defparam \Dado2[5]~I .oe_async_reset = "none";
+defparam \Dado2[5]~I .oe_power_up = "low";
+defparam \Dado2[5]~I .oe_register_mode = "none";
+defparam \Dado2[5]~I .oe_sync_reset = "none";
+defparam \Dado2[5]~I .operation_mode = "output";
+defparam \Dado2[5]~I .output_async_reset = "none";
+defparam \Dado2[5]~I .output_power_up = "low";
+defparam \Dado2[5]~I .output_register_mode = "none";
+defparam \Dado2[5]~I .output_sync_reset = "none";
+// synopsys translate_on
+
+// Location: PIN_M19,	 I/O Standard: 3.3-V LVTTL,	 Current Strength: 24mA
+cycloneii_io \Dado2[6]~I (
+	.datain(gnd),
+	.oe(vcc),
+	.outclk(gnd),
+	.outclkena(vcc),
+	.inclk(gnd),
+	.inclkena(vcc),
+	.areset(gnd),
+	.sreset(gnd),
+	.differentialin(gnd),
+	.linkin(gnd),
+	.devclrn(devclrn),
+	.devpor(devpor),
+	.devoe(devoe),
+	.combout(),
+	.regout(),
+	.differentialout(),
+	.linkout(),
+	.padio(Dado2[6]));
+// synopsys translate_off
+defparam \Dado2[6]~I .input_async_reset = "none";
+defparam \Dado2[6]~I .input_power_up = "low";
+defparam \Dado2[6]~I .input_register_mode = "none";
+defparam \Dado2[6]~I .input_sync_reset = "none";
+defparam \Dado2[6]~I .oe_async_reset = "none";
+defparam \Dado2[6]~I .oe_power_up = "low";
+defparam \Dado2[6]~I .oe_register_mode = "none";
+defparam \Dado2[6]~I .oe_sync_reset = "none";
+defparam \Dado2[6]~I .operation_mode = "output";
+defparam \Dado2[6]~I .output_async_reset = "none";
+defparam \Dado2[6]~I .output_power_up = "low";
+defparam \Dado2[6]~I .output_register_mode = "none";
+defparam \Dado2[6]~I .output_sync_reset = "none";
+// synopsys translate_on
+
+// Location: PIN_W8,	 I/O Standard: 3.3-V LVTTL,	 Current Strength: 24mA
+cycloneii_io \Dado2[7]~I (
+	.datain(gnd),
+	.oe(vcc),
+	.outclk(gnd),
+	.outclkena(vcc),
+	.inclk(gnd),
+	.inclkena(vcc),
+	.areset(gnd),
+	.sreset(gnd),
+	.differentialin(gnd),
+	.linkin(gnd),
+	.devclrn(devclrn),
+	.devpor(devpor),
+	.devoe(devoe),
+	.combout(),
+	.regout(),
+	.differentialout(),
+	.linkout(),
+	.padio(Dado2[7]));
+// synopsys translate_off
+defparam \Dado2[7]~I .input_async_reset = "none";
+defparam \Dado2[7]~I .input_power_up = "low";
+defparam \Dado2[7]~I .input_register_mode = "none";
+defparam \Dado2[7]~I .input_sync_reset = "none";
+defparam \Dado2[7]~I .oe_async_reset = "none";
+defparam \Dado2[7]~I .oe_power_up = "low";
+defparam \Dado2[7]~I .oe_register_mode = "none";
+defparam \Dado2[7]~I .oe_sync_reset = "none";
+defparam \Dado2[7]~I .operation_mode = "output";
+defparam \Dado2[7]~I .output_async_reset = "none";
+defparam \Dado2[7]~I .output_power_up = "low";
+defparam \Dado2[7]~I .output_register_mode = "none";
+defparam \Dado2[7]~I .output_sync_reset = "none";
+// synopsys translate_on
+
+// Location: PIN_G4,	 I/O Standard: 3.3-V LVTTL,	 Current Strength: 24mA
+cycloneii_io \Dado2[8]~I (
+	.datain(gnd),
+	.oe(vcc),
+	.outclk(gnd),
+	.outclkena(vcc),
+	.inclk(gnd),
+	.inclkena(vcc),
+	.areset(gnd),
+	.sreset(gnd),
+	.differentialin(gnd),
+	.linkin(gnd),
+	.devclrn(devclrn),
+	.devpor(devpor),
+	.devoe(devoe),
+	.combout(),
+	.regout(),
+	.differentialout(),
+	.linkout(),
+	.padio(Dado2[8]));
+// synopsys translate_off
+defparam \Dado2[8]~I .input_async_reset = "none";
+defparam \Dado2[8]~I .input_power_up = "low";
+defparam \Dado2[8]~I .input_register_mode = "none";
+defparam \Dado2[8]~I .input_sync_reset = "none";
+defparam \Dado2[8]~I .oe_async_reset = "none";
+defparam \Dado2[8]~I .oe_power_up = "low";
+defparam \Dado2[8]~I .oe_register_mode = "none";
+defparam \Dado2[8]~I .oe_sync_reset = "none";
+defparam \Dado2[8]~I .operation_mode = "output";
+defparam \Dado2[8]~I .output_async_reset = "none";
+defparam \Dado2[8]~I .output_power_up = "low";
+defparam \Dado2[8]~I .output_register_mode = "none";
+defparam \Dado2[8]~I .output_sync_reset = "none";
+// synopsys translate_on
+
+// Location: PIN_M4,	 I/O Standard: 3.3-V LVTTL,	 Current Strength: 24mA
+cycloneii_io \Dado2[9]~I (
+	.datain(gnd),
+	.oe(vcc),
+	.outclk(gnd),
+	.outclkena(vcc),
+	.inclk(gnd),
+	.inclkena(vcc),
+	.areset(gnd),
+	.sreset(gnd),
+	.differentialin(gnd),
+	.linkin(gnd),
+	.devclrn(devclrn),
+	.devpor(devpor),
+	.devoe(devoe),
+	.combout(),
+	.regout(),
+	.differentialout(),
+	.linkout(),
+	.padio(Dado2[9]));
+// synopsys translate_off
+defparam \Dado2[9]~I .input_async_reset = "none";
+defparam \Dado2[9]~I .input_power_up = "low";
+defparam \Dado2[9]~I .input_register_mode = "none";
+defparam \Dado2[9]~I .input_sync_reset = "none";
+defparam \Dado2[9]~I .oe_async_reset = "none";
+defparam \Dado2[9]~I .oe_power_up = "low";
+defparam \Dado2[9]~I .oe_register_mode = "none";
+defparam \Dado2[9]~I .oe_sync_reset = "none";
+defparam \Dado2[9]~I .operation_mode = "output";
+defparam \Dado2[9]~I .output_async_reset = "none";
+defparam \Dado2[9]~I .output_power_up = "low";
+defparam \Dado2[9]~I .output_register_mode = "none";
+defparam \Dado2[9]~I .output_sync_reset = "none";
+// synopsys translate_on
+
+// Location: PIN_G3,	 I/O Standard: 3.3-V LVTTL,	 Current Strength: 24mA
+cycloneii_io \Dado2[10]~I (
+	.datain(gnd),
+	.oe(vcc),
+	.outclk(gnd),
+	.outclkena(vcc),
+	.inclk(gnd),
+	.inclkena(vcc),
+	.areset(gnd),
+	.sreset(gnd),
+	.differentialin(gnd),
+	.linkin(gnd),
+	.devclrn(devclrn),
+	.devpor(devpor),
+	.devoe(devoe),
+	.combout(),
+	.regout(),
+	.differentialout(),
+	.linkout(),
+	.padio(Dado2[10]));
+// synopsys translate_off
+defparam \Dado2[10]~I .input_async_reset = "none";
+defparam \Dado2[10]~I .input_power_up = "low";
+defparam \Dado2[10]~I .input_register_mode = "none";
+defparam \Dado2[10]~I .input_sync_reset = "none";
+defparam \Dado2[10]~I .oe_async_reset = "none";
+defparam \Dado2[10]~I .oe_power_up = "low";
+defparam \Dado2[10]~I .oe_register_mode = "none";
+defparam \Dado2[10]~I .oe_sync_reset = "none";
+defparam \Dado2[10]~I .operation_mode = "output";
+defparam \Dado2[10]~I .output_async_reset = "none";
+defparam \Dado2[10]~I .output_power_up = "low";
+defparam \Dado2[10]~I .output_register_mode = "none";
+defparam \Dado2[10]~I .output_sync_reset = "none";
+// synopsys translate_on
+
+// Location: PIN_D2,	 I/O Standard: 3.3-V LVTTL,	 Current Strength: 24mA
+cycloneii_io \Dado2[11]~I (
+	.datain(gnd),
+	.oe(vcc),
+	.outclk(gnd),
+	.outclkena(vcc),
+	.inclk(gnd),
+	.inclkena(vcc),
+	.areset(gnd),
+	.sreset(gnd),
+	.differentialin(gnd),
+	.linkin(gnd),
+	.devclrn(devclrn),
+	.devpor(devpor),
+	.devoe(devoe),
+	.combout(),
+	.regout(),
+	.differentialout(),
+	.linkout(),
+	.padio(Dado2[11]));
+// synopsys translate_off
+defparam \Dado2[11]~I .input_async_reset = "none";
+defparam \Dado2[11]~I .input_power_up = "low";
+defparam \Dado2[11]~I .input_register_mode = "none";
+defparam \Dado2[11]~I .input_sync_reset = "none";
+defparam \Dado2[11]~I .oe_async_reset = "none";
+defparam \Dado2[11]~I .oe_power_up = "low";
+defparam \Dado2[11]~I .oe_register_mode = "none";
+defparam \Dado2[11]~I .oe_sync_reset = "none";
+defparam \Dado2[11]~I .operation_mode = "output";
+defparam \Dado2[11]~I .output_async_reset = "none";
+defparam \Dado2[11]~I .output_power_up = "low";
+defparam \Dado2[11]~I .output_register_mode = "none";
+defparam \Dado2[11]~I .output_sync_reset = "none";
+// synopsys translate_on
+
+// Location: PIN_M22,	 I/O Standard: 3.3-V LVTTL,	 Current Strength: 24mA
+cycloneii_io \Dado2[12]~I (
+	.datain(gnd),
+	.oe(vcc),
+	.outclk(gnd),
+	.outclkena(vcc),
+	.inclk(gnd),
+	.inclkena(vcc),
+	.areset(gnd),
+	.sreset(gnd),
+	.differentialin(gnd),
+	.linkin(gnd),
+	.devclrn(devclrn),
+	.devpor(devpor),
+	.devoe(devoe),
+	.combout(),
+	.regout(),
+	.differentialout(),
+	.linkout(),
+	.padio(Dado2[12]));
+// synopsys translate_off
+defparam \Dado2[12]~I .input_async_reset = "none";
+defparam \Dado2[12]~I .input_power_up = "low";
+defparam \Dado2[12]~I .input_register_mode = "none";
+defparam \Dado2[12]~I .input_sync_reset = "none";
+defparam \Dado2[12]~I .oe_async_reset = "none";
+defparam \Dado2[12]~I .oe_power_up = "low";
+defparam \Dado2[12]~I .oe_register_mode = "none";
+defparam \Dado2[12]~I .oe_sync_reset = "none";
+defparam \Dado2[12]~I .operation_mode = "output";
+defparam \Dado2[12]~I .output_async_reset = "none";
+defparam \Dado2[12]~I .output_power_up = "low";
+defparam \Dado2[12]~I .output_register_mode = "none";
+defparam \Dado2[12]~I .output_sync_reset = "none";
+// synopsys translate_on
+
+// Location: PIN_AD21,	 I/O Standard: 3.3-V LVTTL,	 Current Strength: 24mA
+cycloneii_io \Dado2[13]~I (
+	.datain(gnd),
+	.oe(vcc),
+	.outclk(gnd),
+	.outclkena(vcc),
+	.inclk(gnd),
+	.inclkena(vcc),
+	.areset(gnd),
+	.sreset(gnd),
+	.differentialin(gnd),
+	.linkin(gnd),
+	.devclrn(devclrn),
+	.devpor(devpor),
+	.devoe(devoe),
+	.combout(),
+	.regout(),
+	.differentialout(),
+	.linkout(),
+	.padio(Dado2[13]));
+// synopsys translate_off
+defparam \Dado2[13]~I .input_async_reset = "none";
+defparam \Dado2[13]~I .input_power_up = "low";
+defparam \Dado2[13]~I .input_register_mode = "none";
+defparam \Dado2[13]~I .input_sync_reset = "none";
+defparam \Dado2[13]~I .oe_async_reset = "none";
+defparam \Dado2[13]~I .oe_power_up = "low";
+defparam \Dado2[13]~I .oe_register_mode = "none";
+defparam \Dado2[13]~I .oe_sync_reset = "none";
+defparam \Dado2[13]~I .operation_mode = "output";
+defparam \Dado2[13]~I .output_async_reset = "none";
+defparam \Dado2[13]~I .output_power_up = "low";
+defparam \Dado2[13]~I .output_register_mode = "none";
+defparam \Dado2[13]~I .output_sync_reset = "none";
+// synopsys translate_on
+
+// Location: PIN_C17,	 I/O Standard: 3.3-V LVTTL,	 Current Strength: 24mA
+cycloneii_io \Dado2[14]~I (
+	.datain(gnd),
+	.oe(vcc),
+	.outclk(gnd),
+	.outclkena(vcc),
+	.inclk(gnd),
+	.inclkena(vcc),
+	.areset(gnd),
+	.sreset(gnd),
+	.differentialin(gnd),
+	.linkin(gnd),
+	.devclrn(devclrn),
+	.devpor(devpor),
+	.devoe(devoe),
+	.combout(),
+	.regout(),
+	.differentialout(),
+	.linkout(),
+	.padio(Dado2[14]));
+// synopsys translate_off
+defparam \Dado2[14]~I .input_async_reset = "none";
+defparam \Dado2[14]~I .input_power_up = "low";
+defparam \Dado2[14]~I .input_register_mode = "none";
+defparam \Dado2[14]~I .input_sync_reset = "none";
+defparam \Dado2[14]~I .oe_async_reset = "none";
+defparam \Dado2[14]~I .oe_power_up = "low";
+defparam \Dado2[14]~I .oe_register_mode = "none";
+defparam \Dado2[14]~I .oe_sync_reset = "none";
+defparam \Dado2[14]~I .operation_mode = "output";
+defparam \Dado2[14]~I .output_async_reset = "none";
+defparam \Dado2[14]~I .output_power_up = "low";
+defparam \Dado2[14]~I .output_register_mode = "none";
+defparam \Dado2[14]~I .output_sync_reset = "none";
+// synopsys translate_on
+
+// Location: PIN_M2,	 I/O Standard: 3.3-V LVTTL,	 Current Strength: 24mA
+cycloneii_io \Dado2[15]~I (
+	.datain(gnd),
+	.oe(vcc),
+	.outclk(gnd),
+	.outclkena(vcc),
+	.inclk(gnd),
+	.inclkena(vcc),
+	.areset(gnd),
+	.sreset(gnd),
+	.differentialin(gnd),
+	.linkin(gnd),
+	.devclrn(devclrn),
+	.devpor(devpor),
+	.devoe(devoe),
+	.combout(),
+	.regout(),
+	.differentialout(),
+	.linkout(),
+	.padio(Dado2[15]));
+// synopsys translate_off
+defparam \Dado2[15]~I .input_async_reset = "none";
+defparam \Dado2[15]~I .input_power_up = "low";
+defparam \Dado2[15]~I .input_register_mode = "none";
+defparam \Dado2[15]~I .input_sync_reset = "none";
+defparam \Dado2[15]~I .oe_async_reset = "none";
+defparam \Dado2[15]~I .oe_power_up = "low";
+defparam \Dado2[15]~I .oe_register_mode = "none";
+defparam \Dado2[15]~I .oe_sync_reset = "none";
+defparam \Dado2[15]~I .operation_mode = "output";
+defparam \Dado2[15]~I .output_async_reset = "none";
+defparam \Dado2[15]~I .output_power_up = "low";
+defparam \Dado2[15]~I .output_register_mode = "none";
+defparam \Dado2[15]~I .output_sync_reset = "none";
+// synopsys translate_on
+
+// Location: PIN_K7,	 I/O Standard: 3.3-V LVTTL,	 Current Strength: 24mA
+cycloneii_io \Dado2[16]~I (
+	.datain(gnd),
+	.oe(vcc),
+	.outclk(gnd),
+	.outclkena(vcc),
+	.inclk(gnd),
+	.inclkena(vcc),
+	.areset(gnd),
+	.sreset(gnd),
+	.differentialin(gnd),
+	.linkin(gnd),
+	.devclrn(devclrn),
+	.devpor(devpor),
+	.devoe(devoe),
+	.combout(),
+	.regout(),
+	.differentialout(),
+	.linkout(),
+	.padio(Dado2[16]));
+// synopsys translate_off
+defparam \Dado2[16]~I .input_async_reset = "none";
+defparam \Dado2[16]~I .input_power_up = "low";
+defparam \Dado2[16]~I .input_register_mode = "none";
+defparam \Dado2[16]~I .input_sync_reset = "none";
+defparam \Dado2[16]~I .oe_async_reset = "none";
+defparam \Dado2[16]~I .oe_power_up = "low";
+defparam \Dado2[16]~I .oe_register_mode = "none";
+defparam \Dado2[16]~I .oe_sync_reset = "none";
+defparam \Dado2[16]~I .operation_mode = "output";
+defparam \Dado2[16]~I .output_async_reset = "none";
+defparam \Dado2[16]~I .output_power_up = "low";
+defparam \Dado2[16]~I .output_register_mode = "none";
+defparam \Dado2[16]~I .output_sync_reset = "none";
+// synopsys translate_on
+
+// Location: PIN_AD8,	 I/O Standard: 3.3-V LVTTL,	 Current Strength: 24mA
+cycloneii_io \Dado2[17]~I (
+	.datain(gnd),
+	.oe(vcc),
+	.outclk(gnd),
+	.outclkena(vcc),
+	.inclk(gnd),
+	.inclkena(vcc),
+	.areset(gnd),
+	.sreset(gnd),
+	.differentialin(gnd),
+	.linkin(gnd),
+	.devclrn(devclrn),
+	.devpor(devpor),
+	.devoe(devoe),
+	.combout(),
+	.regout(),
+	.differentialout(),
+	.linkout(),
+	.padio(Dado2[17]));
+// synopsys translate_off
+defparam \Dado2[17]~I .input_async_reset = "none";
+defparam \Dado2[17]~I .input_power_up = "low";
+defparam \Dado2[17]~I .input_register_mode = "none";
+defparam \Dado2[17]~I .input_sync_reset = "none";
+defparam \Dado2[17]~I .oe_async_reset = "none";
+defparam \Dado2[17]~I .oe_power_up = "low";
+defparam \Dado2[17]~I .oe_register_mode = "none";
+defparam \Dado2[17]~I .oe_sync_reset = "none";
+defparam \Dado2[17]~I .operation_mode = "output";
+defparam \Dado2[17]~I .output_async_reset = "none";
+defparam \Dado2[17]~I .output_power_up = "low";
+defparam \Dado2[17]~I .output_register_mode = "none";
+defparam \Dado2[17]~I .output_sync_reset = "none";
+// synopsys translate_on
+
+// Location: PIN_J13,	 I/O Standard: 3.3-V LVTTL,	 Current Strength: 24mA
+cycloneii_io \Dado2[18]~I (
+	.datain(gnd),
+	.oe(vcc),
+	.outclk(gnd),
+	.outclkena(vcc),
+	.inclk(gnd),
+	.inclkena(vcc),
+	.areset(gnd),
+	.sreset(gnd),
+	.differentialin(gnd),
+	.linkin(gnd),
+	.devclrn(devclrn),
+	.devpor(devpor),
+	.devoe(devoe),
+	.combout(),
+	.regout(),
+	.differentialout(),
+	.linkout(),
+	.padio(Dado2[18]));
+// synopsys translate_off
+defparam \Dado2[18]~I .input_async_reset = "none";
+defparam \Dado2[18]~I .input_power_up = "low";
+defparam \Dado2[18]~I .input_register_mode = "none";
+defparam \Dado2[18]~I .input_sync_reset = "none";
+defparam \Dado2[18]~I .oe_async_reset = "none";
+defparam \Dado2[18]~I .oe_power_up = "low";
+defparam \Dado2[18]~I .oe_register_mode = "none";
+defparam \Dado2[18]~I .oe_sync_reset = "none";
+defparam \Dado2[18]~I .operation_mode = "output";
+defparam \Dado2[18]~I .output_async_reset = "none";
+defparam \Dado2[18]~I .output_power_up = "low";
+defparam \Dado2[18]~I .output_register_mode = "none";
+defparam \Dado2[18]~I .output_sync_reset = "none";
+// synopsys translate_on
+
+// Location: PIN_M5,	 I/O Standard: 3.3-V LVTTL,	 Current Strength: 24mA
+cycloneii_io \Dado2[19]~I (
+	.datain(gnd),
+	.oe(vcc),
+	.outclk(gnd),
+	.outclkena(vcc),
+	.inclk(gnd),
+	.inclkena(vcc),
+	.areset(gnd),
+	.sreset(gnd),
+	.differentialin(gnd),
+	.linkin(gnd),
+	.devclrn(devclrn),
+	.devpor(devpor),
+	.devoe(devoe),
+	.combout(),
+	.regout(),
+	.differentialout(),
+	.linkout(),
+	.padio(Dado2[19]));
+// synopsys translate_off
+defparam \Dado2[19]~I .input_async_reset = "none";
+defparam \Dado2[19]~I .input_power_up = "low";
+defparam \Dado2[19]~I .input_register_mode = "none";
+defparam \Dado2[19]~I .input_sync_reset = "none";
+defparam \Dado2[19]~I .oe_async_reset = "none";
+defparam \Dado2[19]~I .oe_power_up = "low";
+defparam \Dado2[19]~I .oe_register_mode = "none";
+defparam \Dado2[19]~I .oe_sync_reset = "none";
+defparam \Dado2[19]~I .operation_mode = "output";
+defparam \Dado2[19]~I .output_async_reset = "none";
+defparam \Dado2[19]~I .output_power_up = "low";
+defparam \Dado2[19]~I .output_register_mode = "none";
+defparam \Dado2[19]~I .output_sync_reset = "none";
+// synopsys translate_on
+
+// Location: PIN_G2,	 I/O Standard: 3.3-V LVTTL,	 Current Strength: 24mA
+cycloneii_io \Dado2[20]~I (
+	.datain(gnd),
+	.oe(vcc),
+	.outclk(gnd),
+	.outclkena(vcc),
+	.inclk(gnd),
+	.inclkena(vcc),
+	.areset(gnd),
+	.sreset(gnd),
+	.differentialin(gnd),
+	.linkin(gnd),
+	.devclrn(devclrn),
+	.devpor(devpor),
+	.devoe(devoe),
+	.combout(),
+	.regout(),
+	.differentialout(),
+	.linkout(),
+	.padio(Dado2[20]));
+// synopsys translate_off
+defparam \Dado2[20]~I .input_async_reset = "none";
+defparam \Dado2[20]~I .input_power_up = "low";
+defparam \Dado2[20]~I .input_register_mode = "none";
+defparam \Dado2[20]~I .input_sync_reset = "none";
+defparam \Dado2[20]~I .oe_async_reset = "none";
+defparam \Dado2[20]~I .oe_power_up = "low";
+defparam \Dado2[20]~I .oe_register_mode = "none";
+defparam \Dado2[20]~I .oe_sync_reset = "none";
+defparam \Dado2[20]~I .operation_mode = "output";
+defparam \Dado2[20]~I .output_async_reset = "none";
+defparam \Dado2[20]~I .output_power_up = "low";
+defparam \Dado2[20]~I .output_register_mode = "none";
+defparam \Dado2[20]~I .output_sync_reset = "none";
+// synopsys translate_on
+
+// Location: PIN_J5,	 I/O Standard: 3.3-V LVTTL,	 Current Strength: 24mA
+cycloneii_io \Dado2[21]~I (
+	.datain(gnd),
+	.oe(vcc),
+	.outclk(gnd),
+	.outclkena(vcc),
+	.inclk(gnd),
+	.inclkena(vcc),
+	.areset(gnd),
+	.sreset(gnd),
+	.differentialin(gnd),
+	.linkin(gnd),
+	.devclrn(devclrn),
+	.devpor(devpor),
+	.devoe(devoe),
+	.combout(),
+	.regout(),
+	.differentialout(),
+	.linkout(),
+	.padio(Dado2[21]));
+// synopsys translate_off
+defparam \Dado2[21]~I .input_async_reset = "none";
+defparam \Dado2[21]~I .input_power_up = "low";
+defparam \Dado2[21]~I .input_register_mode = "none";
+defparam \Dado2[21]~I .input_sync_reset = "none";
+defparam \Dado2[21]~I .oe_async_reset = "none";
+defparam \Dado2[21]~I .oe_power_up = "low";
+defparam \Dado2[21]~I .oe_register_mode = "none";
+defparam \Dado2[21]~I .oe_sync_reset = "none";
+defparam \Dado2[21]~I .operation_mode = "output";
+defparam \Dado2[21]~I .output_async_reset = "none";
+defparam \Dado2[21]~I .output_power_up = "low";
+defparam \Dado2[21]~I .output_register_mode = "none";
+defparam \Dado2[21]~I .output_sync_reset = "none";
+// synopsys translate_on
+
+// Location: PIN_AD7,	 I/O Standard: 3.3-V LVTTL,	 Current Strength: 24mA
+cycloneii_io \Dado2[22]~I (
+	.datain(gnd),
+	.oe(vcc),
+	.outclk(gnd),
+	.outclkena(vcc),
+	.inclk(gnd),
+	.inclkena(vcc),
+	.areset(gnd),
+	.sreset(gnd),
+	.differentialin(gnd),
+	.linkin(gnd),
+	.devclrn(devclrn),
+	.devpor(devpor),
+	.devoe(devoe),
+	.combout(),
+	.regout(),
+	.differentialout(),
+	.linkout(),
+	.padio(Dado2[22]));
+// synopsys translate_off
+defparam \Dado2[22]~I .input_async_reset = "none";
+defparam \Dado2[22]~I .input_power_up = "low";
+defparam \Dado2[22]~I .input_register_mode = "none";
+defparam \Dado2[22]~I .input_sync_reset = "none";
+defparam \Dado2[22]~I .oe_async_reset = "none";
+defparam \Dado2[22]~I .oe_power_up = "low";
+defparam \Dado2[22]~I .oe_register_mode = "none";
+defparam \Dado2[22]~I .oe_sync_reset = "none";
+defparam \Dado2[22]~I .operation_mode = "output";
+defparam \Dado2[22]~I .output_async_reset = "none";
+defparam \Dado2[22]~I .output_power_up = "low";
+defparam \Dado2[22]~I .output_register_mode = "none";
+defparam \Dado2[22]~I .output_sync_reset = "none";
+// synopsys translate_on
+
+// Location: PIN_J16,	 I/O Standard: 3.3-V LVTTL,	 Current Strength: 24mA
+cycloneii_io \Dado2[23]~I (
+	.datain(gnd),
+	.oe(vcc),
+	.outclk(gnd),
+	.outclkena(vcc),
+	.inclk(gnd),
+	.inclkena(vcc),
+	.areset(gnd),
+	.sreset(gnd),
+	.differentialin(gnd),
+	.linkin(gnd),
+	.devclrn(devclrn),
+	.devpor(devpor),
+	.devoe(devoe),
+	.combout(),
+	.regout(),
+	.differentialout(),
+	.linkout(),
+	.padio(Dado2[23]));
+// synopsys translate_off
+defparam \Dado2[23]~I .input_async_reset = "none";
+defparam \Dado2[23]~I .input_power_up = "low";
+defparam \Dado2[23]~I .input_register_mode = "none";
+defparam \Dado2[23]~I .input_sync_reset = "none";
+defparam \Dado2[23]~I .oe_async_reset = "none";
+defparam \Dado2[23]~I .oe_power_up = "low";
+defparam \Dado2[23]~I .oe_register_mode = "none";
+defparam \Dado2[23]~I .oe_sync_reset = "none";
+defparam \Dado2[23]~I .operation_mode = "output";
+defparam \Dado2[23]~I .output_async_reset = "none";
+defparam \Dado2[23]~I .output_power_up = "low";
+defparam \Dado2[23]~I .output_register_mode = "none";
+defparam \Dado2[23]~I .output_sync_reset = "none";
+// synopsys translate_on
+
+// Location: PIN_U18,	 I/O Standard: 3.3-V LVTTL,	 Current Strength: 24mA
+cycloneii_io \Dado2[24]~I (
+	.datain(gnd),
+	.oe(vcc),
+	.outclk(gnd),
+	.outclkena(vcc),
+	.inclk(gnd),
+	.inclkena(vcc),
+	.areset(gnd),
+	.sreset(gnd),
+	.differentialin(gnd),
+	.linkin(gnd),
+	.devclrn(devclrn),
+	.devpor(devpor),
+	.devoe(devoe),
+	.combout(),
+	.regout(),
+	.differentialout(),
+	.linkout(),
+	.padio(Dado2[24]));
+// synopsys translate_off
+defparam \Dado2[24]~I .input_async_reset = "none";
+defparam \Dado2[24]~I .input_power_up = "low";
+defparam \Dado2[24]~I .input_register_mode = "none";
+defparam \Dado2[24]~I .input_sync_reset = "none";
+defparam \Dado2[24]~I .oe_async_reset = "none";
+defparam \Dado2[24]~I .oe_power_up = "low";
+defparam \Dado2[24]~I .oe_register_mode = "none";
+defparam \Dado2[24]~I .oe_sync_reset = "none";
+defparam \Dado2[24]~I .operation_mode = "output";
+defparam \Dado2[24]~I .output_async_reset = "none";
+defparam \Dado2[24]~I .output_power_up = "low";
+defparam \Dado2[24]~I .output_register_mode = "none";
+defparam \Dado2[24]~I .output_sync_reset = "none";
+// synopsys translate_on
+
+// Location: PIN_W15,	 I/O Standard: 3.3-V LVTTL,	 Current Strength: 24mA
+cycloneii_io \Dado2[25]~I (
+	.datain(gnd),
+	.oe(vcc),
+	.outclk(gnd),
+	.outclkena(vcc),
+	.inclk(gnd),
+	.inclkena(vcc),
+	.areset(gnd),
+	.sreset(gnd),
+	.differentialin(gnd),
+	.linkin(gnd),
+	.devclrn(devclrn),
+	.devpor(devpor),
+	.devoe(devoe),
+	.combout(),
+	.regout(),
+	.differentialout(),
+	.linkout(),
+	.padio(Dado2[25]));
+// synopsys translate_off
+defparam \Dado2[25]~I .input_async_reset = "none";
+defparam \Dado2[25]~I .input_power_up = "low";
+defparam \Dado2[25]~I .input_register_mode = "none";
+defparam \Dado2[25]~I .input_sync_reset = "none";
+defparam \Dado2[25]~I .oe_async_reset = "none";
+defparam \Dado2[25]~I .oe_power_up = "low";
+defparam \Dado2[25]~I .oe_register_mode = "none";
+defparam \Dado2[25]~I .oe_sync_reset = "none";
+defparam \Dado2[25]~I .operation_mode = "output";
+defparam \Dado2[25]~I .output_async_reset = "none";
+defparam \Dado2[25]~I .output_power_up = "low";
+defparam \Dado2[25]~I .output_register_mode = "none";
+defparam \Dado2[25]~I .output_sync_reset = "none";
+// synopsys translate_on
+
+// Location: PIN_G10,	 I/O Standard: 3.3-V LVTTL,	 Current Strength: 24mA
+cycloneii_io \Dado2[26]~I (
+	.datain(gnd),
+	.oe(vcc),
+	.outclk(gnd),
+	.outclkena(vcc),
+	.inclk(gnd),
+	.inclkena(vcc),
+	.areset(gnd),
+	.sreset(gnd),
+	.differentialin(gnd),
+	.linkin(gnd),
+	.devclrn(devclrn),
+	.devpor(devpor),
+	.devoe(devoe),
+	.combout(),
+	.regout(),
+	.differentialout(),
+	.linkout(),
+	.padio(Dado2[26]));
+// synopsys translate_off
+defparam \Dado2[26]~I .input_async_reset = "none";
+defparam \Dado2[26]~I .input_power_up = "low";
+defparam \Dado2[26]~I .input_register_mode = "none";
+defparam \Dado2[26]~I .input_sync_reset = "none";
+defparam \Dado2[26]~I .oe_async_reset = "none";
+defparam \Dado2[26]~I .oe_power_up = "low";
+defparam \Dado2[26]~I .oe_register_mode = "none";
+defparam \Dado2[26]~I .oe_sync_reset = "none";
+defparam \Dado2[26]~I .operation_mode = "output";
+defparam \Dado2[26]~I .output_async_reset = "none";
+defparam \Dado2[26]~I .output_power_up = "low";
+defparam \Dado2[26]~I .output_register_mode = "none";
+defparam \Dado2[26]~I .output_sync_reset = "none";
+// synopsys translate_on
+
+// Location: PIN_A19,	 I/O Standard: 3.3-V LVTTL,	 Current Strength: 24mA
+cycloneii_io \Dado2[27]~I (
+	.datain(gnd),
+	.oe(vcc),
+	.outclk(gnd),
+	.outclkena(vcc),
+	.inclk(gnd),
+	.inclkena(vcc),
+	.areset(gnd),
+	.sreset(gnd),
+	.differentialin(gnd),
+	.linkin(gnd),
+	.devclrn(devclrn),
+	.devpor(devpor),
+	.devoe(devoe),
+	.combout(),
+	.regout(),
+	.differentialout(),
+	.linkout(),
+	.padio(Dado2[27]));
+// synopsys translate_off
+defparam \Dado2[27]~I .input_async_reset = "none";
+defparam \Dado2[27]~I .input_power_up = "low";
+defparam \Dado2[27]~I .input_register_mode = "none";
+defparam \Dado2[27]~I .input_sync_reset = "none";
+defparam \Dado2[27]~I .oe_async_reset = "none";
+defparam \Dado2[27]~I .oe_power_up = "low";
+defparam \Dado2[27]~I .oe_register_mode = "none";
+defparam \Dado2[27]~I .oe_sync_reset = "none";
+defparam \Dado2[27]~I .operation_mode = "output";
+defparam \Dado2[27]~I .output_async_reset = "none";
+defparam \Dado2[27]~I .output_power_up = "low";
+defparam \Dado2[27]~I .output_register_mode = "none";
+defparam \Dado2[27]~I .output_sync_reset = "none";
+// synopsys translate_on
+
+// Location: PIN_F10,	 I/O Standard: 3.3-V LVTTL,	 Current Strength: 24mA
+cycloneii_io \Dado2[28]~I (
+	.datain(gnd),
+	.oe(vcc),
+	.outclk(gnd),
+	.outclkena(vcc),
+	.inclk(gnd),
+	.inclkena(vcc),
+	.areset(gnd),
+	.sreset(gnd),
+	.differentialin(gnd),
+	.linkin(gnd),
+	.devclrn(devclrn),
+	.devpor(devpor),
+	.devoe(devoe),
+	.combout(),
+	.regout(),
+	.differentialout(),
+	.linkout(),
+	.padio(Dado2[28]));
+// synopsys translate_off
+defparam \Dado2[28]~I .input_async_reset = "none";
+defparam \Dado2[28]~I .input_power_up = "low";
+defparam \Dado2[28]~I .input_register_mode = "none";
+defparam \Dado2[28]~I .input_sync_reset = "none";
+defparam \Dado2[28]~I .oe_async_reset = "none";
+defparam \Dado2[28]~I .oe_power_up = "low";
+defparam \Dado2[28]~I .oe_register_mode = "none";
+defparam \Dado2[28]~I .oe_sync_reset = "none";
+defparam \Dado2[28]~I .operation_mode = "output";
+defparam \Dado2[28]~I .output_async_reset = "none";
+defparam \Dado2[28]~I .output_power_up = "low";
+defparam \Dado2[28]~I .output_register_mode = "none";
+defparam \Dado2[28]~I .output_sync_reset = "none";
+// synopsys translate_on
+
+// Location: PIN_E5,	 I/O Standard: 3.3-V LVTTL,	 Current Strength: 24mA
+cycloneii_io \Dado2[29]~I (
+	.datain(gnd),
+	.oe(vcc),
+	.outclk(gnd),
+	.outclkena(vcc),
+	.inclk(gnd),
+	.inclkena(vcc),
+	.areset(gnd),
+	.sreset(gnd),
+	.differentialin(gnd),
+	.linkin(gnd),
+	.devclrn(devclrn),
+	.devpor(devpor),
+	.devoe(devoe),
+	.combout(),
+	.regout(),
+	.differentialout(),
+	.linkout(),
+	.padio(Dado2[29]));
+// synopsys translate_off
+defparam \Dado2[29]~I .input_async_reset = "none";
+defparam \Dado2[29]~I .input_power_up = "low";
+defparam \Dado2[29]~I .input_register_mode = "none";
+defparam \Dado2[29]~I .input_sync_reset = "none";
+defparam \Dado2[29]~I .oe_async_reset = "none";
+defparam \Dado2[29]~I .oe_power_up = "low";
+defparam \Dado2[29]~I .oe_register_mode = "none";
+defparam \Dado2[29]~I .oe_sync_reset = "none";
+defparam \Dado2[29]~I .operation_mode = "output";
+defparam \Dado2[29]~I .output_async_reset = "none";
+defparam \Dado2[29]~I .output_power_up = "low";
+defparam \Dado2[29]~I .output_register_mode = "none";
+defparam \Dado2[29]~I .output_sync_reset = "none";
+// synopsys translate_on
+
+// Location: PIN_AE13,	 I/O Standard: 3.3-V LVTTL,	 Current Strength: 24mA
+cycloneii_io \Dado2[30]~I (
+	.datain(gnd),
+	.oe(vcc),
+	.outclk(gnd),
+	.outclkena(vcc),
+	.inclk(gnd),
+	.inclkena(vcc),
+	.areset(gnd),
+	.sreset(gnd),
+	.differentialin(gnd),
+	.linkin(gnd),
+	.devclrn(devclrn),
+	.devpor(devpor),
+	.devoe(devoe),
+	.combout(),
+	.regout(),
+	.differentialout(),
+	.linkout(),
+	.padio(Dado2[30]));
+// synopsys translate_off
+defparam \Dado2[30]~I .input_async_reset = "none";
+defparam \Dado2[30]~I .input_power_up = "low";
+defparam \Dado2[30]~I .input_register_mode = "none";
+defparam \Dado2[30]~I .input_sync_reset = "none";
+defparam \Dado2[30]~I .oe_async_reset = "none";
+defparam \Dado2[30]~I .oe_power_up = "low";
+defparam \Dado2[30]~I .oe_register_mode = "none";
+defparam \Dado2[30]~I .oe_sync_reset = "none";
+defparam \Dado2[30]~I .operation_mode = "output";
+defparam \Dado2[30]~I .output_async_reset = "none";
+defparam \Dado2[30]~I .output_power_up = "low";
+defparam \Dado2[30]~I .output_register_mode = "none";
+defparam \Dado2[30]~I .output_sync_reset = "none";
+// synopsys translate_on
+
+// Location: PIN_E18,	 I/O Standard: 3.3-V LVTTL,	 Current Strength: 24mA
+cycloneii_io \Dado2[31]~I (
+	.datain(gnd),
+	.oe(vcc),
+	.outclk(gnd),
+	.outclkena(vcc),
+	.inclk(gnd),
+	.inclkena(vcc),
+	.areset(gnd),
+	.sreset(gnd),
+	.differentialin(gnd),
+	.linkin(gnd),
+	.devclrn(devclrn),
+	.devpor(devpor),
+	.devoe(devoe),
+	.combout(),
+	.regout(),
+	.differentialout(),
+	.linkout(),
+	.padio(Dado2[31]));
+// synopsys translate_off
+defparam \Dado2[31]~I .input_async_reset = "none";
+defparam \Dado2[31]~I .input_power_up = "low";
+defparam \Dado2[31]~I .input_register_mode = "none";
+defparam \Dado2[31]~I .input_sync_reset = "none";
+defparam \Dado2[31]~I .oe_async_reset = "none";
+defparam \Dado2[31]~I .oe_power_up = "low";
+defparam \Dado2[31]~I .oe_register_mode = "none";
+defparam \Dado2[31]~I .oe_sync_reset = "none";
+defparam \Dado2[31]~I .operation_mode = "output";
+defparam \Dado2[31]~I .output_async_reset = "none";
+defparam \Dado2[31]~I .output_power_up = "low";
+defparam \Dado2[31]~I .output_register_mode = "none";
+defparam \Dado2[31]~I .output_sync_reset = "none";
+// synopsys translate_on
+
+endmodule

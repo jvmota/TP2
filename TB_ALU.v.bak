@@ -1,0 +1,33 @@
+module TB_ALU();
+
+reg [31:0] I1, I2;
+reg [3:0] OP;
+wire [31:0] O;
+
+instancia_alu ALU(
+	.I1(input1),
+	.I2(input2),
+	.OP(op),
+	.O(output1)
+);
+
+initial
+begin
+	I1 = 32'h00000002;
+	I2 = 32'H00000004;
+	O = 4'b1000;
+	#10
+	I1 = 32'h00000004;
+	I2 = 32'H00000002;
+	O = 4'b0100;
+	#10
+	I1 = 32'h00000006;
+	I2 = 32'H00000004;
+	O = 4'b0010;
+	#10
+	I1 = 32'h00000008;
+	I2 = 32'H00000002;
+	O = 4'b0001;
+	#10
+end
+endmodule

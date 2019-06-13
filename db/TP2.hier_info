@@ -1,0 +1,43 @@
+|RegisterFile
+RegEsc[0] => ~NO_FANOUT~
+RegEsc[1] => ~NO_FANOUT~
+Fonte1[0] => ~NO_FANOUT~
+Fonte1[1] => ~NO_FANOUT~
+Fonte2[0] => ~NO_FANOUT~
+Fonte2[1] => ~NO_FANOUT~
+Esc => ~NO_FANOUT~
+Clk => ~NO_FANOUT~
+Dado[0] => ~NO_FANOUT~
+Dado[1] => ~NO_FANOUT~
+Dado[2] => ~NO_FANOUT~
+Dado[3] => ~NO_FANOUT~
+Dado[4] => ~NO_FANOUT~
+Dado[5] => ~NO_FANOUT~
+Dado[6] => ~NO_FANOUT~
+Dado[7] => ~NO_FANOUT~
+Dado[8] => ~NO_FANOUT~
+Dado[9] => ~NO_FANOUT~
+Dado[10] => ~NO_FANOUT~
+Dado[11] => ~NO_FANOUT~
+Dado[12] => ~NO_FANOUT~
+Dado[13] => ~NO_FANOUT~
+Dado[14] => ~NO_FANOUT~
+Dado[15] => ~NO_FANOUT~
+Dado[16] => ~NO_FANOUT~
+Dado[17] => ~NO_FANOUT~
+Dado[18] => ~NO_FANOUT~
+Dado[19] => ~NO_FANOUT~
+Dado[20] => ~NO_FANOUT~
+Dado[21] => ~NO_FANOUT~
+Dado[22] => ~NO_FANOUT~
+Dado[23] => ~NO_FANOUT~
+Dado[24] => ~NO_FANOUT~
+Dado[25] => ~NO_FANOUT~
+Dado[26] => ~NO_FANOUT~
+Dado[27] => ~NO_FANOUT~
+Dado[28] => ~NO_FANOUT~
+Dado[29] => ~NO_FANOUT~
+Dado[30] => ~NO_FANOUT~
+Dado[31] => ~NO_FANOUT~
+
+

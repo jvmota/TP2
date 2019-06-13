@@ -1,0 +1,17 @@
+module ALU (
+	input wire input1[31:0],
+	input wire input2[31:0],
+	input wire op[3:0],
+	output wire output1[31:0]
+);
+
+always @(*)
+begin
+	case(op)
+		4b'1000: output1 <=  input1 + input2;
+		4b'0100: output1 <=  input1 - input2;
+		4b'0010: output1 <=  input1 * input2;
+		4b'0001: output1 <=  input1 / input2;
+		default: output <= input1;
+	endcase;
+end begin;
