@@ -1,5 +1,5 @@
 EDA Netlist Writer report for TP2
-Thu Jun 13 14:30:10 2019
+Fri Jun 14 10:36:00 2019
 Quartus II 32-bit Version 11.1 Build 259 01/25/2012 Service Pack 2 SJ Web Edition
 
 
@@ -36,7 +36,7 @@ applicable agreement for further details.
 +-------------------------------------------------------------------+
 ; EDA Netlist Writer Summary                                        ;
 +---------------------------+---------------------------------------+
-; EDA Netlist Writer Status ; Successful - Thu Jun 13 14:30:10 2019 ;
+; EDA Netlist Writer Status ; Successful - Fri Jun 14 10:36:00 2019 ;
 ; Revision Name             ; TP2                                   ;
 ; Top-level Entity Name     ; RegisterFile                          ;
 ; Family                    ; Cyclone II                            ;
@@ -84,15 +84,15 @@ applicable agreement for further details.
 Info: *******************************************************************
 Info: Running Quartus II 32-bit EDA Netlist Writer
     Info: Version 11.1 Build 259 01/25/2012 Service Pack 2 SJ Web Edition
-    Info: Processing started: Thu Jun 13 14:30:10 2019
+    Info: Processing started: Fri Jun 14 10:35:59 2019
 Info: Command: quartus_eda --read_settings_files=off --write_settings_files=off TP2 -c TP2
 Warning (202000): An incorrect timescale is selected for the Verilog Output (.VO) file of this PLL design. It's required that the timescale should be 1 ps when simulating a PLL design in a third party EDA tool.
 Warning (202000): An incorrect timescale is selected for the Verilog Output (.VO) file of this PLL design. It's required that the timescale should be 1 ps when simulating a PLL design in a third party EDA tool.
 Info (204026): Generated files "TP2.vo", "TP2_fast.vo", "TP2_v.sdo" and "TP2_v_fast.sdo" in directory "C:/Users/Jhon/Documents/Matérias/Organização de Computadores/programas/TP2/simulation/modelsim/" for EDA simulation tool
 Info: Quartus II 32-bit EDA Netlist Writer was successful. 0 errors, 2 warnings
-    Info: Peak virtual memory: 284 megabytes
-    Info: Processing ended: Thu Jun 13 14:30:10 2019
-    Info: Elapsed time: 00:00:00
+    Info: Peak virtual memory: 288 megabytes
+    Info: Processing ended: Fri Jun 14 10:36:00 2019
+    Info: Elapsed time: 00:00:01
     Info: Total CPU time (on all processors): 00:00:00
 
 

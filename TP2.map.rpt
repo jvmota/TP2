@@ -1,5 +1,5 @@
 Analysis & Synthesis report for TP2
-Thu Jun 13 14:29:57 2019
+Fri Jun 14 10:35:49 2019
 Quartus II 32-bit Version 11.1 Build 259 01/25/2012 Service Pack 2 SJ Web Edition
 
 
@@ -14,8 +14,9 @@ Quartus II 32-bit Version 11.1 Build 259 01/25/2012 Service Pack 2 SJ Web Editio
   6. Analysis & Synthesis Resource Usage Summary
   7. Analysis & Synthesis Resource Utilization by Entity
   8. General Register Statistics
-  9. Elapsed Time Per Partition
- 10. Analysis & Synthesis Messages
+  9. Multiplexer Restructuring Statistics (Restructuring Performed)
+ 10. Elapsed Time Per Partition
+ 11. Analysis & Synthesis Messages
 
 
 
@@ -41,15 +42,15 @@ applicable agreement for further details.
 +------------------------------------------------------------------------------------+
 ; Analysis & Synthesis Summary                                                       ;
 +------------------------------------+-----------------------------------------------+
-; Analysis & Synthesis Status        ; Successful - Thu Jun 13 14:29:57 2019         ;
+; Analysis & Synthesis Status        ; Successful - Fri Jun 14 10:35:49 2019         ;
 ; Quartus II 32-bit Version          ; 11.1 Build 259 01/25/2012 SP 2 SJ Web Edition ;
 ; Revision Name                      ; TP2                                           ;
 ; Top-level Entity Name              ; RegisterFile                                  ;
 ; Family                             ; Cyclone II                                    ;
-; Total logic elements               ; 0                                             ;
-;     Total combinational functions  ; 0                                             ;
-;     Dedicated logic registers      ; 0                                             ;
-; Total registers                    ; 0                                             ;
+; Total logic elements               ; 165                                           ;
+;     Total combinational functions  ; 69                                            ;
+;     Dedicated logic registers      ; 160                                           ;
+; Total registers                    ; 160                                           ;
 ; Total pins                         ; 104                                           ;
 ; Total virtual pins                 ; 0                                             ;
 ; Total memory bits                  ; 0                                             ;
@@ -166,22 +167,27 @@ Parallel compilation was disabled, but you have multiple processors available. E
 +---------------------------------------------+-------+
 ; Resource                                    ; Usage ;
 +---------------------------------------------+-------+
+; Estimated Total logic elements              ; 165   ;
 ;                                             ;       ;
-; Total combinational functions               ; 0     ;
+; Total combinational functions               ; 69    ;
 ; Logic element usage by number of LUT inputs ;       ;
 ;     -- 4 input functions                    ; 0     ;
-;     -- 3 input functions                    ; 0     ;
-;     -- <=2 input functions                  ; 0     ;
+;     -- 3 input functions                    ; 66    ;
+;     -- <=2 input functions                  ; 3     ;
 ;                                             ;       ;
 ; Logic elements by mode                      ;       ;
-;     -- normal mode                          ; 0     ;
+;     -- normal mode                          ; 69    ;
 ;     -- arithmetic mode                      ; 0     ;
 ;                                             ;       ;
-; Total registers                             ; 0     ;
-;     -- Dedicated logic registers            ; 0     ;
+; Total registers                             ; 160   ;
+;     -- Dedicated logic registers            ; 160   ;
 ;     -- I/O registers                        ; 0     ;
 ;                                             ;       ;
 ; I/O pins                                    ; 104   ;
+; Maximum fan-out node                        ; Clk   ;
+; Maximum fan-out                             ; 160   ;
+; Total fan-out                               ; 940   ;
+; Average fan-out                             ; 2.82  ;
 +---------------------------------------------+-------+
 
 
@@ -190,7 +196,7 @@ Parallel compilation was disabled, but you have multiple processors available. E
 +----------------------------+-------------------+--------------+-------------+--------------+---------+-----------+------+--------------+---------------------+--------------+
 ; Compilation Hierarchy Node ; LC Combinationals ; LC Registers ; Memory Bits ; DSP Elements ; DSP 9x9 ; DSP 18x18 ; Pins ; Virtual Pins ; Full Hierarchy Name ; Library Name ;
 +----------------------------+-------------------+--------------+-------------+--------------+---------+-----------+------+--------------+---------------------+--------------+
-; |RegisterFile              ; 0 (0)             ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 104  ; 0            ; |RegisterFile       ;              ;
+; |RegisterFile              ; 69 (69)           ; 160 (160)    ; 0           ; 0            ; 0       ; 0         ; 104  ; 0            ; |RegisterFile       ;              ;
 +----------------------------+-------------------+--------------+-------------+--------------+---------+-----------+------+--------------+---------------------+--------------+
 Note: For table entries with two numbers listed, the numbers in parentheses indicate the number of resources of the given type used by the specific entity alone. The numbers listed outside of parentheses indicate the total resources of the given type used by the specific entity and all of its sub-entities in the hierarchy.
 
@@ -200,14 +206,24 @@ Note: For table entries with two numbers listed, the numbers in parentheses indi
 +----------------------------------------------+-------+
 ; Statistic                                    ; Value ;
 +----------------------------------------------+-------+
-; Total registers                              ; 0     ;
-; Number of registers using Synchronous Clear  ; 0     ;
-; Number of registers using Synchronous Load   ; 0     ;
+; Total registers                              ; 160   ;
+; Number of registers using Synchronous Clear  ; 64    ;
+; Number of registers using Synchronous Load   ; 64    ;
 ; Number of registers using Asynchronous Clear ; 0     ;
 ; Number of registers using Asynchronous Load  ; 0     ;
-; Number of registers using Clock Enable       ; 0     ;
+; Number of registers using Clock Enable       ; 160   ;
 ; Number of registers using Preset             ; 0     ;
 +----------------------------------------------+-------+
+
+
++-----------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Multiplexer Restructuring Statistics (Restructuring Performed)                                                                                            ;
++--------------------+-----------+---------------+----------------------+------------------------+-----------------------------+----------------------------+
+; Multiplexer Inputs ; Bus Width ; Baseline Area ; Area if Restructured ; Saving if Restructured ; Registered                  ; Example Multiplexer Output ;
++--------------------+-----------+---------------+----------------------+------------------------+-----------------------------+----------------------------+
+; 4:1                ; 32 bits   ; 64 LEs        ; 64 LEs               ; 0 LEs                  ; |RegisterFile|Dado1[0]~reg0 ;                            ;
+; 4:1                ; 32 bits   ; 64 LEs        ; 64 LEs               ; 0 LEs                  ; |RegisterFile|Dado2[0]~reg0 ;                            ;
++--------------------+-----------+---------------+----------------------+------------------------+-----------------------------+----------------------------+
 
 
 +-------------------------------+
@@ -225,7 +241,7 @@ Note: For table entries with two numbers listed, the numbers in parentheses indi
 Info: *******************************************************************
 Info: Running Quartus II 32-bit Analysis & Synthesis
     Info: Version 11.1 Build 259 01/25/2012 Service Pack 2 SJ Web Edition
-    Info: Processing started: Thu Jun 13 14:29:55 2019
+    Info: Processing started: Fri Jun 14 10:35:48 2019
 Info: Command: quartus_map --read_settings_files=on --write_settings_files=off TP2 -c TP2
 Warning (20028): Parallel compilation is not licensed and has been disabled
 Info (12021): Found 1 design units, including 1 entities, in source file calc1.v
@@ -237,126 +253,15 @@ Info (12021): Found 1 design units, including 1 entities, in source file tb_alu.
 Info (12021): Found 1 design units, including 1 entities, in source file registerfile.v
     Info (12023): Found entity 1: RegisterFile
 Info (12127): Elaborating entity "RegisterFile" for the top level hierarchy
-Warning (10036): Verilog HDL or VHDL warning at RegisterFile.v(8): object "RegA" assigned a value but never read
-Warning (10036): Verilog HDL or VHDL warning at RegisterFile.v(8): object "RegB" assigned a value but never read
-Warning (10036): Verilog HDL or VHDL warning at RegisterFile.v(8): object "Acc" assigned a value but never read
-Warning (10034): Output port "Dado1" at RegisterFile.v(5) has no driver
-Warning (10034): Output port "Dado2" at RegisterFile.v(6) has no driver
-Warning (12158): Entity "RegisterFile" contains only dangling pins
-Warning (13024): Output pins are stuck at VCC or GND
-    Warning (13410): Pin "Dado1[0]" is stuck at GND
-    Warning (13410): Pin "Dado1[1]" is stuck at GND
-    Warning (13410): Pin "Dado1[2]" is stuck at GND
-    Warning (13410): Pin "Dado1[3]" is stuck at GND
-    Warning (13410): Pin "Dado1[4]" is stuck at GND
-    Warning (13410): Pin "Dado1[5]" is stuck at GND
-    Warning (13410): Pin "Dado1[6]" is stuck at GND
-    Warning (13410): Pin "Dado1[7]" is stuck at GND
-    Warning (13410): Pin "Dado1[8]" is stuck at GND
-    Warning (13410): Pin "Dado1[9]" is stuck at GND
-    Warning (13410): Pin "Dado1[10]" is stuck at GND
-    Warning (13410): Pin "Dado1[11]" is stuck at GND
-    Warning (13410): Pin "Dado1[12]" is stuck at GND
-    Warning (13410): Pin "Dado1[13]" is stuck at GND
-    Warning (13410): Pin "Dado1[14]" is stuck at GND
-    Warning (13410): Pin "Dado1[15]" is stuck at GND
-    Warning (13410): Pin "Dado1[16]" is stuck at GND
-    Warning (13410): Pin "Dado1[17]" is stuck at GND
-    Warning (13410): Pin "Dado1[18]" is stuck at GND
-    Warning (13410): Pin "Dado1[19]" is stuck at GND
-    Warning (13410): Pin "Dado1[20]" is stuck at GND
-    Warning (13410): Pin "Dado1[21]" is stuck at GND
-    Warning (13410): Pin "Dado1[22]" is stuck at GND
-    Warning (13410): Pin "Dado1[23]" is stuck at GND
-    Warning (13410): Pin "Dado1[24]" is stuck at GND
-    Warning (13410): Pin "Dado1[25]" is stuck at GND
-    Warning (13410): Pin "Dado1[26]" is stuck at GND
-    Warning (13410): Pin "Dado1[27]" is stuck at GND
-    Warning (13410): Pin "Dado1[28]" is stuck at GND
-    Warning (13410): Pin "Dado1[29]" is stuck at GND
-    Warning (13410): Pin "Dado1[30]" is stuck at GND
-    Warning (13410): Pin "Dado1[31]" is stuck at GND
-    Warning (13410): Pin "Dado2[0]" is stuck at GND
-    Warning (13410): Pin "Dado2[1]" is stuck at GND
-    Warning (13410): Pin "Dado2[2]" is stuck at GND
-    Warning (13410): Pin "Dado2[3]" is stuck at GND
-    Warning (13410): Pin "Dado2[4]" is stuck at GND
-    Warning (13410): Pin "Dado2[5]" is stuck at GND
-    Warning (13410): Pin "Dado2[6]" is stuck at GND
-    Warning (13410): Pin "Dado2[7]" is stuck at GND
-    Warning (13410): Pin "Dado2[8]" is stuck at GND
-    Warning (13410): Pin "Dado2[9]" is stuck at GND
-    Warning (13410): Pin "Dado2[10]" is stuck at GND
-    Warning (13410): Pin "Dado2[11]" is stuck at GND
-    Warning (13410): Pin "Dado2[12]" is stuck at GND
-    Warning (13410): Pin "Dado2[13]" is stuck at GND
-    Warning (13410): Pin "Dado2[14]" is stuck at GND
-    Warning (13410): Pin "Dado2[15]" is stuck at GND
-    Warning (13410): Pin "Dado2[16]" is stuck at GND
-    Warning (13410): Pin "Dado2[17]" is stuck at GND
-    Warning (13410): Pin "Dado2[18]" is stuck at GND
-    Warning (13410): Pin "Dado2[19]" is stuck at GND
-    Warning (13410): Pin "Dado2[20]" is stuck at GND
-    Warning (13410): Pin "Dado2[21]" is stuck at GND
-    Warning (13410): Pin "Dado2[22]" is stuck at GND
-    Warning (13410): Pin "Dado2[23]" is stuck at GND
-    Warning (13410): Pin "Dado2[24]" is stuck at GND
-    Warning (13410): Pin "Dado2[25]" is stuck at GND
-    Warning (13410): Pin "Dado2[26]" is stuck at GND
-    Warning (13410): Pin "Dado2[27]" is stuck at GND
-    Warning (13410): Pin "Dado2[28]" is stuck at GND
-    Warning (13410): Pin "Dado2[29]" is stuck at GND
-    Warning (13410): Pin "Dado2[30]" is stuck at GND
-    Warning (13410): Pin "Dado2[31]" is stuck at GND
 Info (16010): Generating hard_block partition "hard_block:auto_generated_inst"
-Warning (21074): Design contains 40 input pin(s) that do not drive logic
-    Warning (15610): No output dependent on input pin "RegEsc[0]"
-    Warning (15610): No output dependent on input pin "RegEsc[1]"
-    Warning (15610): No output dependent on input pin "Fonte1[0]"
-    Warning (15610): No output dependent on input pin "Fonte1[1]"
-    Warning (15610): No output dependent on input pin "Fonte2[0]"
-    Warning (15610): No output dependent on input pin "Fonte2[1]"
-    Warning (15610): No output dependent on input pin "Esc"
-    Warning (15610): No output dependent on input pin "Clk"
-    Warning (15610): No output dependent on input pin "Dado[0]"
-    Warning (15610): No output dependent on input pin "Dado[1]"
-    Warning (15610): No output dependent on input pin "Dado[2]"
-    Warning (15610): No output dependent on input pin "Dado[3]"
-    Warning (15610): No output dependent on input pin "Dado[4]"
-    Warning (15610): No output dependent on input pin "Dado[5]"
-    Warning (15610): No output dependent on input pin "Dado[6]"
-    Warning (15610): No output dependent on input pin "Dado[7]"
-    Warning (15610): No output dependent on input pin "Dado[8]"
-    Warning (15610): No output dependent on input pin "Dado[9]"
-    Warning (15610): No output dependent on input pin "Dado[10]"
-    Warning (15610): No output dependent on input pin "Dado[11]"
-    Warning (15610): No output dependent on input pin "Dado[12]"
-    Warning (15610): No output dependent on input pin "Dado[13]"
-    Warning (15610): No output dependent on input pin "Dado[14]"
-    Warning (15610): No output dependent on input pin "Dado[15]"
-    Warning (15610): No output dependent on input pin "Dado[16]"
-    Warning (15610): No output dependent on input pin "Dado[17]"
-    Warning (15610): No output dependent on input pin "Dado[18]"
-    Warning (15610): No output dependent on input pin "Dado[19]"
-    Warning (15610): No output dependent on input pin "Dado[20]"
-    Warning (15610): No output dependent on input pin "Dado[21]"
-    Warning (15610): No output dependent on input pin "Dado[22]"
-    Warning (15610): No output dependent on input pin "Dado[23]"
-    Warning (15610): No output dependent on input pin "Dado[24]"
-    Warning (15610): No output dependent on input pin "Dado[25]"
-    Warning (15610): No output dependent on input pin "Dado[26]"
-    Warning (15610): No output dependent on input pin "Dado[27]"
-    Warning (15610): No output dependent on input pin "Dado[28]"
-    Warning (15610): No output dependent on input pin "Dado[29]"
-    Warning (15610): No output dependent on input pin "Dado[30]"
-    Warning (15610): No output dependent on input pin "Dado[31]"
-Info (21057): Implemented 104 device resources after synthesis - the final resource count might be different
+Info (21057): Implemented 269 device resources after synthesis - the final resource count might be different
     Info (21058): Implemented 40 input pins
     Info (21059): Implemented 64 output pins
-Info: Quartus II 32-bit Analysis & Synthesis was successful. 0 errors, 113 warnings
-    Info: Peak virtual memory: 326 megabytes
-    Info: Processing ended: Thu Jun 13 14:29:57 2019
-    Info: Elapsed time: 00:00:02
+    Info (21061): Implemented 165 logic cells
+Info: Quartus II 32-bit Analysis & Synthesis was successful. 0 errors, 1 warning
+    Info: Peak virtual memory: 327 megabytes
+    Info: Processing ended: Fri Jun 14 10:35:49 2019
+    Info: Elapsed time: 00:00:01
     Info: Total CPU time (on all processors): 00:00:01
 
 
