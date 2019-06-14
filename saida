@@ -1,0 +1,185 @@
+#! /usr/bin/vvp
+:ivl_version "10.2 (stable)" "(v10_2)";
+:ivl_delay_selection "TYPICAL";
+:vpi_time_precision + 0;
+:vpi_module "system";
+:vpi_module "vhdl_sys";
+:vpi_module "v2005_math";
+:vpi_module "va_math";
+S_0x560e827c81f0 .scope module, "CALC1" "CALC1" 2 1;
+ .timescale 0 0;
+S_0x560e827c8390 .scope module, "RegisterFile" "RegisterFile" 3 1;
+ .timescale 0 0;
+    .port_info 0 /INPUT 2 "RegEsc"
+    .port_info 1 /INPUT 2 "Fonte1"
+    .port_info 2 /INPUT 2 "Fonte2"
+    .port_info 3 /INPUT 1 "Esc"
+    .port_info 4 /INPUT 1 "Clk"
+    .port_info 5 /INPUT 32 "Dado"
+    .port_info 6 /OUTPUT 32 "Dado1"
+    .port_info 7 /OUTPUT 32 "Dado2"
+v0x560e827c8880_0 .var "Acc", 31 0;
+o0x7fab197e4048 .functor BUFZ 1, C4<z>; HiZ drive
+v0x560e827f3760_0 .net "Clk", 0 0, o0x7fab197e4048;  0 drivers
+o0x7fab197e4078 .functor BUFZ 32, C4<zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz>; HiZ drive
+v0x560e827f3820_0 .net "Dado", 31 0, o0x7fab197e4078;  0 drivers
+v0x560e827f3910_0 .var "Dado1", 31 0;
+v0x560e827f39f0_0 .var "Dado2", 31 0;
+o0x7fab197e4108 .functor BUFZ 1, C4<z>; HiZ drive
+v0x560e827f3b20_0 .net "Esc", 0 0, o0x7fab197e4108;  0 drivers
+o0x7fab197e4138 .functor BUFZ 2, C4<zz>; HiZ drive
+v0x560e827f3be0_0 .net "Fonte1", 1 0, o0x7fab197e4138;  0 drivers
+o0x7fab197e4168 .functor BUFZ 2, C4<zz>; HiZ drive
+v0x560e827f3cc0_0 .net "Fonte2", 1 0, o0x7fab197e4168;  0 drivers
+v0x560e827f3da0_0 .var "RegA", 31 0;
+v0x560e827f3e80_0 .var "RegB", 31 0;
+o0x7fab197e41f8 .functor BUFZ 2, C4<zz>; HiZ drive
+v0x560e827f3f60_0 .net "RegEsc", 1 0, o0x7fab197e41f8;  0 drivers
+E_0x560e827918a0 .event negedge, v0x560e827f3760_0;
+S_0x560e827c86e0 .scope module, "TB_ALU" "TB_ALU" 4 1;
+ .timescale 0 0;
+v0x560e827f47f0_0 .var "I1", 31 0;
+v0x560e827f48d0_0 .var "I2", 31 0;
+v0x560e827f49a0_0 .net "O", 31 0, v0x560e827f4660_0;  1 drivers
+v0x560e827f4aa0_0 .var "OP", 3 0;
+S_0x560e827f4140 .scope module, "instancia_alu" "ALU" 4 7, 5 1 0, S_0x560e827c86e0;
+ .timescale 0 0;
+    .port_info 0 /INPUT 32 "input1"
+    .port_info 1 /INPUT 32 "input2"
+    .port_info 2 /INPUT 4 "op"
+    .port_info 3 /OUTPUT 32 "output1"
+v0x560e827f4390_0 .net "input1", 31 0, v0x560e827f47f0_0;  1 drivers
+v0x560e827f4490_0 .net "input2", 31 0, v0x560e827f48d0_0;  1 drivers
+v0x560e827f4570_0 .net "op", 3 0, v0x560e827f4aa0_0;  1 drivers
+v0x560e827f4660_0 .var "output1", 31 0;
+E_0x560e82791b60 .event edge, v0x560e827f4570_0, v0x560e827f4390_0, v0x560e827f4490_0;
+    .scope S_0x560e827c8390;
+T_0 ;
+    %wait E_0x560e827918a0;
+    %load/vec4 v0x560e827f3b20_0;
+    %pad/u 32;
+    %cmpi/e 1, 0, 32;
+    %jmp/0xz  T_0.0, 4;
+    %load/vec4 v0x560e827f3f60_0;
+    %dup/vec4;
+    %pushi/vec4 0, 0, 2;
+    %cmp/u;
+    %jmp/1 T_0.2, 6;
+    %dup/vec4;
+    %pushi/vec4 1, 0, 2;
+    %cmp/u;
+    %jmp/1 T_0.3, 6;
+    %dup/vec4;
+    %pushi/vec4 2, 0, 2;
+    %cmp/u;
+    %jmp/1 T_0.4, 6;
+    %jmp T_0.5;
+T_0.2 ;
+    %load/vec4 v0x560e827f3820_0;
+    %assign/vec4 v0x560e827f3da0_0, 0;
+    %jmp T_0.5;
+T_0.3 ;
+    %load/vec4 v0x560e827f3820_0;
+    %assign/vec4 v0x560e827f3e80_0, 0;
+    %jmp T_0.5;
+T_0.4 ;
+    %load/vec4 v0x560e827f3820_0;
+    %assign/vec4 v0x560e827c8880_0, 0;
+    %jmp T_0.5;
+T_0.5 ;
+    %pop/vec4 1;
+T_0.0 ;
+    %jmp T_0;
+    .thread T_0;
+    .scope S_0x560e827f4140;
+T_1 ;
+    %wait E_0x560e82791b60;
+    %load/vec4 v0x560e827f4570_0;
+    %dup/vec4;
+    %pushi/vec4 8, 0, 4;
+    %cmp/u;
+    %jmp/1 T_1.0, 6;
+    %dup/vec4;
+    %pushi/vec4 4, 0, 4;
+    %cmp/u;
+    %jmp/1 T_1.1, 6;
+    %dup/vec4;
+    %pushi/vec4 2, 0, 4;
+    %cmp/u;
+    %jmp/1 T_1.2, 6;
+    %dup/vec4;
+    %pushi/vec4 1, 0, 4;
+    %cmp/u;
+    %jmp/1 T_1.3, 6;
+    %load/vec4 v0x560e827f4390_0;
+    %store/vec4 v0x560e827f4660_0, 0, 32;
+    %jmp T_1.5;
+T_1.0 ;
+    %load/vec4 v0x560e827f4390_0;
+    %load/vec4 v0x560e827f4490_0;
+    %add;
+    %store/vec4 v0x560e827f4660_0, 0, 32;
+    %jmp T_1.5;
+T_1.1 ;
+    %load/vec4 v0x560e827f4390_0;
+    %load/vec4 v0x560e827f4490_0;
+    %sub;
+    %store/vec4 v0x560e827f4660_0, 0, 32;
+    %jmp T_1.5;
+T_1.2 ;
+    %load/vec4 v0x560e827f4390_0;
+    %load/vec4 v0x560e827f4490_0;
+    %mul;
+    %store/vec4 v0x560e827f4660_0, 0, 32;
+    %jmp T_1.5;
+T_1.3 ;
+    %load/vec4 v0x560e827f4390_0;
+    %load/vec4 v0x560e827f4490_0;
+    %div;
+    %store/vec4 v0x560e827f4660_0, 0, 32;
+    %jmp T_1.5;
+T_1.5 ;
+    %pop/vec4 1;
+    %jmp T_1;
+    .thread T_1, $push;
+    .scope S_0x560e827c86e0;
+T_2 ;
+    %pushi/vec4 2, 0, 32;
+    %store/vec4 v0x560e827f47f0_0, 0, 32;
+    %pushi/vec4 4, 0, 32;
+    %store/vec4 v0x560e827f48d0_0, 0, 32;
+    %pushi/vec4 8, 0, 4;
+    %store/vec4 v0x560e827f4aa0_0, 0, 4;
+    %delay 10, 0;
+    %pushi/vec4 4, 0, 32;
+    %store/vec4 v0x560e827f47f0_0, 0, 32;
+    %pushi/vec4 2, 0, 32;
+    %store/vec4 v0x560e827f48d0_0, 0, 32;
+    %pushi/vec4 4, 0, 4;
+    %store/vec4 v0x560e827f4aa0_0, 0, 4;
+    %delay 10, 0;
+    %pushi/vec4 6, 0, 32;
+    %store/vec4 v0x560e827f47f0_0, 0, 32;
+    %pushi/vec4 4, 0, 32;
+    %store/vec4 v0x560e827f48d0_0, 0, 32;
+    %pushi/vec4 2, 0, 4;
+    %store/vec4 v0x560e827f4aa0_0, 0, 4;
+    %delay 10, 0;
+    %pushi/vec4 8, 0, 32;
+    %store/vec4 v0x560e827f47f0_0, 0, 32;
+    %pushi/vec4 2, 0, 32;
+    %store/vec4 v0x560e827f48d0_0, 0, 32;
+    %pushi/vec4 1, 0, 4;
+    %store/vec4 v0x560e827f4aa0_0, 0, 4;
+    %delay 10, 0;
+    %vpi_call 4 32 "$finish" {0 0 0};
+    %end;
+    .thread T_2;
+# The file index is used to find the file name in the following table.
+:file_names 6;
+    "N/A";
+    "<interactive>";
+    "CALC1.v";
+    "RegisterFile.v";
+    "TB_ALU.v";
+    "ALU.v";
