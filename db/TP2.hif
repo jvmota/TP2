@@ -22,42 +22,6 @@ VHSM_ON
 -- Start VHDL Libraries --
 -- End VHDL Libraries --
 # entity
-CALC1
-# storage
-db|TP2.(0).cnf
-db|TP2.(0).cnf
-# logic_option {
-AUTO_RAM_RECOGNITION
-ON
-}
-# case_sensitive
-# source_file
-calc1.v
-271e8045e1fc4a2778b79d6368725f0
-8
-# internal_option {
-HDL_INITIAL_FANOUT_LIMIT
-OFF
-AUTO_RESOURCE_SHARING
-OFF
-AUTO_RAM_RECOGNITION
-ON
-AUTO_ROM_RECOGNITION
-ON
-IGNORE_VERILOG_INITIAL_CONSTRUCTS
-OFF
-VERILOG_CONSTANT_LOOP_LIMIT
-5000
-VERILOG_NON_CONSTANT_LOOP_LIMIT
-250
-}
-# hierarchies {
-|
-}
-# macro_sequence
-
-# end
-# entity
 ALU
 # storage
 db|TP2.(1).cnf
@@ -130,6 +94,78 @@ RegisterFile:insRegisterFile
 
 # end
 # entity
+Mem
+# storage
+db|TP2.(3).cnf
+db|TP2.(3).cnf
+# logic_option {
+AUTO_RAM_RECOGNITION
+ON
+}
+# case_sensitive
+# source_file
+mem.v
+54b31e0c3f63736cc71ec56aea4f8e4
+8
+# internal_option {
+HDL_INITIAL_FANOUT_LIMIT
+OFF
+AUTO_RESOURCE_SHARING
+OFF
+AUTO_RAM_RECOGNITION
+ON
+AUTO_ROM_RECOGNITION
+ON
+IGNORE_VERILOG_INITIAL_CONSTRUCTS
+OFF
+VERILOG_CONSTANT_LOOP_LIMIT
+5000
+VERILOG_NON_CONSTANT_LOOP_LIMIT
+250
+}
+# hierarchies {
+Mem:instMem
+}
+# macro_sequence
+
+# end
+# entity
+signExtend
+# storage
+db|TP2.(5).cnf
+db|TP2.(5).cnf
+# logic_option {
+AUTO_RAM_RECOGNITION
+ON
+}
+# case_sensitive
+# source_file
+signextend.v
+4e62b813b767bb6f93e87696950d6ac
+8
+# internal_option {
+HDL_INITIAL_FANOUT_LIMIT
+OFF
+AUTO_RESOURCE_SHARING
+OFF
+AUTO_RAM_RECOGNITION
+ON
+AUTO_ROM_RECOGNITION
+ON
+IGNORE_VERILOG_INITIAL_CONSTRUCTS
+OFF
+VERILOG_CONSTANT_LOOP_LIMIT
+5000
+VERILOG_NON_CONSTANT_LOOP_LIMIT
+250
+}
+# hierarchies {
+signExtend:instSignExtend
+}
+# macro_sequence
+
+# end
+# entity
 Controle
 # storage
 db|TP2.(4).cnf
@@ -141,7 +177,7 @@ ON
 # case_sensitive
 # source_file
 controle.v
-b3d2bec355ca24bf33b9b8a1b6faf237
+85ce2a6a2214184a515ee1eb7155af
 8
 # internal_option {
 HDL_INITIAL_FANOUT_LIMIT
@@ -166,18 +202,18 @@ Controle:instControle
 
 # end
 # entity
-Mem
+CALC1
 # storage
-db|TP2.(3).cnf
-db|TP2.(3).cnf
+db|TP2.(0).cnf
+db|TP2.(0).cnf
 # logic_option {
 AUTO_RAM_RECOGNITION
 ON
 }
 # case_sensitive
 # source_file
-mem.v
-9a43cb2978d51f7b9e0f063eb621c23
+calc1.v
+327f1c171f63e1720efc320782b374c
 8
 # internal_option {
 HDL_INITIAL_FANOUT_LIMIT
@@ -196,7 +232,7 @@ VERILOG_NON_CONSTANT_LOOP_LIMIT
 250
 }
 # hierarchies {
-Mem:instMem
+|
 }
 # macro_sequence
 

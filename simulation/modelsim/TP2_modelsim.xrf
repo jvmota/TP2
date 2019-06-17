@@ -6,6 +6,7 @@ source_file = 1, C:/Users/Jhon/Documents/GIT/TP2/RegisterFile.v
 source_file = 1, C:/Users/Jhon/Documents/GIT/TP2/TB_RegisterFile.v
 source_file = 1, C:/Users/Jhon/Documents/GIT/TP2/Mem.v
 source_file = 1, C:/Users/Jhon/Documents/GIT/TP2/Controle.v
+source_file = 1, C:/Users/Jhon/Documents/GIT/TP2/signExtend.v
 source_file = 1, C:/Users/Jhon/Documents/GIT/TP2/db/TP2.cbx.xml
 design_name = CALC1
 instance = comp, \B~I , B, CALC1, 1

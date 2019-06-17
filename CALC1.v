@@ -3,9 +3,10 @@ input wire A, B, Clk,
 output wire C
 );
 
-reg [1:0] FonteA, Dest, Acc;
+reg [1:0] FonteA, Dest, DestEscrita, Acc;
 reg [31:0] DadosEscrita, PC, PCP;
-wire [31:0] DadosA, DadosB, ResultALU, MemAddres, MemValue, MemData, instrucao;
+wire [31:0] DadosA, DadosB, ResultALU, imediato;
+wire [31:0] MemData, instrucao;
 wire RegEsc, MemEn, MemOp, Clear;
 wire FonteEscrita, MemtoReg, Stop;
 wire [3:0] opALU;
@@ -14,14 +15,14 @@ initial PC = 32'h00000000;
 
 ALU instALU(
 	.input1(DadosA),
-	.input2(DadosB),
+	.input2(imediato),
 	.op(opALU),
 	.output1(ResultALU)
 );
 
 RegisterFile insRegisterFile(
-	.RegEsc(Dest),
-	.Fonte1(Acc),
+	.RegEsc(DestEscrita),
+	.Fonte1(FonteA),
 	.Fonte2(FonteA),
 	.Esc(RegEsc),
 	.Clk(Clk),
@@ -32,8 +33,8 @@ RegisterFile insRegisterFile(
 
 Mem instMem(
 	.ReadPC(PC),
-	.RWAddr(MemAddres),
-	.Value(MemValue),
+	.RWAddr(imediato),
+	.Value(DadosB),
 	.OP2En(MemEn),
 	.OP2RW(MemOp),
 	.Clk(Clk),
@@ -54,6 +55,11 @@ Controle instControle(
 	.Clear(Clear)
 );
 
+signExtend instSignExtend(
+	.entrada(instrucao[24:0]),
+	.saida(imediato)
+);
+
 assign C = A & B;
 always @(*)
 begin
@@ -62,9 +68,9 @@ begin
 	Acc = 2'b10;
 	PCP = PC + 1;
 	if(FonteEscrita == 1'b0)
-		Dest = Acc;
+		DestEscrita = Acc;
 	else
-		Dest = FonteA;
+		DestEscrita = Dest;
 	if(MemtoReg == 1'b0)
 		DadosEscrita = ResultALU;
 	else
