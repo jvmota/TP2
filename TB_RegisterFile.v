@@ -16,9 +16,9 @@ RegisterFile instancia_RF(
 	.Dado2(D2)
 );
 
-initial
+/*initial
 begin
-	D = 32'h048fc24a;
+	/*D = 32'h048fc24a;
 	I2 = 32'H00000004;
 	OP = 4'b1000;
 	#10
@@ -35,6 +35,6 @@ begin
 	OP = 4'b0001;
 	#10
 	$finish;
-end
+end*/
 
 endmodule

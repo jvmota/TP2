@@ -1,0 +1,5 @@
+module Mem(
+	input wire [31:0] ReadPC, RWAddr,
+	input wire OP2En, OP2RW,
+	output reg [31:0] Instr, Data
+);

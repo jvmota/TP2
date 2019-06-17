@@ -1,0 +1,4 @@
+module Controle(
+	input wire [2:0] OpCode,
+	output reg MemtoReg, MemEn, MemOp, FonteEscrita, RegEsc;
+)
