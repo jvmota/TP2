@@ -1,0 +1,13 @@
+module tb_CALC1();
+
+reg clk = 0;
+wire [31:0] regA, regB, rAcc;
+wire C;
+
+CALC1 instCalc (
+	.Clk(clk),
+	.C(C),
+	.RegA(regA),
+	.RegB(regB),
+	.RAcc(rAcc)
+);

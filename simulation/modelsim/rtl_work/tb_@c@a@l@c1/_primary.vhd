@@ -1,4 +1,4 @@
 library verilog;
 use verilog.vl_types.all;
-entity TB_ALU is
-end TB_ALU;
+entity tb_CALC1 is
+end tb_CALC1;

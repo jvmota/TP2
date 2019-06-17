@@ -52,7 +52,7 @@ begin
 		MemOp = 1'b0;
 		FonteEscrita = 1'b0;
 		RegEsc = 1'b1;
-		ALUCode = 4'b0001;
+		ALUCode = 4'b0010;
 		Stop = 1'b0;
 		Clear = 1'b0;
 	end
@@ -60,7 +60,7 @@ begin
 	else if(OpCode == 3'b100)
 	begin
 		MemtoReg = 1'b0;
-		MemEn = 1'b0;
+		MemEn = 1'b1;
 		MemOp = 1'b0;
 		FonteEscrita = 1'b0;
 		RegEsc = 1'b0;

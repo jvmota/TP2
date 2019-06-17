@@ -2,44 +2,144 @@ m255
 K3
 13
 cModel Technology
-Z0 dC:\Users\Jhon\Documents\Matérias\Organização de Computadores\programas\TP2\simulation\modelsim
+Z0 dC:\Users\Jhon\Documents\GIT\TP2\simulation\modelsim
 vALU
-IPbS=JaT0QS:lPnJ;XBX_i2
+I97kj6_UOJJ`^P@Ge8Wd6m1
 VI>jW3z0nj_X4^UX9L8FPE1
-Z1 dC:\Users\Jhon\Documents\Matérias\Organização de Computadores\programas\TP2\simulation\modelsim
-w1560114049
-8C:/Users/Jhon/Documents/Matérias/Organização de Computadores/programas/TP2/ALU.v
-FC:/Users/Jhon/Documents/Matérias/Organização de Computadores/programas/TP2/ALU.v
+Z1 dC:\Users\Jhon\Documents\GIT\TP2\simulation\modelsim
+w1560779998
+8C:/Users/Jhon/Documents/GIT/TP2/ALU.v
+FC:/Users/Jhon/Documents/GIT/TP2/ALU.v
 L0 1
 Z2 OV;L;10.0c;49
 r1
 31
 Z3 o-vlog01compat -work work -O0
+Z4 !s92 -vlog01compat -work work +incdir+C:/Users/Jhon/Documents/GIT/TP2 -O0
 n@a@l@u
-!s100 m5oL@^03E1h81;B67zjmA3
+!s100 c:B3N9[Yi9Nif3bjeRT2A0
 !s85 0
-!s108 1560124110.714000
-!s107 C:/Users/Jhon/Documents/Matérias/Organização de Computadores/programas/TP2/ALU.v|
-!s90 -reportprogress|300|-vlog01compat|-work|work|+incdir+C:/Users/Jhon/Documents/Matérias/Organização de Computadores/programas/TP2|C:/Users/Jhon/Documents/Matérias/Organização de Computadores/programas/TP2/ALU.v|
+!s108 1560814252.164000
+!s107 C:/Users/Jhon/Documents/GIT/TP2/ALU.v|
+!s90 -reportprogress|300|-vlog01compat|-work|work|+incdir+C:/Users/Jhon/Documents/GIT/TP2|C:/Users/Jhon/Documents/GIT/TP2/ALU.v|
 !s101 -O0
-Z4 !s92 -vlog01compat -work work {+incdir+C:/Users/Jhon/Documents/Matérias/Organização de Computadores/programas/TP2} -O0
-vTB_ALU
-!s100 CA3ISfjP<STXhOQ;jEO7Y2
-IUTUC=DWiDH_>0U[[3?cMA2
-Vce>k6IO0GFL7:N3=]PzF82
+vCALC1
+I;UkoLji@dO2=fLKGM73mV1
+VU@HQ[FzROG4TI[^X:1I:T2
 R1
-w1560124099
-8C:/Users/Jhon/Documents/Matérias/Organização de Computadores/programas/TP2/TB_ALU.v
-FC:/Users/Jhon/Documents/Matérias/Organização de Computadores/programas/TP2/TB_ALU.v
+w1560806059
+8C:/Users/Jhon/Documents/GIT/TP2/CALC1.v
+FC:/Users/Jhon/Documents/GIT/TP2/CALC1.v
+L0 1
+R2
+r1
+31
+R3
+n@c@a@l@c1
+R4
+!s100 `235d=:[S;_k7Wh1d^ZVQ1
+!s85 0
+!s108 1560814252.068000
+!s107 C:/Users/Jhon/Documents/GIT/TP2/CALC1.v|
+!s90 -reportprogress|300|-vlog01compat|-work|work|+incdir+C:/Users/Jhon/Documents/GIT/TP2|C:/Users/Jhon/Documents/GIT/TP2/CALC1.v|
+!s101 -O0
+vControle
+I>YSeV8gWaE:GO0eBahKBh1
+ViDV2DUM8lFVI_d9CcWaN10
+R1
+w1560813738
+8C:/Users/Jhon/Documents/GIT/TP2/Controle.v
+FC:/Users/Jhon/Documents/GIT/TP2/Controle.v
+L0 1
+R2
+r1
+31
+R3
+R4
+n@controle
+!s100 JGh2EnH:ozDo7NlCV[OgI0
+!s85 0
+!s108 1560814252.361000
+!s107 C:/Users/Jhon/Documents/GIT/TP2/Controle.v|
+!s90 -reportprogress|300|-vlog01compat|-work|work|+incdir+C:/Users/Jhon/Documents/GIT/TP2|C:/Users/Jhon/Documents/GIT/TP2/Controle.v|
+!s101 -O0
+vMem
+I]ZG0eiVmA=b>77fU??0e[0
+V=:i4B9]1TQ`H0eHiAjj2U2
+R1
+w1560813996
+8C:/Users/Jhon/Documents/GIT/TP2/Mem.v
+FC:/Users/Jhon/Documents/GIT/TP2/Mem.v
+L0 1
+R2
+r1
+31
+R3
+R4
+n@mem
+!s100 BMl5R>HRzI7F<ZB5dU_Wd3
+!s85 0
+!s108 1560814252.577000
+!s107 C:/Users/Jhon/Documents/GIT/TP2/Mem.v|
+!s90 -reportprogress|300|-vlog01compat|-work|work|+incdir+C:/Users/Jhon/Documents/GIT/TP2|C:/Users/Jhon/Documents/GIT/TP2/Mem.v|
+!s101 -O0
+vRegisterFile
+IDglEZ^3m[nO28f8lCAkW71
+Vio<66T^8kWFHlA59V:Y]80
+R1
+w1560797349
+8C:/Users/Jhon/Documents/GIT/TP2/RegisterFile.v
+FC:/Users/Jhon/Documents/GIT/TP2/RegisterFile.v
+L0 1
+R2
+r1
+31
+R3
+R4
+n@register@file
+!s100 zRm_ja`P6hYYMCL8]Hf;g3
+!s85 0
+!s108 1560814252.277000
+!s107 C:/Users/Jhon/Documents/GIT/TP2/RegisterFile.v|
+!s90 -reportprogress|300|-vlog01compat|-work|work|+incdir+C:/Users/Jhon/Documents/GIT/TP2|C:/Users/Jhon/Documents/GIT/TP2/RegisterFile.v|
+!s101 -O0
+vsignExtend
+IYS19FOnURQgI<DM5KZf[[2
+V^Hj3HeZm7]@Ij8;FlMbY>0
+R1
+w1560780055
+8C:/Users/Jhon/Documents/GIT/TP2/signExtend.v
+FC:/Users/Jhon/Documents/GIT/TP2/signExtend.v
+L0 1
+R2
+r1
+31
+R3
+R4
+nsign@extend
+!s100 W7]`]Hn?DARV6kX[edM9D3
+!s85 0
+!s108 1560814252.447000
+!s107 C:/Users/Jhon/Documents/GIT/TP2/signExtend.v|
+!s90 -reportprogress|300|-vlog01compat|-work|work|+incdir+C:/Users/Jhon/Documents/GIT/TP2|C:/Users/Jhon/Documents/GIT/TP2/signExtend.v|
+!s101 -O0
+vtb_CALC1
+!s100 P?:H<T0g?zM@@?Mm7V[U60
+IcYhR^fL88R4h36Sfi94C_0
+VaG>@]=0WQcCDjoh]Tz9bz3
+R1
+w1560796477
+8C:/Users/Jhon/Documents/GIT/TP2/tb_CALC1.v
+FC:/Users/Jhon/Documents/GIT/TP2/tb_CALC1.v
 L0 1
 R2
 r1
 !s85 0
 31
-!s108 1560124110.975000
-!s107 C:/Users/Jhon/Documents/Matérias/Organização de Computadores/programas/TP2/TB_ALU.v|
-!s90 -reportprogress|300|-vlog01compat|-work|work|+incdir+C:/Users/Jhon/Documents/Matérias/Organização de Computadores/programas/TP2|C:/Users/Jhon/Documents/Matérias/Organização de Computadores/programas/TP2/TB_ALU.v|
+!s108 1560814252.661000
+!s107 C:/Users/Jhon/Documents/GIT/TP2/tb_CALC1.v|
+!s90 -reportprogress|300|-vlog01compat|-work|work|+incdir+C:/Users/Jhon/Documents/GIT/TP2|C:/Users/Jhon/Documents/GIT/TP2/tb_CALC1.v|
 !s101 -O0
 R3
 R4
-n@t@b_@a@l@u
+ntb_@c@a@l@c1

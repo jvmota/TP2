@@ -4,7 +4,7 @@ module ALU (
 	output reg [31:0] output1
 );
 
-//reg [31:0] result;
+//realiza a operacao e coloca na saida
 always @(*)
 begin
 	case(op)
@@ -14,6 +14,5 @@ begin
 		4'b0001: output1 =  input1 / input2;
 		default: output1 = input1;
 	endcase
-	//output1 <= result;
 end
 endmodule
