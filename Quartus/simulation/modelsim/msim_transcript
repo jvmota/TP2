@@ -1,0 +1,73 @@
+# Reading C:/altera/11.1/modelsim_ase/tcl/vsim/pref.tcl 
+# do TP2_run_msim_rtl_verilog.do 
+# if {[file exists rtl_work]} {
+# 	vdel -lib rtl_work -all
+# }
+# vlib rtl_work
+# vmap work rtl_work
+# Copying c:\altera\11.1\modelsim_ase\win32aloem/../modelsim.ini to modelsim.ini
+# Modifying modelsim.ini
+# ** Warning: Copied c:\altera\11.1\modelsim_ase\win32aloem/../modelsim.ini to modelsim.ini.
+#          Updated modelsim.ini.
+# 
+# vlog -vlog01compat -work work +incdir+C:/Users/Jhon/Documents/GIT/TP2/Quartus {C:/Users/Jhon/Documents/GIT/TP2/Quartus/CALC1.v}
+# Model Technology ModelSim ALTERA vlog 10.0c Compiler 2011.09 Sep 21 2011
+# -- Compiling module CALC1
+# 
+# Top level modules:
+# 	CALC1
+# vlog -vlog01compat -work work +incdir+C:/Users/Jhon/Documents/GIT/TP2/Quartus {C:/Users/Jhon/Documents/GIT/TP2/Quartus/ALU.v}
+# Model Technology ModelSim ALTERA vlog 10.0c Compiler 2011.09 Sep 21 2011
+# -- Compiling module ALU
+# 
+# Top level modules:
+# 	ALU
+# vlog -vlog01compat -work work +incdir+C:/Users/Jhon/Documents/GIT/TP2/Quartus {C:/Users/Jhon/Documents/GIT/TP2/Quartus/RegisterFile.v}
+# Model Technology ModelSim ALTERA vlog 10.0c Compiler 2011.09 Sep 21 2011
+# -- Compiling module RegisterFile
+# 
+# Top level modules:
+# 	RegisterFile
+# vlog -vlog01compat -work work +incdir+C:/Users/Jhon/Documents/GIT/TP2/Quartus {C:/Users/Jhon/Documents/GIT/TP2/Quartus/Controle.v}
+# Model Technology ModelSim ALTERA vlog 10.0c Compiler 2011.09 Sep 21 2011
+# -- Compiling module Controle
+# 
+# Top level modules:
+# 	Controle
+# vlog -vlog01compat -work work +incdir+C:/Users/Jhon/Documents/GIT/TP2/Quartus {C:/Users/Jhon/Documents/GIT/TP2/Quartus/signExtend.v}
+# Model Technology ModelSim ALTERA vlog 10.0c Compiler 2011.09 Sep 21 2011
+# -- Compiling module signExtend
+# 
+# Top level modules:
+# 	signExtend
+# vlog -vlog01compat -work work +incdir+C:/Users/Jhon/Documents/GIT/TP2/Quartus {C:/Users/Jhon/Documents/GIT/TP2/Quartus/Mem.v}
+# Model Technology ModelSim ALTERA vlog 10.0c Compiler 2011.09 Sep 21 2011
+# -- Compiling module Mem
+# 
+# Top level modules:
+# 	Mem
+# 
+# vlog -vlog01compat -work work +incdir+C:/Users/Jhon/Documents/GIT/TP2/Quartus {C:/Users/Jhon/Documents/GIT/TP2/Quartus/tb_CALC1.v}
+# Model Technology ModelSim ALTERA vlog 10.0c Compiler 2011.09 Sep 21 2011
+# -- Compiling module tb_CALC1
+# 
+# Top level modules:
+# 	tb_CALC1
+# 
+# vsim -t 1ps -L altera_ver -L lpm_ver -L sgate_ver -L altera_mf_ver -L altera_lnsim_ver -L cycloneii_ver -L rtl_work -L work -voptargs="+acc"  tb_CALC1
+# vsim -L altera_ver -L lpm_ver -L sgate_ver -L altera_mf_ver -L altera_lnsim_ver -L cycloneii_ver -L rtl_work -L work -voptargs=\"+acc\" -t 1ps tb_CALC1 
+# Loading work.tb_CALC1
+# Loading work.CALC1
+# Loading work.ALU
+# Loading work.RegisterFile
+# Loading work.Mem
+# Loading work.Controle
+# Loading work.signExtend
+# 
+# add wave *
+# view structure
+# .main_pane.structure.interior.cs.body.struct
+# view signals
+# .main_pane.objects.interior.cs.body.tree
+# run 10 ns
+#  

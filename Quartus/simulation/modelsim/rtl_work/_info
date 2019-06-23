@@ -1,0 +1,145 @@
+m255
+K3
+13
+cModel Technology
+Z0 dC:\Users\Jhon\Documents\GIT\TP2\Quartus\simulation\modelsim
+vALU
+IGHWEF=g>R>CB=m><RZJ7h3
+VI>jW3z0nj_X4^UX9L8FPE1
+Z1 dC:\Users\Jhon\Documents\GIT\TP2\Quartus\simulation\modelsim
+w1560779998
+8C:/Users/Jhon/Documents/GIT/TP2/Quartus/ALU.v
+FC:/Users/Jhon/Documents/GIT/TP2/Quartus/ALU.v
+L0 1
+Z2 OV;L;10.0c;49
+r1
+31
+Z3 o-vlog01compat -work work -O0
+Z4 !s92 -vlog01compat -work work +incdir+C:/Users/Jhon/Documents/GIT/TP2/Quartus -O0
+n@a@l@u
+!s100 c:B3N9[Yi9Nif3bjeRT2A0
+!s85 0
+!s108 1561317064.297000
+!s107 C:/Users/Jhon/Documents/GIT/TP2/Quartus/ALU.v|
+!s90 -reportprogress|300|-vlog01compat|-work|work|+incdir+C:/Users/Jhon/Documents/GIT/TP2/Quartus|C:/Users/Jhon/Documents/GIT/TP2/Quartus/ALU.v|
+!s101 -O0
+vCALC1
+ITM<CEGEhecDn0edG7]kla0
+V3j9LEP2EET=KHSQl=LzW:0
+R1
+w1560873203
+8C:/Users/Jhon/Documents/GIT/TP2/Quartus/CALC1.v
+FC:/Users/Jhon/Documents/GIT/TP2/Quartus/CALC1.v
+L0 1
+R2
+r1
+31
+R3
+n@c@a@l@c1
+R4
+!s100 T^B3Dl_d5AoNEOAC3P<PH1
+!s85 0
+!s108 1561317064.131000
+!s107 C:/Users/Jhon/Documents/GIT/TP2/Quartus/CALC1.v|
+!s90 -reportprogress|300|-vlog01compat|-work|work|+incdir+C:/Users/Jhon/Documents/GIT/TP2/Quartus|C:/Users/Jhon/Documents/GIT/TP2/Quartus/CALC1.v|
+!s101 -O0
+vControle
+IKPX=F>_j;UjaO5k1`bPnB2
+ViDV2DUM8lFVI_d9CcWaN10
+R1
+w1560859010
+8C:/Users/Jhon/Documents/GIT/TP2/Quartus/Controle.v
+FC:/Users/Jhon/Documents/GIT/TP2/Quartus/Controle.v
+L0 1
+R2
+r1
+31
+R3
+R4
+n@controle
+!s100 XT:z:ogfdE`b[M0MRH@fM3
+!s85 0
+!s108 1561317064.744000
+!s107 C:/Users/Jhon/Documents/GIT/TP2/Quartus/Controle.v|
+!s90 -reportprogress|300|-vlog01compat|-work|work|+incdir+C:/Users/Jhon/Documents/GIT/TP2/Quartus|C:/Users/Jhon/Documents/GIT/TP2/Quartus/Controle.v|
+!s101 -O0
+vMem
+Ij1jgPbF=DJc<;9N4[IMQE2
+V=:i4B9]1TQ`H0eHiAjj2U2
+R1
+w1560884762
+8C:/Users/Jhon/Documents/GIT/TP2/Quartus/Mem.v
+FC:/Users/Jhon/Documents/GIT/TP2/Quartus/Mem.v
+L0 1
+R2
+r1
+31
+R3
+R4
+n@mem
+!s100 S_ajo033SLk[LiIYCR?:l0
+!s85 0
+!s108 1561317065.178000
+!s107 C:/Users/Jhon/Documents/GIT/TP2/Quartus/Mem.v|
+!s90 -reportprogress|300|-vlog01compat|-work|work|+incdir+C:/Users/Jhon/Documents/GIT/TP2/Quartus|C:/Users/Jhon/Documents/GIT/TP2/Quartus/Mem.v|
+!s101 -O0
+vRegisterFile
+IR6GMzzn:BcYQ=P5JXWfV30
+Vio<66T^8kWFHlA59V:Y]80
+R1
+w1560873014
+8C:/Users/Jhon/Documents/GIT/TP2/Quartus/RegisterFile.v
+FC:/Users/Jhon/Documents/GIT/TP2/Quartus/RegisterFile.v
+L0 1
+R2
+r1
+31
+R3
+R4
+n@register@file
+!s100 zRm_ja`P6hYYMCL8]Hf;g3
+!s85 0
+!s108 1561317064.537000
+!s107 C:/Users/Jhon/Documents/GIT/TP2/Quartus/RegisterFile.v|
+!s90 -reportprogress|300|-vlog01compat|-work|work|+incdir+C:/Users/Jhon/Documents/GIT/TP2/Quartus|C:/Users/Jhon/Documents/GIT/TP2/Quartus/RegisterFile.v|
+!s101 -O0
+vsignExtend
+I253LEc`c5kY>8ndJ5^[[o1
+V^Hj3HeZm7]@Ij8;FlMbY>0
+R1
+w1560780055
+8C:/Users/Jhon/Documents/GIT/TP2/Quartus/signExtend.v
+FC:/Users/Jhon/Documents/GIT/TP2/Quartus/signExtend.v
+L0 1
+R2
+r1
+31
+R3
+R4
+nsign@extend
+!s100 W7]`]Hn?DARV6kX[edM9D3
+!s85 0
+!s108 1561317064.918000
+!s107 C:/Users/Jhon/Documents/GIT/TP2/Quartus/signExtend.v|
+!s90 -reportprogress|300|-vlog01compat|-work|work|+incdir+C:/Users/Jhon/Documents/GIT/TP2/Quartus|C:/Users/Jhon/Documents/GIT/TP2/Quartus/signExtend.v|
+!s101 -O0
+vtb_CALC1
+!s100 X=QLW3@dHTaHPdLXkj8kB2
+IT=08aNo55Ho2MgF0l7RBJ0
+VaG>@]=0WQcCDjoh]Tz9bz3
+R1
+w1560873226
+8C:/Users/Jhon/Documents/GIT/TP2/Quartus/tb_CALC1.v
+FC:/Users/Jhon/Documents/GIT/TP2/Quartus/tb_CALC1.v
+L0 1
+R2
+r1
+!s85 0
+31
+!s108 1561317065.429000
+!s107 C:/Users/Jhon/Documents/GIT/TP2/Quartus/tb_CALC1.v|
+!s90 -reportprogress|300|-vlog01compat|-work|work|+incdir+C:/Users/Jhon/Documents/GIT/TP2/Quartus|C:/Users/Jhon/Documents/GIT/TP2/Quartus/tb_CALC1.v|
+!s101 -O0
+R3
+R4
+ntb_@c@a@l@c1

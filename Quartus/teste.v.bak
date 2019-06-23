@@ -1,0 +1,17 @@
+module teste (
+	input wire [1:0] RegEsc, Fonte1, Fonte2,
+	input wire Esc, Clk,
+	input wire [31:0] Dado,
+	output reg [31:0] Dado1, Dado2
+);
+
+RegisterFile instancia(
+	.RegEsc(RegEsc),
+	.Fonte1(Fonte1),
+	.Fonte2(Fonte2),
+	.Esc(Esc),
+	.Clk(Clk),
+	.Dado(Dado),
+	.Dado1(Dado1),
+	.Dado2(Dado2)
+);
